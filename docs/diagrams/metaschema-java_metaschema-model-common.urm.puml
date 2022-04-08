@@ -1,0 +1,3677 @@
+@startuml
+package gov.nist.secauto.metaschema.model.common.metapath.antlr {
+  class metapath10BaseVisitor<T> {
+    + metapath10BaseVisitor<T>()
+    + visitAdditiveexpr(ctx : AdditiveexprContext) : T
+    + visitAndexpr(ctx : AndexprContext) : T
+    + visitArgument(ctx : ArgumentContext) : T
+    + visitArgumentlist(ctx : ArgumentlistContext) : T
+    + visitArrowexpr(ctx : ArrowexprContext) : T
+    + visitArrowfunctionspecifier(ctx : ArrowfunctionspecifierContext) : T
+    + visitAxisstep(ctx : AxisstepContext) : T
+    + visitComparisonexpr(ctx : ComparisonexprContext) : T
+    + visitContextitemexpr(ctx : ContextitemexprContext) : T
+    + visitEqname(ctx : EqnameContext) : T
+    + visitExpr(ctx : ExprContext) : T
+    + visitExprsingle(ctx : ExprsingleContext) : T
+    + visitForwardstep(ctx : ForwardstepContext) : T
+    + visitFunctioncall(ctx : FunctioncallContext) : T
+    + visitGeneralcomp(ctx : GeneralcompContext) : T
+    + visitIntersectexceptexpr(ctx : IntersectexceptexprContext) : T
+    + visitLiteral(ctx : LiteralContext) : T
+    + visitMetapath(ctx : MetapathContext) : T
+    + visitMultiplicativeexpr(ctx : MultiplicativeexprContext) : T
+    + visitNametest(ctx : NametestContext) : T
+    + visitNumericliteral(ctx : NumericliteralContext) : T
+    + visitOrexpr(ctx : OrexprContext) : T
+    + visitParenthesizedexpr(ctx : ParenthesizedexprContext) : T
+    + visitPathexpr(ctx : PathexprContext) : T
+    + visitPostfixexpr(ctx : PostfixexprContext) : T
+    + visitPredicate(ctx : PredicateContext) : T
+    + visitPredicatelist(ctx : PredicatelistContext) : T
+    + visitPrimaryexpr(ctx : PrimaryexprContext) : T
+    + visitRelativepathexpr(ctx : RelativepathexprContext) : T
+    + visitStepexpr(ctx : StepexprContext) : T
+    + visitStringconcatexpr(ctx : StringconcatexprContext) : T
+    + visitUnaryexpr(ctx : UnaryexprContext) : T
+    + visitUnionexpr(ctx : UnionexprContext) : T
+    + visitValuecomp(ctx : ValuecompContext) : T
+    + visitValueexpr(ctx : ValueexprContext) : T
+    + visitWildcard(ctx : WildcardContext) : T
+  }
+  interface metapath10Visitor<T> {
+    + visitAdditiveexpr(AdditiveexprContext) : T {abstract}
+    + visitAndexpr(AndexprContext) : T {abstract}
+    + visitArgument(ArgumentContext) : T {abstract}
+    + visitArgumentlist(ArgumentlistContext) : T {abstract}
+    + visitArrowexpr(ArrowexprContext) : T {abstract}
+    + visitArrowfunctionspecifier(ArrowfunctionspecifierContext) : T {abstract}
+    + visitAxisstep(AxisstepContext) : T {abstract}
+    + visitComparisonexpr(ComparisonexprContext) : T {abstract}
+    + visitContextitemexpr(ContextitemexprContext) : T {abstract}
+    + visitEqname(EqnameContext) : T {abstract}
+    + visitExpr(ExprContext) : T {abstract}
+    + visitExprsingle(ExprsingleContext) : T {abstract}
+    + visitForwardstep(ForwardstepContext) : T {abstract}
+    + visitFunctioncall(FunctioncallContext) : T {abstract}
+    + visitGeneralcomp(GeneralcompContext) : T {abstract}
+    + visitIntersectexceptexpr(IntersectexceptexprContext) : T {abstract}
+    + visitLiteral(LiteralContext) : T {abstract}
+    + visitMetapath(MetapathContext) : T {abstract}
+    + visitMultiplicativeexpr(MultiplicativeexprContext) : T {abstract}
+    + visitNametest(NametestContext) : T {abstract}
+    + visitNumericliteral(NumericliteralContext) : T {abstract}
+    + visitOrexpr(OrexprContext) : T {abstract}
+    + visitParenthesizedexpr(ParenthesizedexprContext) : T {abstract}
+    + visitPathexpr(PathexprContext) : T {abstract}
+    + visitPostfixexpr(PostfixexprContext) : T {abstract}
+    + visitPredicate(PredicateContext) : T {abstract}
+    + visitPredicatelist(PredicatelistContext) : T {abstract}
+    + visitPrimaryexpr(PrimaryexprContext) : T {abstract}
+    + visitRelativepathexpr(RelativepathexprContext) : T {abstract}
+    + visitStepexpr(StepexprContext) : T {abstract}
+    + visitStringconcatexpr(StringconcatexprContext) : T {abstract}
+    + visitUnaryexpr(UnaryexprContext) : T {abstract}
+    + visitUnionexpr(UnionexprContext) : T {abstract}
+    + visitValuecomp(ValuecompContext) : T {abstract}
+    + visitValueexpr(ValueexprContext) : T {abstract}
+    + visitWildcard(WildcardContext) : T {abstract}
+  }
+}
+package gov.nist.secauto.metaschema.model.common.metapath {
+  class CSTPrinter {
+    - ignoringWrappers : boolean
+    - outputStream : PrintStream
+    + CSTPrinter(outputStream : PrintStream)
+    - explore(ctx : RuleContext, indentation : int)
+    + print(ctx : RuleContext)
+    + print(tree : ParseTree, ruleNames : List<String>)
+    + setIgnoringWrappers(ignoringWrappers : boolean)
+  }
+  abstract class ConstraintVisitingModelWalker<DATA> {
+    + ConstraintVisitingModelWalker<DATA>()
+    # visit(def : IAssemblyDefinition, data : DATA) : boolean
+    # visit(def : IFieldDefinition, data : DATA) : boolean
+    # visit(def : IFlagDefinition, data : DATA)
+    # visit(definition : IAssemblyDefinition, constraint : IAllowedValuesConstraint, data : DATA)
+    # visit(definition : IAssemblyDefinition, constraint : ICardinalityConstraint, data : DATA)
+    # visit(definition : IAssemblyDefinition, constraint : IExpectConstraint, data : DATA)
+    # visit(definition : IAssemblyDefinition, constraint : IIndexConstraint, data : DATA)
+    # visit(definition : IAssemblyDefinition, constraint : IIndexHasKeyConstraint, data : DATA)
+    # visit(definition : IAssemblyDefinition, constraint : IMatchesConstraint, data : DATA)
+    # visit(definition : IAssemblyDefinition, constraint : IUniqueConstraint, data : DATA)
+    # visit(definition : IFieldDefinition, constraint : IAllowedValuesConstraint, data : DATA)
+    # visit(definition : IFieldDefinition, constraint : IExpectConstraint, data : DATA)
+    # visit(definition : IFieldDefinition, constraint : IIndexHasKeyConstraint, data : DATA)
+    # visit(definition : IFieldDefinition, constraint : IMatchesConstraint, data : DATA)
+    # visit(definition : IFlagDefinition, constraint : IAllowedValuesConstraint, data : DATA)
+    # visit(definition : IFlagDefinition, constraint : IExpectConstraint, data : DATA)
+    # visit(definition : IFlagDefinition, constraint : IIndexHasKeyConstraint, data : DATA)
+    # visit(definition : IFlagDefinition, constraint : IMatchesConstraint, data : DATA)
+    # walkConstraints(definition : IAssemblyDefinition, data : DATA)
+    # walkConstraints(definition : IFieldDefinition, data : DATA)
+    # walkConstraints(definition : IFlagDefinition, data : DATA)
+  }
+  class DynamicContext {
+    - availableDocuments : Map<URI, IDocumentNodeItem>
+    - currentDateTime : ZonedDateTime
+    - documentLoader : CachingLoader
+    - functionResultCache : Map<CallingContext, ISequence<?>>
+    - implicitTimeZone : ZoneId
+    - staticContext : StaticContext
+    + DynamicContext(staticContext : StaticContext)
+    + cacheResult(callingContext : CallingContext, result : ISequence<?>)
+    + getAvailableDocuments() : Map<URI, INodeItem>
+    + getCachedResult(callingContext : CallingContext) : ISequence<?>
+    + getCurrentDateTime() : ZonedDateTime
+    + getDocumentLoader() : IDocumentLoader
+    + getImplicitTimeZone() : ZoneId
+    + getStaticContext() : StaticContext
+    + setDocumentLoader(documentLoader : IDocumentLoader)
+  }
+  -class CachingLoader {
+    - proxy : IDocumentLoader
+    + CachingLoader(proxy : IDocumentLoader)
+    # getProxiedDocumentLoader() : IDocumentLoader
+    + loadAsNodeItem(file : File) : IDocumentNodeItem
+    + loadAsNodeItem(is : InputStream, documentUri : URI) : IDocumentNodeItem
+    + loadAsNodeItem(url : URL) : IDocumentNodeItem
+  }
+  interface IDocumentLoader {
+    + loadAsNodeItem(InputStream, URI) : IDocumentNodeItem {abstract}
+    + loadAsNodeItem(file : File) : IDocumentNodeItem
+    + loadAsNodeItem(path : Path) : IDocumentNodeItem
+    + loadAsNodeItem(url : URL) : IDocumentNodeItem
+  }
+  interface INodeContext {
+    + flags() : Stream<? extends IFlagNodeItem>
+    + getContextNodeItem() : INodeItem {abstract}
+    + getFlagByName(String) : IFlagNodeItem {abstract}
+    + getFlags() : Collection<? extends IFlagNodeItem> {abstract}
+    + getModelItems() : Collection<? extends List<? extends IModelNodeItem>> {abstract}
+    + getModelItemsByName(String) : List<? extends IModelNodeItem> {abstract}
+    + modelItems() : Stream<? extends IModelNodeItem>
+  }
+  class MetapathExpression {
+    + CONTEXT_NODE : MetapathExpression {static}
+    - node : IExpression
+    - path : String
+    + MetapathExpression(path : String, expr : IExpression)
+    + MetapathExpression(path : String, tree : ParseTree)
+    + compile(path : String) : MetapathExpression {static}
+    + evaluate(item : INodeItem) : ISequence<?>
+    + evaluate(item : INodeItem, context : DynamicContext) : ISequence<?>
+    + evaluateAs(item : INodeItem, context : DynamicContext, resultType : ResultType) : T
+    + evaluateAs(item : INodeItem, resultType : ResultType) : T
+    + evaluateMetaschemaInstance(context : IMetaschemaContext) : IInstanceSet
+    + getASTNode() : IExpression
+    + getPath() : String
+    # toResultType(result : ISequence<?>, resultType : ResultType) : Object
+    + toString() : String
+  }
+  enum ResultType {
+    + BOOLEAN {static}
+    + NODE {static}
+    + NUMBER {static}
+    + SEQUENCE {static}
+    + STRING {static}
+    + valueOf(name : String) : ResultType {static}
+    + values() : ResultType[] {static}
+  }
+  class StaticContext {
+    - baseUri : URI
+    + StaticContext()
+    + getBaseUri() : URI
+    + newDynamicContext() : DynamicContext
+    + setBaseUri(baseUri : URI)
+  }
+}
+package gov.nist.secauto.metaschema.model.common.validation {
+  abstract class AbstractContentValidator {
+    + AbstractContentValidator()
+    + validate(InputStream, URI) : IValidationResult {abstract}
+    + validate(path : Path) : IValidationResult
+    + validate(url : URL) : IValidationResult
+  }
+  interface IContentValidator {
+    + validate(InputStream, URI) : IValidationResult {abstract}
+    + validate(Path) : IValidationResult {abstract}
+    + validate(URL) : IValidationResult {abstract}
+  }
+  interface IValidationFinding {
+    + getCause() : Throwable {abstract}
+    + getDocumentUri() : URI {abstract}
+    + getMessage() : CharSequence {abstract}
+    + getSeverity() : Level {abstract}
+  }
+  interface IValidationResult {
+    + PASSING_RESULT : IValidationResult {static}
+    + getFindings() : List<? extends IValidationFinding> {abstract}
+    + getHighestSeverity() : Level {abstract}
+    + isPassing() : boolean
+  }
+  class JsonSchemaContentValidator {
+    - schema : Schema
+    + JsonSchemaContentValidator(jsonSchema : JSONObject)
+    # JsonSchemaContentValidator(schema : Schema)
+    + JsonSchemaContentValidator(schemaInputStream : InputStream)
+    + getSchema() : Schema
+    # handleValidationException(ex : ValidationException, documentUri : URI) : Stream<JsonValidationFinding>
+    + validate(is : InputStream, uri : URI) : IValidationResult
+    + validate(json : JSONObject, documentUri : URI) : IValidationResult
+  }
+  class JsonValidationFinding {
+    - documentUri : URI
+    - exception : ValidationException
+    + JsonValidationFinding(exception : ValidationException, documentUri : URI)
+    + getCause() : ValidationException
+    + getDocumentUri() : URI
+    + getMessage() : String
+    + getSeverity() : Level
+  }
+  -class JsonValidationResult {
+    - findings : List<JsonValidationFinding>
+    + JsonValidationResult(findings : List<JsonValidationFinding>)
+    + getFindings() : List<? extends IValidationFinding>
+    + getHighestSeverity() : Level
+  }
+  class ValidatingNodeItemVisitor {
+    + ValidatingNodeItemVisitor()
+    # defaultResult() : Boolean
+    + visitAssembly(item : IAssemblyNodeItem, context : IConstraintValidator) : Boolean
+    + visitField(item : IFieldNodeItem, context : IConstraintValidator) : Boolean
+    + visitFlag(item : IFlagNodeItem, context : IConstraintValidator) : Boolean
+  }
+  class XmlSchemaContentValidator {
+    - schema : Schema
+    # XmlSchemaContentValidator(schema : Schema)
+    + XmlSchemaContentValidator(schemaSources : List<? extends Source>)
+    + getSchema() : Schema
+    - toSchema(schemaSources : List<? extends Source>) : Schema {static}
+    + validate(is : InputStream, documentUri : URI) : IValidationResult
+    + validate(xmlSource : Source, documentUri : URI) : IValidationResult
+  }
+  -class XmlValidationErrorHandler {
+    - documentUri : URI
+    - findings : List<XmlValidationFinding>
+    - highestSeverity : Level
+    + XmlValidationErrorHandler(documentUri : URI)
+    - adjustHighestSeverity(severity : Level)
+    + error(ex : SAXParseException)
+    + fatalError(ex : SAXParseException)
+    + getDocumentUri() : URI
+    + getFindings() : List<XmlValidationFinding>
+    + getHighestSeverity() : Level
+    + warning(ex : SAXParseException)
+  }
+  class XmlValidationFinding {
+    - documentUri : URI
+    - exception : SAXParseException
+    - severity : Level
+    + XmlValidationFinding(severity : Level, exception : SAXParseException, documentUri : URI)
+    + getCause() : SAXParseException
+    + getDocumentUri() : URI
+    + getMessage() : String
+    + getSeverity() : Level
+  }
+}
+package gov.nist.secauto.metaschema.model.common.metapath.ast {
+  class ASTPrinter {
+    - indentation : int
+    - indentationPadding : String
+    - lastIndentation : int
+    + ASTPrinter()
+    # aggregateResult(result : String, nextResult : String) : String
+    # appendNode(expr : IExpression, childResult : String) : String
+    # defaultResult() : String
+    - getIndentation() : String
+    + visit(expr : IExpression) : String
+    + visitAddition(expr : Addition, context : Void) : String
+    + visitAnd(expr : And, context : Void) : String
+    # visitChildren(expr : IExpression, context : Void) : String
+    + visitContextItem(expr : ContextItem, context : Void) : String
+    + visitDecimalLiteral(expr : DecimalLiteral, context : Void) : String
+    + visitDivision(expr : Division, context : Void) : String
+    + visitFlag(expr : Flag, context : Void) : String
+    + visitFunctionCall(expr : FunctionCall, context : Void) : String
+    + visitGeneralComparison(expr : GeneralComparison, context : Void) : String
+    + visitIntegerDivision(expr : IntegerDivision, context : Void) : String
+    + visitIntegerLiteral(expr : IntegerLiteral, context : Void) : String
+    + visitMetapath(expr : Metapath, context : Void) : String
+    + visitMod(expr : Mod, context : Void) : String
+    + visitModelInstance(expr : ModelInstance, context : Void) : String
+    + visitMultiplication(expr : Multiplication, context : Void) : String
+    + visitName(expr : Name, context : Void) : String
+    + visitNegate(expr : Negate, context : Void) : String
+    + visitOr(expr : Or, context : Void) : String
+    + visitParenthesizedExpression(expr : ParenthesizedExpression, context : Void) : String
+    + visitRelativeDoubleSlashPath(expr : RelativeDoubleSlashPath, context : Void) : String
+    + visitRelativeSlashPath(expr : RelativeSlashPath, context : Void) : String
+    + visitRootDoubleSlashPath(expr : RootDoubleSlashPath, context : Void) : String
+    + visitRootSlashOnlyPath(expr : RootSlashOnlyPath, context : Void) : String
+    + visitRootSlashPath(expr : RootSlashPath, context : Void) : String
+    + visitStep(expr : Step, context : Void) : String
+    + visitStringConcat(expr : StringConcat, context : Void) : String
+    + visitStringLiteral(expr : StringLiteral, context : Void) : String
+    + visitSubtraction(expr : Subtraction, context : Void) : String
+    + visitUnion(expr : Union, context : Void) : String
+    + visitValueComparison(expr : ValueComparison, context : Void) : String
+    + visitWildcard(expr : Wildcard, context : Void) : String
+  }
+  abstract class AbstractArithmeticExpression<RESULT_TYPE extends IAnyAtomicItem> {
+    - staticResultType : Class<? extends RESULT_TYPE>
+    + AbstractArithmeticExpression<RESULT_TYPE extends IAnyAtomicItem>(left : IExpression, right : IExpression, baseType : Class<RESULT_TYPE extends IAnyAtomicItem>)
+    + getBaseResultType() : Class<RESULT_TYPE extends IAnyAtomicItem> {abstract}
+    + getStaticResultType() : Class<? extends RESULT_TYPE>
+  }
+  abstract class AbstractBinaryExpression {
+    - left : IExpression
+    - right : IExpression
+    + AbstractBinaryExpression(left : IExpression, right : IExpression)
+    + getChildren() : List<? extends IExpression>
+    + getLeft() : IExpression
+    + getRight() : IExpression
+    + toString() : String
+  }
+  abstract class AbstractComparison {
+    - operator : Operator
+    + AbstractComparison(left : IExpression, operator : Operator, right : IExpression)
+    + getOperator() : Operator
+    + toASTString() : String
+  }
+  abstract class AbstractLiteralExpression<RESULT_TYPE extends IAnyAtomicItem, VALUE> {
+    - value : VALUE
+    + AbstractLiteralExpression<RESULT_TYPE extends IAnyAtomicItem, VALUE>(value : VALUE)
+    + getValue() : VALUE
+    + toASTString() : String
+    + toString() : String
+  }
+  abstract class AbstractNAryExpression {
+    - children : List<IExpression>
+    + AbstractNAryExpression(children : List<IExpression>)
+    + getChildren() : List<IExpression>
+    + toString() : String
+  }
+  abstract class AbstractNamedInstanceExpression<RESULT_TYPE extends INodeItem> {
+    - WILDCARD : WildcardMatcher {static}
+    - node : IExpression
+    + AbstractNamedInstanceExpression<RESULT_TYPE extends INodeItem>(node : IExpression)
+    + getChildren() : List<? extends IExpression>
+    + getInstanceMatcher() : Predicate<IInstance>
+    + getNode() : IExpression
+    + isName() : boolean
+  }
+  -class NameMatcher {
+    - name : String
+    + NameMatcher(name : String)
+    # getName() : String
+    + test(instance : IInstance) : boolean
+  }
+  -class WildcardMatcher {
+    - WildcardMatcher()
+    + test(instance : IInstance) : boolean
+  }
+  abstract class AbstractPathExpression<RESULT_TYPE extends IItem> {
+    + AbstractPathExpression<RESULT_TYPE extends IItem>()
+    + getBaseResultType() : Class<RESULT_TYPE extends IItem> {abstract}
+    + getStaticResultType() : Class<? extends RESULT_TYPE>
+    + toString() : String
+  }
+  abstract class AbstractRelativePathExpression {
+    - left : IExpression
+    - right : IExpression
+    - staticResultType : Class<? extends INodeItem>
+    + AbstractRelativePathExpression(left : IExpression, right : IExpression)
+    + getBaseResultType() : Class<INodeItem>
+    + getChildren() : List<? extends IExpression>
+    + getLeft() : IExpression
+    + getRight() : IExpression
+    + getStaticResultType() : Class<? extends INodeItem>
+  }
+  abstract class AbstractRootPathExpression {
+    - node : IExpression
+    - staticResultType : Class<? extends INodeItem>
+    + AbstractRootPathExpression(node : IExpression)
+    + getBaseResultType() : Class<INodeItem>
+    + getChildren() : List<? extends IExpression>
+    + getNode() : IExpression
+    + getStaticResultType() : Class<? extends INodeItem>
+  }
+  abstract class AbstractUnaryExpression {
+    - expr : IExpression
+    + AbstractUnaryExpression(expr : IExpression)
+    + getChild() : IExpression
+    + getChildren() : List<? extends IExpression>
+    + toString() : String
+  }
+  class Addition {
+    + Addition(left : IExpression, right : IExpression)
+    + accept(visitor : IExpressionEvaluationVisitor, context : INodeContext) : ISequence<? extends IAnyAtomicItem>
+    + accept(visitor : IExpressionVisitor<RESULT, CONTEXT>, context : CONTEXT) : RESULT
+    + getBaseResultType() : Class<IAnyAtomicItem>
+  }
+  class And {
+    + And(chidren : List<IExpression>)
+    + accept(visitor : IExpressionEvaluationVisitor, context : INodeContext) : ISequence<? extends IBooleanItem>
+    + accept(visitor : IExpressionVisitor<RESULT, CONTEXT>, context : CONTEXT) : RESULT
+  }
+  class BuildAstVisitor {
+    + BuildAstVisitor()
+    # handleGroupedNAiry(context : CONTEXT extends ParserRuleContext, step : int, parser : ITriFunction<CONTEXT extends ParserRuleContext, Integer, IExpression, IExpression>) : IExpression
+    # handleNAiryCollection(context : CONTEXT extends ParserRuleContext, step : int, parser : BiFunction<CONTEXT extends ParserRuleContext, Integer, EXPRESSION extends IExpression>, supplier : Function<List<EXPRESSION extends IExpression>, IExpression>) : IExpression
+    # handleNAiryCollection(context : CONTEXT extends ParserRuleContext, supplier : Function<List<NODE extends IExpression>, IExpression>) : IExpression
+    # parseArgumentList(context : ArgumentlistContext) : List<IExpression>
+    # parsePredicate(context : PredicateContext) : IExpression
+    # parsePredicates(context : ParseTree, staringChild : int) : List<IExpression>
+    + visitAdditiveexpr(context : AdditiveexprContext) : IExpression
+    + visitAndexpr(context : AndexprContext) : IExpression
+    + visitArgumentlist(context : ArgumentlistContext) : IExpression
+    + visitArrowexpr(ctx : ArrowexprContext) : IExpression
+    + visitArrowfunctionspecifier(ctx : ArrowfunctionspecifierContext) : IExpression
+    + visitAxisstep(context : AxisstepContext) : IExpression
+    + visitComparisonexpr(ctx : ComparisonexprContext) : IExpression
+    + visitContextitemexpr(ctx : ContextitemexprContext) : IExpression
+    + visitEqname(ctx : EqnameContext) : IExpression
+    + visitExpr(context : ExprContext) : IExpression
+    + visitForwardstep(context : ForwardstepContext) : IExpression
+    + visitFunctioncall(context : FunctioncallContext) : IExpression
+    + visitIntersectexceptexpr(ctx : IntersectexceptexprContext) : IExpression
+    + visitLiteral(ctx : LiteralContext) : IExpression
+    + visitMultiplicativeexpr(context : MultiplicativeexprContext) : IExpression
+    + visitNumericliteral(ctx : NumericliteralContext) : IExpression
+    + visitOrexpr(context : OrexprContext) : IExpression
+    + visitParenthesizedexpr(context : ParenthesizedexprContext) : IExpression
+    + visitPathexpr(ctx : PathexprContext) : IExpression
+    + visitPostfixexpr(context : PostfixexprContext) : IExpression
+    + visitPredicate(context : PredicateContext) : IExpression
+    + visitPredicatelist(context : PredicatelistContext) : IExpression
+    + visitRelativepathexpr(context : RelativepathexprContext) : IExpression
+    + visitStringconcatexpr(context : StringconcatexprContext) : IExpression
+    + visitUnaryexpr(ctx : UnaryexprContext) : IExpression
+    + visitUnionexpr(context : UnionexprContext) : IExpression
+    + visitWildcard(ctx : WildcardContext) : IExpression
+  }
+  class ContextItem {
+    + ContextItem()
+    + accept(visitor : IExpressionEvaluationVisitor, context : INodeContext) : ISequence<? extends INodeItem>
+    + accept(visitor : IExpressionVisitor<RESULT, CONTEXT>, context : CONTEXT) : RESULT
+    + getBaseResultType() : Class<INodeItem>
+    + getChildren() : List<? extends IExpression>
+    + getStaticResultType() : Class<? extends INodeItem>
+  }
+  class DecimalLiteral {
+    + DecimalLiteral(value : BigDecimal)
+    + accept(visitor : IExpressionEvaluationVisitor, context : INodeContext) : ISequence<? extends IDecimalItem>
+    + accept(visitor : IExpressionVisitor<RESULT, CONTEXT>, context : CONTEXT) : RESULT
+    + getBaseResultType() : Class<IDecimalItem>
+  }
+  class Division {
+    + Division(left : IExpression, right : IExpression)
+    + accept(visitor : IExpressionEvaluationVisitor, context : INodeContext) : ISequence<? extends IAnyAtomicItem>
+    + accept(visitor : IExpressionVisitor<RESULT, CONTEXT>, context : CONTEXT) : RESULT
+    + getBaseResultType() : Class<IAnyAtomicItem>
+  }
+  class ExpressionUtils {
+    - ExpressionUtils()
+    + analyzeStaticResultType(baseType : Class<RESULT_TYPE>, expressions : List<IExpression>) : Class<? extends RESULT_TYPE> {static}
+    - checkDerivedFrom(baseType : Class<?>, expressionClasses : List<Class<?>>) : boolean {static}
+    - findCommonBase(baseType : Class<RESULT_TYPE>, expressionClasses : List<Class<?>>) : Class<? extends RESULT_TYPE> {static}
+    - getCommonBaseClass(baseType : Class<?>, first : Class<?>, expressionClasses : List<Class<?>>) : Class<?> {static}
+  }
+  class Flag {
+    + Flag(node : IExpression)
+    + accept(visitor : IExpressionEvaluationVisitor, context : INodeContext) : ISequence<? extends IFlagNodeItem>
+    + accept(visitor : IExpressionVisitor<RESULT, CONTEXT>, context : CONTEXT) : RESULT
+    + getBaseResultType() : Class<IFlagNodeItem>
+  }
+  class FunctionCall {
+    - arguments : List<IExpression>
+    - function : IFunction
+    - name : String
+    + FunctionCall(name : String, arguments : List<IExpression>)
+    + accept(visitor : IExpressionEvaluationVisitor, context : INodeContext) : ISequence<? extends IItem>
+    + accept(visitor : IExpressionVisitor<RESULT, CONTEXT>, context : CONTEXT) : RESULT
+    + getBaseResultType() : Class<? extends IItem>
+    + getChildren() : List<IExpression>
+    + getFunction() : IFunction
+    + toASTString() : String
+    + toString() : String
+  }
+  class GeneralComparison {
+    + GeneralComparison(left : IExpression, operator : Operator, right : IExpression)
+    + accept(visitor : IExpressionEvaluationVisitor, context : INodeContext) : ISequence<? extends IBooleanItem>
+    + accept(visitor : IExpressionVisitor<RESULT, CONTEXT>, context : CONTEXT) : RESULT
+  }
+  interface IArithmeticExpression<RESULT_TYPE extends IAnyAtomicItem> {
+    + getBaseResultType() : Class<RESULT_TYPE extends IAnyAtomicItem> {abstract}
+  }
+  interface IBooleanLogicExpression {
+    + getBaseResultType() : Class<IBooleanItem>
+    + getStaticResultType() : Class<IBooleanItem>
+  }
+  interface IComparison {
+  }
+  enum Operator {
+    + EQ {static}
+    + GE {static}
+    + GT {static}
+    + LE {static}
+    + LT {static}
+    + NE {static}
+    + valueOf(name : String) : Operator {static}
+    + values() : Operator[] {static}
+  }
+  interface IExpression {
+    + accept(IExpressionEvaluationVisitor, INodeContext) : ISequence<? extends IItem> {abstract}
+    + accept(IExpressionVisitor<RESULT, CONTEXT>, CONTEXT) : RESULT {abstract}
+    + getBaseResultType() : Class<? extends IItem>
+    + getChildren() : List<? extends IExpression> {abstract}
+    + getStaticResultType() : Class<? extends IItem>
+    + toASTString() : String
+  }
+  interface ILiteralExpression<RESULT_TYPE extends IAnyAtomicItem, VALUE> {
+    + getBaseResultType() : Class<RESULT_TYPE extends IAnyAtomicItem> {abstract}
+    + getChildren() : List<? extends IExpression>
+    + getStaticResultType() : Class<RESULT_TYPE extends IAnyAtomicItem>
+    + getValue() : VALUE {abstract}
+  }
+  interface IPathExpression<RESULT_TYPE extends IItem> {
+    + getBaseResultType() : Class<RESULT_TYPE extends IItem> {abstract}
+    + getStaticResultType() : Class<? extends RESULT_TYPE> {abstract}
+  }
+  ~interface ITriFunction<T, U, V, R> {
+    + andThen(after : Function<? super R, ? extends W>) : ITriFunction<T, U, V, W>
+    + apply(T, U, V) : R {abstract}
+  }
+  class IntegerDivision {
+    + IntegerDivision(left : IExpression, right : IExpression)
+    + accept(visitor : IExpressionEvaluationVisitor, context : INodeContext) : ISequence<? extends IIntegerItem>
+    + accept(visitor : IExpressionVisitor<RESULT, CONTEXT>, context : CONTEXT) : RESULT
+    + getBaseResultType() : Class<IIntegerItem>
+  }
+  class IntegerLiteral {
+    + IntegerLiteral(value : BigInteger)
+    + accept(visitor : IExpressionEvaluationVisitor, context : INodeContext) : ISequence<? extends IIntegerItem>
+    + accept(visitor : IExpressionVisitor<RESULT, CONTEXT>, context : CONTEXT) : RESULT
+    + getBaseResultType() : Class<IIntegerItem>
+  }
+  class Metapath {
+    - staticResultType : Class<? extends IItem>
+    + Metapath(children : List<IExpression>)
+    + accept(visitor : IExpressionEvaluationVisitor, context : INodeContext) : ISequence<? extends IItem>
+    + accept(visitor : IExpressionVisitor<RESULT, CONTEXT>, context : CONTEXT) : RESULT
+    + getStaticResultType() : Class<? extends IItem>
+    + toString() : String
+  }
+  class Mod {
+    + Mod(left : IExpression, right : IExpression)
+    + accept(visitor : IExpressionEvaluationVisitor, context : INodeContext) : ISequence<? extends INumericItem>
+    + accept(visitor : IExpressionVisitor<RESULT, CONTEXT>, context : CONTEXT) : RESULT
+    + getBaseResultType() : Class<INumericItem>
+  }
+  class ModelInstance {
+    + ModelInstance(node : IExpression)
+    + accept(visitor : IExpressionEvaluationVisitor, context : INodeContext) : ISequence<? extends IModelNodeItem>
+    + accept(visitor : IExpressionVisitor<RESULT, CONTEXT>, context : CONTEXT) : RESULT
+    + getBaseResultType() : Class<IModelNodeItem>
+  }
+  class Multiplication {
+    + Multiplication(left : IExpression, right : IExpression)
+    + accept(visitor : IExpressionEvaluationVisitor, context : INodeContext) : ISequence<? extends IAnyAtomicItem>
+    + accept(visitor : IExpressionVisitor<RESULT, CONTEXT>, context : CONTEXT) : RESULT
+    + getBaseResultType() : Class<IAnyAtomicItem>
+  }
+  class Name {
+    + Name(value : String)
+    + accept(visitor : IExpressionEvaluationVisitor, context : INodeContext) : ISequence<? extends IStringItem>
+    + accept(visitor : IExpressionVisitor<RESULT, CONTEXT>, context : CONTEXT) : RESULT
+    + getBaseResultType() : Class<IStringItem>
+  }
+  class Negate {
+    - staticResultType : Class<? extends INumericItem>
+    + Negate(expr : IExpression)
+    + accept(visitor : IExpressionEvaluationVisitor, context : INodeContext) : ISequence<? extends INumericItem>
+    + accept(visitor : IExpressionVisitor<RESULT, CONTEXT>, context : CONTEXT) : RESULT
+    + getBaseResultType() : Class<INumericItem>
+    + getStaticResultType() : Class<? extends INumericItem>
+  }
+  class Or {
+    + Or(chidren : List<IExpression>)
+    + accept(visitor : IExpressionEvaluationVisitor, context : INodeContext) : ISequence<? extends IBooleanItem>
+    + accept(visitor : IExpressionVisitor<RESULT, CONTEXT>, context : CONTEXT) : RESULT
+  }
+  class ParenthesizedExpression {
+    - staticResultType : Class<? extends IItem>
+    + ParenthesizedExpression(expr : IExpression)
+    + accept(visitor : IExpressionEvaluationVisitor, context : INodeContext) : ISequence<?>
+    + accept(visitor : IExpressionVisitor<RESULT, CONTEXT>, context : CONTEXT) : RESULT
+    + getStaticResultType() : Class<? extends IItem>
+    + toString() : String
+  }
+  class RelativeDoubleSlashPath {
+    + RelativeDoubleSlashPath(left : IExpression, right : IExpression)
+    + accept(visitor : IExpressionEvaluationVisitor, context : INodeContext) : ISequence<?>
+    + accept(visitor : IExpressionVisitor<RESULT, CONTEXT>, context : CONTEXT) : RESULT
+  }
+  class RelativeSlashPath {
+    + RelativeSlashPath(left : IExpression, right : IExpression)
+    + accept(visitor : IExpressionEvaluationVisitor, context : INodeContext) : ISequence<?>
+    + accept(visitor : IExpressionVisitor<RESULT, CONTEXT>, context : CONTEXT) : RESULT
+  }
+  class RootDoubleSlashPath {
+    + RootDoubleSlashPath(node : IExpression)
+    + accept(visitor : IExpressionEvaluationVisitor, context : INodeContext) : ISequence<?>
+    + accept(visitor : IExpressionVisitor<RESULT, CONTEXT>, context : CONTEXT) : RESULT
+  }
+  class RootSlashOnlyPath {
+    + RootSlashOnlyPath()
+    + accept(visitor : IExpressionEvaluationVisitor, context : INodeContext) : ISequence<? extends IDocumentNodeItem>
+    + accept(visitor : IExpressionVisitor<RESULT, CONTEXT>, context : CONTEXT) : RESULT
+    + getBaseResultType() : Class<IDocumentNodeItem>
+    + getChildren() : List<? extends IExpression>
+  }
+  class RootSlashPath {
+    + RootSlashPath(node : IExpression)
+    + accept(visitor : IExpressionEvaluationVisitor, context : INodeContext) : ISequence<?>
+    + accept(visitor : IExpressionVisitor<RESULT, CONTEXT>, context : CONTEXT) : RESULT
+  }
+  class Step {
+    - predicates : List<IExpression>
+    - staticResultType : Class<? extends IItem>
+    - step : IExpression
+    + Step(stepExpr : IExpression, predicates : List<IExpression>)
+    + accept(visitor : IExpressionEvaluationVisitor, context : INodeContext) : ISequence<?>
+    + accept(visitor : IExpressionVisitor<RESULT, CONTEXT>, context : CONTEXT) : RESULT
+    + getChildren() : List<? extends IExpression>
+    + getPredicates() : List<IExpression>
+    + getStaticResultType() : Class<? extends IItem>
+    + getStep() : IExpression
+    + toString() : String
+  }
+  class StringConcat {
+    + StringConcat(chidren : List<IExpression>)
+    + accept(visitor : IExpressionEvaluationVisitor, context : INodeContext) : ISequence<? extends IStringItem>
+    + accept(visitor : IExpressionVisitor<RESULT, CONTEXT>, context : CONTEXT) : RESULT
+    + getBaseResultType() : Class<IStringItem>
+    + getStaticResultType() : Class<IStringItem>
+  }
+  class StringLiteral {
+    - QUOTE_PATTERN : Pattern {static}
+    + StringLiteral(value : String)
+    + accept(visitor : IExpressionEvaluationVisitor, context : INodeContext) : ISequence<? extends IStringItem>
+    + accept(visitor : IExpressionVisitor<RESULT, CONTEXT>, context : CONTEXT) : RESULT
+    + getBaseResultType() : Class<IStringItem>
+    - removeQuotes(value : String) : String {static}
+  }
+  class Subtraction {
+    + Subtraction(left : IExpression, right : IExpression)
+    + accept(visitor : IExpressionEvaluationVisitor, context : INodeContext) : ISequence<? extends IAnyAtomicItem>
+    + accept(visitor : IExpressionVisitor<RESULT, CONTEXT>, context : CONTEXT) : RESULT
+    + getBaseResultType() : Class<IAnyAtomicItem>
+  }
+  class Union {
+    - staticResultType : Class<? extends IItem>
+    + Union(children : List<IExpression>)
+    + accept(visitor : IExpressionEvaluationVisitor, context : INodeContext) : ISequence<? extends IItem>
+    + accept(visitor : IExpressionVisitor<RESULT, CONTEXT>, context : CONTEXT) : RESULT
+    + getStaticResultType() : Class<? extends IItem>
+  }
+  class ValueComparison {
+    + ValueComparison(left : IExpression, operator : Operator, right : IExpression)
+    + accept(visitor : IExpressionEvaluationVisitor, context : INodeContext) : ISequence<? extends IBooleanItem>
+    + accept(visitor : IExpressionVisitor<RESULT, CONTEXT>, context : CONTEXT) : RESULT
+  }
+  class Wildcard {
+    + Wildcard()
+    + accept(visitor : IExpressionEvaluationVisitor, context : INodeContext) : ISequence<? extends IStringItem>
+    + accept(visitor : IExpressionVisitor<RESULT, CONTEXT>, context : CONTEXT) : RESULT
+    + getBaseResultType() : Class<IStringItem>
+    + getChildren() : List<? extends IExpression>
+    + getStaticResultType() : Class<IStringItem>
+  }
+}
+package gov.nist.secauto.metaschema.model.common.metapath.evaluate.instance {
+  abstract class AbstractExpressionVisitor<RESULT, CONTEXT> {
+    + AbstractExpressionVisitor<RESULT, CONTEXT>()
+    # aggregateResult(RESULT, RESULT) : RESULT {abstract}
+    # defaultResult() : RESULT {abstract}
+    # shouldVisitNextChild(parent : IExpression, child : IExpression, result : RESULT, context : CONTEXT) : boolean
+    + visitAddition(expr : Addition, context : CONTEXT) : RESULT
+    + visitAnd(expr : And, context : CONTEXT) : RESULT
+    # visitChildren(expr : IExpression, context : CONTEXT) : RESULT
+    + visitContextItem(expr : ContextItem, context : CONTEXT) : RESULT
+    + visitDecimalLiteral(expr : DecimalLiteral, context : CONTEXT) : RESULT
+    + visitDivision(expr : Division, context : CONTEXT) : RESULT
+    + visitFlag(expr : Flag, context : CONTEXT) : RESULT
+    + visitFunctionCall(expr : FunctionCall, context : CONTEXT) : RESULT
+    + visitGeneralComparison(expr : GeneralComparison, context : CONTEXT) : RESULT
+    + visitIntegerDivision(expr : IntegerDivision, context : CONTEXT) : RESULT
+    + visitIntegerLiteral(expr : IntegerLiteral, context : CONTEXT) : RESULT
+    + visitMetapath(expr : Metapath, context : CONTEXT) : RESULT
+    + visitMod(expr : Mod, context : CONTEXT) : RESULT
+    + visitModelInstance(expr : ModelInstance, context : CONTEXT) : RESULT
+    + visitMultiplication(expr : Multiplication, context : CONTEXT) : RESULT
+    + visitName(expr : Name, context : CONTEXT) : RESULT
+    + visitNegate(expr : Negate, context : CONTEXT) : RESULT
+    + visitOr(expr : Or, context : CONTEXT) : RESULT
+    + visitParenthesizedExpression(expr : ParenthesizedExpression, context : CONTEXT) : RESULT
+    + visitRelativeDoubleSlashPath(expr : RelativeDoubleSlashPath, context : CONTEXT) : RESULT
+    + visitRelativeSlashPath(expr : RelativeSlashPath, context : CONTEXT) : RESULT
+    + visitRootDoubleSlashPath(expr : RootDoubleSlashPath, context : CONTEXT) : RESULT
+    + visitRootSlashOnlyPath(expr : RootSlashOnlyPath, context : CONTEXT) : RESULT
+    + visitRootSlashPath(expr : RootSlashPath, context : CONTEXT) : RESULT
+    + visitStep(expr : Step, context : CONTEXT) : RESULT
+    + visitStringConcat(expr : StringConcat, context : CONTEXT) : RESULT
+    + visitStringLiteral(expr : StringLiteral, context : CONTEXT) : RESULT
+    + visitSubtraction(expr : Subtraction, context : CONTEXT) : RESULT
+    + visitUnion(expr : Union, context : CONTEXT) : RESULT
+    + visitValueComparison(expr : ValueComparison, context : CONTEXT) : RESULT
+    + visitWildcard(expr : Wildcard, context : CONTEXT) : RESULT
+  }
+  class DefaultInstanceSet {
+    - instances : List<? extends IInstance>
+    + DefaultInstanceSet(instances : List<? extends IInstance>)
+    + getInstances() : List<? extends IInstance>
+  }
+  class DefaultMetaschemaContext {
+    - instanceSet : IInstanceSet
+    + DefaultMetaschemaContext(instanceSet : IInstanceSet)
+    + DefaultMetaschemaContext(rootDefinitions : List<? extends IAssemblyDefinition>)
+    + getChildFlag(filter : Predicate<IInstance>) : IInstanceSet
+    + getChildModelInstance(filter : Predicate<IInstance>) : IInstanceSet
+    + getInstanceSet() : IInstanceSet
+    + newInstanceMetaschemaContext(instanceSet : IInstanceSet) : IMetaschemaContext
+    + search(visitor : MetaschemaInstanceEvaluationVisitor, expr : IExpression, context : IMetaschemaContext) : IInstanceSet
+    # searchExpression(visitor : MetaschemaInstanceEvaluationVisitor, expr : IExpression, instances : Collection<? extends IInstance>) : Collection<? extends IInstance>
+    # searchFlags(instances : Collection<? extends IInstance>, searchFilter : Predicate<IInstance>) : Collection<? extends IInstance>
+    # searchModelInstances(instances : Collection<? extends IInstance>, searchFilter : Predicate<IInstance>, recurse : boolean) : Collection<? extends IInstance>
+  }
+  interface IExpressionVisitor<RESULT, CONTEXT> {
+    + visitAddition(Addition, CONTEXT) : RESULT {abstract}
+    + visitAnd(And, CONTEXT) : RESULT {abstract}
+    + visitContextItem(ContextItem, CONTEXT) : RESULT {abstract}
+    + visitDecimalLiteral(DecimalLiteral, CONTEXT) : RESULT {abstract}
+    + visitDivision(Division, CONTEXT) : RESULT {abstract}
+    + visitFlag(Flag, CONTEXT) : RESULT {abstract}
+    + visitFunctionCall(FunctionCall, CONTEXT) : RESULT {abstract}
+    + visitGeneralComparison(GeneralComparison, CONTEXT) : RESULT {abstract}
+    + visitIntegerDivision(IntegerDivision, CONTEXT) : RESULT {abstract}
+    + visitIntegerLiteral(IntegerLiteral, CONTEXT) : RESULT {abstract}
+    + visitMetapath(Metapath, CONTEXT) : RESULT {abstract}
+    + visitMod(Mod, CONTEXT) : RESULT {abstract}
+    + visitModelInstance(ModelInstance, CONTEXT) : RESULT {abstract}
+    + visitMultiplication(Multiplication, CONTEXT) : RESULT {abstract}
+    + visitName(Name, CONTEXT) : RESULT {abstract}
+    + visitNegate(Negate, CONTEXT) : RESULT {abstract}
+    + visitOr(Or, CONTEXT) : RESULT {abstract}
+    + visitParenthesizedExpression(ParenthesizedExpression, CONTEXT) : RESULT {abstract}
+    + visitRelativeDoubleSlashPath(RelativeDoubleSlashPath, CONTEXT) : RESULT {abstract}
+    + visitRelativeSlashPath(RelativeSlashPath, CONTEXT) : RESULT {abstract}
+    + visitRootDoubleSlashPath(RootDoubleSlashPath, CONTEXT) : RESULT {abstract}
+    + visitRootSlashOnlyPath(RootSlashOnlyPath, CONTEXT) : RESULT {abstract}
+    + visitRootSlashPath(RootSlashPath, CONTEXT) : RESULT {abstract}
+    + visitStep(Step, CONTEXT) : RESULT {abstract}
+    + visitStringConcat(StringConcat, CONTEXT) : RESULT {abstract}
+    + visitStringLiteral(StringLiteral, CONTEXT) : RESULT {abstract}
+    + visitSubtraction(Subtraction, CONTEXT) : RESULT {abstract}
+    + visitUnion(Union, CONTEXT) : RESULT {abstract}
+    + visitValueComparison(ValueComparison, CONTEXT) : RESULT {abstract}
+    + visitWildcard(Wildcard, CONTEXT) : RESULT {abstract}
+  }
+  interface IInstanceSet {
+    + EMPTY_INSTANCE_SET : IInstanceSet {static}
+    + getInstances() : Collection<? extends IInstance> {abstract}
+    + newInstanceSet(definition : IAssemblyDefinition) : IInstanceSet {static}
+    + newInstanceSet(definition : IFieldDefinition) : IInstanceSet {static}
+    + newInstanceSet(definition : IFlagDefinition) : IInstanceSet {static}
+    + newInstanceSet(instances : Collection<? extends IInstance>) : IInstanceSet {static}
+  }
+  interface IMetaschemaContext {
+    + getChildFlag(Predicate<IInstance>) : IInstanceSet {abstract}
+    + getChildModelInstance(Predicate<IInstance>) : IInstanceSet {abstract}
+    + getInstanceSet() : IInstanceSet {abstract}
+    + newInstanceMetaschemaContext(IInstanceSet) : IMetaschemaContext {abstract}
+    + search(MetaschemaInstanceEvaluationVisitor, IExpression, IMetaschemaContext) : IInstanceSet {abstract}
+  }
+  class MetaschemaInstanceEvaluationVisitor {
+    - allowedRoot : boolean
+    - filterUsingPredicates : boolean
+    + MetaschemaInstanceEvaluationVisitor()
+    # aggregateResult(result : IInstanceSet, nextResult : IInstanceSet) : IInstanceSet
+    # buildUnion(children : List<? extends IExpression>, context : IMetaschemaContext) : IInstanceSet
+    # defaultResult() : IInstanceSet
+    - filter(result : IInstanceSet, predicates : List<IExpression>) : IInstanceSet
+    # isFilterUsingPredicates() : boolean
+    # isallowedRoot() : boolean
+    # setAllowedRoot(allowedRoot : boolean)
+    # setFilterUsingPredicates(filterUsingPredicates : boolean)
+    + visit(expr : IExpression, context : IMetaschemaContext) : IInstanceSet
+    + visitContextItem(expr : ContextItem, context : IMetaschemaContext) : IInstanceSet
+    + visitFlag(expr : Flag, context : IMetaschemaContext) : IInstanceSet
+    + visitMetapath(expr : Metapath, context : IMetaschemaContext) : IInstanceSet
+    + visitModelInstance(expr : ModelInstance, context : IMetaschemaContext) : IInstanceSet
+    + visitParenthesizedExpression(expr : ParenthesizedExpression, context : IMetaschemaContext) : IInstanceSet
+    + visitRelativeDoubleSlashPath(expr : RelativeDoubleSlashPath, context : IMetaschemaContext) : IInstanceSet
+    + visitRelativeSlashPath(expr : RelativeSlashPath, context : IMetaschemaContext) : IInstanceSet
+    + visitRootDoubleSlashPath(expr : RootDoubleSlashPath, context : IMetaschemaContext) : IInstanceSet
+    + visitRootSlashOnlyPath(expr : RootSlashOnlyPath, context : IMetaschemaContext) : IInstanceSet
+    + visitRootSlashPath(expr : RootSlashPath, context : IMetaschemaContext) : IInstanceSet
+    + visitStep(expr : Step, context : IMetaschemaContext) : IInstanceSet
+    + visitUnion(expr : Union, context : IMetaschemaContext) : IInstanceSet
+  }
+}
+package gov.nist.secauto.metaschema.model.common.metapath.function {
+  abstract class AbstractFunction {
+    - arguments : List<IArgument>
+    - name : String
+    ~ AbstractFunction(name : String, arguments : List<IArgument>)
+    + arity() : int
+    + getArguments() : List<IArgument>
+    + getName() : String
+  }
+  abstract class AbstractFunctionLibrary {
+    - library : HashMap<String, NamedFunctionSet>
+    + AbstractFunctionLibrary()
+    + getFunction(name : String, args : List<IExpression>) : IFunction
+    + getFunctionsAsStream() : Stream<IFunction>
+    # getLibrary() : HashMap<String, NamedFunctionSet>
+    + hasFunction(name : String, args : List<IExpression>) : boolean
+    + registerFunction(function : IFunction)
+  }
+  -class NamedFunctionSet {
+    - arityToFunctionMap : Map<Integer, IFunction>
+    + NamedFunctionSet()
+    + addFunction(function : IFunction) : IFunction
+    + getFunctionWithArity(arity : int) : IFunction
+    + getFunctionsAsStream() : Stream<IFunction>
+  }
+  ~class ArgumentImpl {
+    - name : String
+    - sequenceType : ISequenceType
+    # ArgumentImpl(name : String, sequenceType : ISequenceType)
+    + equals(obj : Object) : boolean
+    + getName() : String
+    + getSequenceType() : ISequenceType
+    + hashCode() : int
+    + isSupported(expression : IExpression) : boolean
+    + toSignature() : String
+  }
+  enum ArgumentType {
+    + BOOLEAN {static}
+    + DECIMAL {static}
+    + INTEGER {static}
+    + ITEM {static}
+    + STRING {static}
+    + valueOf(name : String) : ArgumentType {static}
+    + values() : ArgumentType[] {static}
+  }
+  class CastFunction<ITEM extends IAnyAtomicItem> {
+    - castExecutor : CastFunction.ICastExecutor<ITEM extends IAnyAtomicItem>
+    + CastFunction<ITEM extends IAnyAtomicItem>(castExecutor : CastFunction.ICastExecutor<ITEM extends IAnyAtomicItem>)
+    + castExecutor(executor : CastFunction.ICastExecutor<ITEM extends IAnyAtomicItem>) : CastFunction<ITEM extends IAnyAtomicItem> {static}
+    + execute(function : IFunction, arguments : List<ISequence<?>>, dynamicContext : DynamicContext, focus : INodeItem) : ISequence<ITEM extends IAnyAtomicItem>
+    + signature(name : String, resulingAtomicType : Class<ITEM extends IAnyAtomicItem>, executor : CastFunction.ICastExecutor<ITEM extends IAnyAtomicItem>) : IFunction {static}
+  }
+  interface ICastExecutor<ITEM extends IAnyAtomicItem> {
+    + cast(IAnyAtomicItem) : ITEM extends IAnyAtomicItem {abstract}
+  }
+  class DefaultFunction {
+    - handler : IFunctionExecutor
+    - properties : Set<FunctionProperty>
+    - result : ISequenceType
+    ~ DefaultFunction(name : String, properties : EnumSet<FunctionProperty>, arguments : List<IArgument>, result : ISequenceType, handler : IFunctionExecutor)
+    + convertArguments(function : IFunction, parameters : List<ISequence<?>>) : List<ISequence<?>> {static}
+    # convertSequence(argument : IArgument, sequence : ISequence<?>) : ISequence<?> {static}
+    + equals(obj : Object) : boolean
+    + execute(arguments : List<ISequence<?>>, dynamicContext : DynamicContext, focus : INodeContext) : ISequence<?>
+    + getProperties() : Set<FunctionProperty>
+    + getResult() : ISequenceType
+    + hashCode() : int
+    + newCallingContext(arguments : List<ISequence<?>>, focus : INodeContext) : CallingContext
+    + toSignature() : String
+    + toString() : String
+  }
+  class CallingContext {
+    - arguments : List<ISequence<?>>
+    - contextNodeItem : INodeItem
+    - CallingContext(this$0 : List<E>, arguments : INodeContext)
+    + equals(obj : Object) : boolean
+    + getArguments() : List<ISequence<?>>
+    + getContextNodeItem() : INodeItem
+    # getFunction() : DefaultFunction
+    + hashCode() : int
+  }
+  class FunctionService {
+    - functionService : FunctionService {static}
+    - library : LoadedFunctionsLibrary
+    - loader : ServiceLoader<IFunctionLibrary>
+    + FunctionService()
+    + getFunction(name : String, arguments : IExpression[]) : IFunction
+    + getFunction(name : String, arguments : List<IExpression>) : IFunction
+    + getInstance() : FunctionService {static}
+    # getLoader() : ServiceLoader<IFunctionLibrary>
+    + load() : LoadedFunctionsLibrary
+  }
+  class FunctionUtils {
+    + MATH_CONTEXT : MathContext {static}
+    - FunctionUtils()
+    + asInteger(value : BigInteger) : int {static}
+    + asInteger(value : INumericItem) : int {static}
+    + asLong(value : BigInteger) : long {static}
+    + asLong(value : INumericItem) : long {static}
+    + asType(item : IItem) : TYPE extends IItem {static}
+    + asType(sequence : ISequence<?>) : ISequence<TYPE extends IItem> {static}
+    + getFirstItem(sequence : ISequence<ITEM extends IItem>, requireSingleton : boolean) : ITEM extends IItem {static}
+    + toNumeric(item : IItem) : INumericItem {static}
+    + toNumeric(sequence : ISequence<?>, requireSingleton : boolean) : INumericItem {static}
+  }
+  interface IArgument {
+    + getName() : String {abstract}
+    + getSequenceType() : ISequenceType {abstract}
+    + isSupported(IExpression) : boolean {abstract}
+    + newBuilder() : Builder {static}
+    + toSignature() : String {abstract}
+  }
+  class Builder {
+    - name : String
+    - occurrence : Occurrence
+    - type : Class<? extends IItem>
+    + Builder()
+    + Builder(name : String)
+    + build() : IArgument
+    + name(name : String) : Builder
+    + occurrence(occurrence : Occurrence) : Builder
+    + one() : Builder
+    + oneOrMore() : Builder
+    + type(type : Class<? extends IItem>) : Builder
+    # validate()
+    + zeroOrMore() : Builder
+    + zeroOrOne() : Builder
+  }
+  interface IFunction {
+    + arity() : int {abstract}
+    + builder() : Builder {static}
+    + execute(List<ISequence<?>>, DynamicContext, INodeContext) : ISequence<?> {abstract}
+    + getArguments() : List<IArgument> {abstract}
+    + getName() : String {abstract}
+    + getProperties() : Set<FunctionProperty> {abstract}
+    + getResult() : ISequenceType {abstract}
+    + isArityUnbounded() : boolean
+    + isContextDepenent() : boolean
+    + isDeterministic() : boolean
+    + isFocusDepenent() : boolean
+    + toSignature() : String {abstract}
+  }
+  class Builder {
+    - arguments : List<IArgument>
+    - functionHandler : IFunctionExecutor
+    - name : String
+    - properties : EnumSet<FunctionProperty>
+    - returnOccurrence : Occurrence
+    - returnType : Class<? extends IItem>
+    + Builder()
+    + allowUnboundedArity(allow : boolean) : Builder
+    + argument(argument : IArgument) : Builder
+    + argument(builder : Builder) : Builder
+    + build() : IFunction
+    + contextDependent() : Builder
+    + contextIndependent() : Builder
+    + deterministic() : Builder
+    + focusDependent() : Builder
+    + focusIndependent() : Builder
+    + functionHandler(handler : IFunctionExecutor) : Builder
+    + name(name : String) : Builder
+    + nonDeterministic() : Builder
+    + returnOccurrence(occurrence : Occurrence) : Builder
+    + returnOne() : Builder
+    + returnOneOrMore() : Builder
+    + returnType(type : Class<? extends IItem>) : Builder
+    + returnZeroOrMore() : Builder
+    + returnZeroOrOne() : Builder
+    # validate()
+  }
+  enum FunctionProperty {
+    + CONTEXT_DEPENDENT {static}
+    + DETERMINISTIC {static}
+    + FOCUS_DEPENDENT {static}
+    + UNBOUNDED_ARITY {static}
+    + valueOf(name : String) : FunctionProperty {static}
+    + values() : FunctionProperty[] {static}
+  }
+  interface IFunctionExecutor {
+    + execute(IFunction, List<ISequence<?>>, DynamicContext, INodeItem) : ISequence<?> {abstract}
+  }
+  interface IFunctionLibrary {
+    + getFunction(String, List<IExpression>) : IFunction {abstract}
+    + getFunctionsAsStream() : Stream<IFunction> {abstract}
+    + hasFunction(String, List<IExpression>) : boolean {abstract}
+  }
+  interface ISequenceType {
+    + EMPTY : ISequenceType {static}
+    + getOccurrence() : Occurrence {abstract}
+    + getType() : Class<? extends IItem> {abstract}
+    + isEmpty() : boolean {abstract}
+    + toSignature() : String {abstract}
+  }
+  class LoadedFunctionsLibrary {
+    + LoadedFunctionsLibrary()
+  }
+  enum Occurrence {
+    + ONE {static}
+    + ONE_OR_MORE {static}
+    + ZERO {static}
+    + ZERO_OR_MORE {static}
+    + ZERO_OR_ONE {static}
+    - indicator : String
+    - optional : boolean
+    + getIndicator() : String
+    + isOptional() : boolean
+    + valueOf(name : String) : Occurrence {static}
+    + values() : Occurrence[] {static}
+  }
+  class OperationFunctions {
+    - OperationFunctions()
+    # addDurationToDate(dateTime : ZonedDateTime, duration : TemporalAmount) : IDateItem {static}
+    # between(time1 : ZonedDateTime, time2 : ZonedDateTime) : IDayTimeDurationItem {static}
+    + opAddDayTimeDurationToDate(arg1 : IDateItem, arg2 : IDayTimeDurationItem) : IDateItem {static}
+    + opAddDayTimeDurationToDateTime(arg1 : IDateTimeItem, arg2 : IDayTimeDurationItem) : IDateTimeItem {static}
+    + opAddDayTimeDurations(arg1 : IDayTimeDurationItem, arg2 : IDayTimeDurationItem) : IDayTimeDurationItem {static}
+    + opAddYearMonthDurationToDate(arg1 : IDateItem, arg2 : IYearMonthDurationItem) : IDateItem {static}
+    + opAddYearMonthDurationToDateTime(arg1 : IDateTimeItem, arg2 : IYearMonthDurationItem) : IDateTimeItem {static}
+    + opAddYearMonthDurations(arg1 : IYearMonthDurationItem, arg2 : IYearMonthDurationItem) : IYearMonthDurationItem {static}
+    + opBase64BinaryEqual(arg1 : IBase64BinaryItem, arg2 : IBase64BinaryItem) : IBooleanItem {static}
+    + opBase64BinaryGreaterThan(arg1 : IBase64BinaryItem, arg2 : IBase64BinaryItem) : IBooleanItem {static}
+    + opBase64BinaryLessThan(arg1 : IBase64BinaryItem, arg2 : IBase64BinaryItem) : IBooleanItem {static}
+    + opBooleanEqual(arg1 : IBooleanItem, arg2 : IBooleanItem) : IBooleanItem {static}
+    + opBooleanGreaterThan(arg1 : IBooleanItem, arg2 : IBooleanItem) : IBooleanItem {static}
+    + opBooleanLessThan(arg1 : IBooleanItem, arg2 : IBooleanItem) : IBooleanItem {static}
+    + opDateEqual(arg1 : IDateItem, arg2 : IDateItem) : IBooleanItem {static}
+    + opDateGreaterThan(arg1 : IDateItem, arg2 : IDateItem) : IBooleanItem {static}
+    + opDateLessThan(arg1 : IDateItem, arg2 : IDateItem) : IBooleanItem {static}
+    + opDateTimeEqual(arg1 : IDateTimeItem, arg2 : IDateTimeItem) : IBooleanItem {static}
+    + opDateTimeGreaterThan(arg1 : IDateTimeItem, arg2 : IDateTimeItem) : IBooleanItem {static}
+    + opDateTimeLessThan(arg1 : IDateTimeItem, arg2 : IDateTimeItem) : IBooleanItem {static}
+    + opDayTimeDurationGreaterThan(arg1 : IDayTimeDurationItem, arg2 : IDayTimeDurationItem) : IBooleanItem {static}
+    + opDayTimeDurationLessThan(arg1 : IDayTimeDurationItem, arg2 : IDayTimeDurationItem) : IBooleanItem {static}
+    + opDivideDayTimeDuration(arg1 : IDayTimeDurationItem, arg2 : INumericItem) : IDayTimeDurationItem {static}
+    + opDivideDayTimeDurationByDayTimeDuration(arg1 : IDayTimeDurationItem, arg2 : IDayTimeDurationItem) : IDecimalItem {static}
+    + opDivideYearMonthDuration(arg1 : IYearMonthDurationItem, arg2 : INumericItem) : IYearMonthDurationItem {static}
+    + opDurationEqual(arg1 : IDurationItem, arg2 : IDurationItem) : IBooleanItem {static}
+    + opMultiplyDayTimeDuration(arg1 : IDayTimeDurationItem, arg2 : INumericItem) : IDayTimeDurationItem {static}
+    + opMultiplyYearMonthDuration(arg1 : IYearMonthDurationItem, arg2 : INumericItem) : IYearMonthDurationItem {static}
+    + opNumericAdd(left : INumericItem, right : INumericItem) : INumericItem {static}
+    + opNumericDivide(dividend : INumericItem, divisor : INumericItem) : INumericItem {static}
+    + opNumericEqual(arg1 : INumericItem, arg2 : INumericItem) : IBooleanItem {static}
+    + opNumericGreaterThan(arg1 : INumericItem, arg2 : INumericItem) : IBooleanItem {static}
+    + opNumericIntegerDivide(dividend : INumericItem, divisor : INumericItem) : IIntegerItem {static}
+    + opNumericLessThan(arg1 : INumericItem, arg2 : INumericItem) : IBooleanItem {static}
+    + opNumericMod(dividend : INumericItem, divisor : INumericItem) : INumericItem {static}
+    + opNumericMultiply(left : INumericItem, right : INumericItem) : INumericItem {static}
+    + opNumericSubtract(left : INumericItem, right : INumericItem) : INumericItem {static}
+    + opNumericUnaryMinus(item : INumericItem) : INumericItem {static}
+    + opSubtractDateTimes(arg1 : IDateTimeItem, arg2 : IDateTimeItem) : IDayTimeDurationItem {static}
+    + opSubtractDates(arg1 : IDateItem, arg2 : IDateItem) : IDayTimeDurationItem {static}
+    + opSubtractDayTimeDurationFromDate(arg1 : IDateItem, arg2 : IDayTimeDurationItem) : IDateItem {static}
+    + opSubtractDayTimeDurationFromDateTime(arg1 : IDateTimeItem, arg2 : IDayTimeDurationItem) : IDateTimeItem {static}
+    + opSubtractDayTimeDurations(arg1 : IDayTimeDurationItem, arg2 : IDayTimeDurationItem) : IDayTimeDurationItem {static}
+    + opSubtractYearMonthDurationFromDate(arg1 : IDateItem, arg2 : IYearMonthDurationItem) : IDateItem {static}
+    + opSubtractYearMonthDurationFromDateTime(arg1 : IDateTimeItem, arg2 : IYearMonthDurationItem) : IDateTimeItem {static}
+    + opSubtractYearMonthDurations(arg1 : IYearMonthDurationItem, arg2 : IYearMonthDurationItem) : IYearMonthDurationItem {static}
+    + opYearMonthDurationGreaterThan(arg1 : IYearMonthDurationItem, arg2 : IYearMonthDurationItem) : IBooleanItem {static}
+    + opYearMonthDurationLessThan(arg1 : IYearMonthDurationItem, arg2 : IYearMonthDurationItem) : IBooleanItem {static}
+    # subtractDurationFromDate(dateTime : ZonedDateTime, duration : TemporalAmount) : IDateItem {static}
+  }
+  ~class SequenceTypeImpl {
+    - occurrence : Occurrence
+    - type : Class<? extends IItem>
+    + SequenceTypeImpl(type : Class<? extends IItem>, occurrence : Occurrence)
+    + equals(obj : Object) : boolean
+    + getOccurrence() : Occurrence
+    + getType() : Class<? extends IItem>
+    + hashCode() : int
+    + isEmpty() : boolean
+    + toSignature() : String
+    + toString() : String
+  }
+}
+package gov.nist.secauto.metaschema.model.common.datatype.markup.flexmark {
+  class FlexmarkFactory {
+    - INSTANCE : FlexmarkFactory {static}
+    - LOGGER : Logger {static}
+    - TYPOGRAPHIC_REPLACEMENT_MAP : Map<String, String> {static}
+    - formatter : Formatter
+    - htmlConverter : FlexmarkHtmlConverter
+    - htmlRenderer : HtmlRenderer
+    - markdownParser : Parser
+    + FlexmarkFactory()
+    # applyOptions(builder : BuilderBase<?>)
+    + fromHtml(html : String) : Document
+    + fromHtml(html : String, htmlParser : FlexmarkHtmlConverter, markdownParser : Parser) : Document
+    + fromMarkdown(markdown : String) : Document
+    + fromMarkdown(markdown : String, parser : Parser) : Document
+    + getFlexmarkHtmlConverter() : FlexmarkHtmlConverter
+    + getFormatter() : Formatter
+    + getHtmlRenderer() : HtmlRenderer
+    + getMarkdownParser() : Parser
+    + instance() : FlexmarkFactory {static}
+    + newFlexmarkHtmlConverter(options : DataHolder) : FlexmarkHtmlConverter
+    + newFormatter(options : DataHolder) : Formatter
+    + newHtmlRenderer(options : DataHolder) : HtmlRenderer
+    + newMarkdownParser(options : DataHolder) : Parser
+  }
+  class HtmlQuoteTagExtension {
+    + HtmlQuoteTagExtension()
+    + create() : HtmlQuoteTagExtension {static}
+    + extend(builder : Builder)
+    + extend(parserBuilder : Builder)
+    + extend(rendererBuilder : Builder, rendererType : String)
+    + parserOptions(options : MutableDataHolder)
+    + rendererOptions(options : MutableDataHolder)
+  }
+  class InsertAnchorExtension {
+    + ENABLE_INLINE_INSERT_ANCHORS : DataKey<Boolean> {static}
+    + ENABLE_RENDERING : DataKey<Boolean> {static}
+    + InsertAnchorExtension()
+    + create() : Extension {static}
+    + extend(builder : Builder)
+    + extend(builder : Builder)
+    + extend(parserBuilder : Builder)
+    + extend(rendererBuilder : Builder, rendererType : String)
+    + parserOptions(options : MutableDataHolder)
+    + rendererOptions(options : MutableDataHolder)
+  }
+  class InsertAnchorFormatter {
+    - options : InsertAnchorOptions
+    + InsertAnchorFormatter(options : DataHolder)
+    + getNodeClasses() : Set<Class<?>>
+    + getNodeFormattingHandlers() : Set<NodeFormattingHandler<?>>
+    # render(node : InsertAnchorNode, context : NodeFormatterContext, markdown : MarkdownWriter)
+  }
+  class Factory {
+    + Factory()
+    + create(options : DataHolder) : NodeFormatter
+  }
+  class InsertAnchorHtmlNodeRenderer {
+    - options : InsertAnchorOptions
+    + InsertAnchorHtmlNodeRenderer(options : DataHolder)
+    + getHtmlNodeRendererHandlers() : Set<HtmlNodeRendererHandler<?>>
+    - processInsert(node : Element, context : HtmlNodeConverterContext, out : HtmlMarkdownWriter)
+  }
+  class Factory {
+    + Factory()
+    + apply(options : DataHolder) : HtmlNodeRenderer
+  }
+  class InsertAnchorInlineParser {
+    - PATTERN : Pattern {static}
+    + InsertAnchorInlineParser(inlineParser : LightInlineParser)
+    + finalizeBlock(inlineParser : InlineParser)
+    + finalizeDocument(inlineParser : InlineParser)
+    + parse(inlineParser : LightInlineParser) : boolean
+  }
+  class Factory {
+    + Factory()
+    + affectsGlobalScope() : boolean
+    + apply(lightInlineParser : LightInlineParser) : InlineParserExtension
+    + getAfterDependents() : Set<Class<?>>
+    + getBeforeDependents() : Set<Class<?>>
+    + getCharacters() : CharSequence
+  }
+  class InsertAnchorNodeRenderer {
+    - options : InsertAnchorOptions
+    + InsertAnchorNodeRenderer(options : DataHolder)
+    + getNodeRenderingHandlers() : Set<NodeRenderingHandler<?>>
+    # render(node : InsertAnchorNode, context : NodeRendererContext, html : HtmlWriter)
+  }
+  class Factory {
+    + Factory()
+    + apply(options : DataHolder) : NodeRenderer
+  }
+  class InsertAnchorOptions {
+    + enableInlineInsertAnchors : boolean
+    + enableRendering : boolean
+    + InsertAnchorOptions(options : DataHolder)
+  }
+  class QTagHtmlNodeRenderer {
+    + QTagHtmlNodeRenderer()
+    + getHtmlNodeRendererHandlers() : Set<HtmlNodeRendererHandler<?>>
+    - renderMarkdown(element : Element, context : HtmlNodeConverterContext, out : HtmlMarkdownWriter)
+  }
+  class QTagNodeRenderer {
+    + QTagNodeRenderer()
+    + getNodeRenderingHandlers() : Set<NodeRenderingHandler<?>>
+    # render(node : DoubleQuoteNode, context : NodeRendererContext, html : HtmlWriter)
+  }
+}
+package gov.nist.secauto.metaschema.model.common.datatype.adapter {
+  abstract class AbstractMarkupAdapter<TYPE extends AbstractMarkupString<TYPE>> {
+    - MARKUP_PARSER : MarkupParser {static}
+    # AbstractMarkupAdapter<TYPE extends AbstractMarkupString<TYPE>>(clazz : Class<TYPE extends AbstractMarkupString<TYPE>>)
+    # getMarkupParser() : MarkupParser {static}
+    + isXmlMixed() : boolean
+  }
+  class Base64Adapter {
+    + Base64Adapter()
+    + asString(value : Object) : String
+    + copy(obj : Object) : ByteBuffer
+    + getItemClass() : Class<IBase64BinaryItem>
+    + getName() : String
+    + newItem(value : Object) : IBase64BinaryItem
+    + parse(value : String) : ByteBuffer
+  }
+  class BooleanAdapter {
+    + BooleanAdapter()
+    # castInternal(item : IAnyAtomicItem) : IBooleanItem
+    # castToBoolean(item : INumericItem) : IBooleanItem
+    # castToBoolean(item : IStringItem) : IBooleanItem
+    + copy(obj : Object) : Boolean
+    + getItemClass() : Class<IBooleanItem>
+    + getName() : String
+    + newItem(value : Object) : IBooleanItem
+    + parse(parser : JsonParser) : Boolean
+    + parse(value : String) : Boolean
+    + writeJsonValue(value : Object, generator : JsonGenerator)
+  }
+  class DateAdapter {
+    - DATE_TIMEZONE : Pattern {static}
+    + DateAdapter()
+    + asString(obj : Object) : String
+    # castInternal(item : IAnyAtomicItem) : IDateItem
+    + getItemClass() : Class<IDateItem>
+    + getName() : String
+    + newItem(value : Object) : IDateItem
+    + parse(value : String) : Date
+  }
+  class DateFormats {
+    + DATE_TIME_WITHOUT_TZ : DateTimeFormatter {static}
+    + DATE_TIME_WITH_TZ : DateTimeFormatter {static}
+    + DATE_WITHOUT_TZ : DateTimeFormatter {static}
+    + DATE_WITH_TZ : DateTimeFormatter {static}
+    - DateFormats()
+  }
+  class DateTimeAdapter {
+    + DateTimeAdapter()
+    + asString(obj : Object) : String
+    # castInternal(item : IAnyAtomicItem) : IDateTimeItem
+    + getItemClass() : Class<IDateTimeItem>
+    + getName() : String
+    + newItem(value : Object) : IDateTimeItem
+    + parse(value : String) : DateTime
+  }
+  class DateTimeWithTZAdapter {
+    + DateTimeWithTZAdapter()
+    + asString(value : Object) : String
+    + copy(obj : Object) : ZonedDateTime
+    + getItemClass() : Class<IDateTimeItem>
+    + getName() : String
+    + newItem(value : Object) : IDateTimeItem
+    + parse(value : String) : ZonedDateTime
+  }
+  class DateWithTZAdapter {
+    - DATE_TIMEZONE : Pattern {static}
+    + DateWithTZAdapter()
+    + asString(value : Object) : String
+    + copy(obj : Object) : ZonedDateTime
+    + getItemClass() : Class<IDateItem>
+    + getName() : String
+    + newItem(value : Object) : IDateItem
+    + parse(value : String) : ZonedDateTime
+  }
+  class DayTimeAdapter {
+    # DayTimeAdapter()
+    + copy(obj : Object) : Duration
+    + getItemClass() : Class<IDayTimeDurationItem>
+    + getName() : String
+    + newItem(value : Object) : IDayTimeDurationItem
+    + parse(value : String) : Duration
+  }
+  class DecimalAdapter {
+    - DECIMAL_BOOLEAN_FALSE : BigDecimal {static}
+    - DECIMAL_BOOLEAN_TRUE : BigDecimal {static}
+    + MATH_CONTEXT : MathContext {static}
+    + DecimalAdapter()
+    # castInternal(item : IAnyAtomicItem) : IDecimalItem
+    + copy(obj : Object) : BigDecimal
+    + getItemClass() : Class<IDecimalItem>
+    + getName() : String
+    + newItem(value : Object) : IDecimalItem
+    + parse(value : String) : BigDecimal
+    + writeJsonValue(value : Object, generator : JsonGenerator)
+  }
+  class EmailAddressAdapter {
+    + EmailAddressAdapter()
+    + getItemClass() : Class<IEmailAddressItem>
+    + getName() : String
+    + newItem(value : Object) : IEmailAddressItem
+  }
+  class HostnameAdapter {
+    + HostnameAdapter()
+    + getItemClass() : Class<IHostnameItem>
+    + getName() : String
+    + newItem(value : Object) : IHostnameItem
+  }
+  class IPv4AddressAdapter {
+    - IP_V_4 : IPAddressStringParameters {static}
+    + IPv4AddressAdapter()
+    + copy(obj : Object) : IPv4Address
+    + getItemClass() : Class<IIPv4AddressItem>
+    + getName() : String
+    + newItem(value : Object) : IIPv4AddressItem
+    + parse(value : String) : IPv4Address
+  }
+  class IPv6AddressAdapter {
+    - IP_V_6 : IPAddressStringParameters {static}
+    + IPv6AddressAdapter()
+    + copy(obj : Object) : IPv6Address
+    + getItemClass() : Class<IIPv6AddressItem>
+    + getName() : String
+    + newItem(value : Object) : IIPv6AddressItem
+    + parse(value : String) : IPv6Address
+  }
+  class IntegerAdapter {
+    + IntegerAdapter()
+    # castInternal(item : IAnyAtomicItem) : IIntegerItem
+    + getItemClass() : Class<IIntegerItem>
+    + getName() : String
+    + newItem(value : Object) : IIntegerItem
+  }
+  class MarkupLineAdapter {
+    + MarkupLineAdapter()
+    + getDefaultJsonValueKey() : String
+    + getItemClass() : Class<IMarkupItem>
+    + getName() : String
+    + newItem(value : Object) : IMarkupItem
+    + parse(eventReader : XMLEventReader2) : MarkupLine
+    + parse(parser : JsonParser) : MarkupLine
+    + parse(value : String) : MarkupLine
+    + writeJsonValue(value : Object, generator : JsonGenerator)
+    + writeXml(value : Object, parent : StartElement, eventFactory : XMLEventFactory2, eventWriter : XMLEventWriter)
+    + writeXmlCharacters(value : Object, parentName : QName, writer : XMLStreamWriter2)
+  }
+  class MarkupMultilineAdapter {
+    + MarkupMultilineAdapter()
+    + canHandleQName(nextQName : QName) : boolean
+    + getDefaultJsonValueKey() : String
+    + getItemClass() : Class<IMarkupItem>
+    + getName() : String
+    + isUnrappedValueAllowedInXml() : boolean
+    + newItem(value : Object) : IMarkupItem
+    + parse(eventReader : XMLEventReader2) : MarkupMultiline
+    + parse(parser : JsonParser) : MarkupMultiline
+    + parse(value : String) : MarkupMultiline
+    + writeJsonValue(value : Object, generator : JsonGenerator)
+    + writeXml(value : Object, parent : StartElement, eventFactory : XMLEventFactory2, eventWriter : XMLEventWriter)
+    + writeXmlCharacters(value : Object, parentName : QName, writer : XMLStreamWriter2)
+  }
+  class MetaschemaDataTypeProvider {
+    + BASE64 : Base64Adapter {static}
+    + BOOLEAN : BooleanAdapter {static}
+    + DATE : DateAdapter {static}
+    + DATE_TIME : DateTimeAdapter {static}
+    + DATE_TIME_WITH_TZ : DateTimeWithTZAdapter {static}
+    + DATE_WITH_TZ : DateWithTZAdapter {static}
+    + DAY_TIME_DURATION : DayTimeAdapter {static}
+    + DECIMAL : DecimalAdapter {static}
+    + DEFAULT_DATA_TYPE : StringAdapter {static}
+    + EMAIL_ADDRESS : EmailAddressAdapter {static}
+    + HOSTNAME : HostnameAdapter {static}
+    + INTEGER : IntegerAdapter {static}
+    + IP_V4_ADDRESS : IPv4AddressAdapter {static}
+    + IP_V6_ADDRESS : IPv6AddressAdapter {static}
+    + MARKUP_LINE : MarkupLineAdapter {static}
+    + MARKUP_MULTILINE : MarkupMultilineAdapter {static}
+    + NCNAME : NcNameAdapter {static}
+    + NON_NEGATIVE_INTEGER : NonNegativeIntegerAdapter {static}
+    + POSITIVE_INTEGER : PositiveIntegerAdapter {static}
+    + STRING : StringAdapter {static}
+    + TOKEN : TokenAdapter {static}
+    + URI : UriAdapter {static}
+    + URI_REFERENCE : UriReferenceAdapter {static}
+    + UUID : UuidAdapter {static}
+    + YEAR_MONTH_DURATION : YearMonthAdapter {static}
+    + MetaschemaDataTypeProvider()
+  }
+  class NcNameAdapter {
+    + NcNameAdapter()
+    + getItemClass() : Class<INcNameItem>
+    + getName() : String
+    + newItem(value : Object) : INcNameItem
+  }
+  class NonNegativeIntegerAdapter {
+    + NonNegativeIntegerAdapter()
+    + getItemClass() : Class<INonNegativeIntegerItem>
+    + getName() : String
+    + newItem(value : Object) : INonNegativeIntegerItem
+  }
+  class PositiveIntegerAdapter {
+    + PositiveIntegerAdapter()
+    + getItemClass() : Class<IPositiveIntegerItem>
+    + getName() : String
+    + newItem(value : Object) : IPositiveIntegerItem
+  }
+  class StringAdapter {
+    + StringAdapter()
+    + getItemClass() : Class<IStringItem>
+    + getName() : String
+    + newItem(value : Object) : IStringItem
+  }
+  class TokenAdapter {
+    + TokenAdapter()
+    + getItemClass() : Class<ITokenItem>
+    + getName() : String
+    + newItem(value : Object) : ITokenItem
+  }
+  class UriAdapter {
+    + UriAdapter()
+    + copy(obj : Object) : URI
+    + getItemClass() : Class<IAnyUriItem>
+    + getName() : String
+    + newItem(value : Object) : IAnyUriItem
+    + parse(value : String) : URI
+  }
+  class UriReferenceAdapter {
+    + UriReferenceAdapter()
+    + copy(obj : Object) : URI
+    + getItemClass() : Class<IUriReferenceItem>
+    + getName() : String
+    + newItem(value : Object) : IUriReferenceItem
+    + parse(value : String) : URI
+  }
+  class UuidAdapter {
+    + UuidAdapter()
+    + copy(obj : Object) : UUID
+    + getItemClass() : Class<IUuidItem>
+    + getName() : String
+    + newItem(value : Object) : IUuidItem
+    + parse(value : String) : UUID
+  }
+  class YearMonthAdapter {
+    # YearMonthAdapter()
+    + copy(obj : Object) : Period
+    + getItemClass() : Class<IYearMonthDurationItem>
+    + getName() : String
+    + newItem(value : Object) : IYearMonthDurationItem
+    + parse(value : String) : Period
+  }
+}
+package gov.nist.secauto.metaschema.model.common.datatype.object {
+  abstract class AbstractAmbiguousDateTime<TYPE extends AbstractAmbiguousDateTime> {
+    - timeZone : boolean
+    + AbstractAmbiguousDateTime<TYPE extends AbstractAmbiguousDateTime>(value : ZonedDateTime, hasTimeZone : boolean)
+    + hasTimeZone() : boolean
+  }
+  class Date {
+    + Date(value : ZonedDateTime, hasTimeZone : boolean)
+    + copy() : Date
+  }
+  class DateTime {
+    + DateTime(value : ZonedDateTime, hasTimeZone : boolean)
+    + copy() : DateTime
+  }
+}
+package gov.nist.secauto.metaschema.model.common.util {
+  class AutoCloser<T, E extends Exception> {
+    - lambda : AutoCloser.Closer<T, E extends Exception>
+    - object : T
+    + AutoCloser<T, E extends Exception>(object : T, lambda : AutoCloser.Closer<T, E extends Exception>)
+    + autoClose(object : T, lambda : AutoCloser.Closer<T, E extends Exception>) : AutoCloser<T, E extends Exception> {static}
+    + close()
+    + getObject() : T
+  }
+  interface Closer<T, E extends Exception> {
+    + close(T) {abstract}
+  }
+  class CollectionUtil {
+    - CollectionUtil()
+    + descendingIterator(list : List<T>) : Iterator<T> {static}
+    + emptyList() : List<T> {static}
+    + emptyMap() : Map<K, V> {static}
+    + emptySet() : Set<T> {static}
+    + listOrEmpty(list : List<T>) : List<T> {static}
+    + requireNonEmpty(collection : T extends Collection<A>, message : String) : T extends Collection<A> {static}
+    + singleton(value : T) : Set<T> {static}
+    + singletonList(instance : T) : List<T> {static}
+    + singletonMap(key : K, value : V) : Map<K, V> {static}
+    + toDescendingIterable(list : List<T>) : Iterable<T> {static}
+    + toIterable(iterator : Iterator<T>) : Iterable<T> {static}
+    + toList(iterable : Iterable<T>) : List<T> {static}
+    + toList(iterator : Iterator<T>) : List<T> {static}
+    + unmodifiableCollection(values : Collection<T>) : Collection<T> {static}
+    + unmodifiableList(list : List<T>) : List<T> {static}
+    + unmodifiableMap(map : Map<K, V>) : Map<K, V> {static}
+    + unmodifiableSet(set : Set<T>) : Set<T> {static}
+  }
+  class CustomCollectors {
+    - CustomCollectors()
+    + joiningWithOxfordComma(conjunction : String) : Collector<CharSequence, ?, String> {static}
+    + toMap(keyMapper : Function<? super T, ? extends K>, valueMapper : Function<? super T, ? extends V>, duplicateHander : CustomCollectors.DuplicateHandler<K, V>) : Collector<T, ?, Map<K, V>> {static}
+    + useFirstMapper() : BinaryOperator<T> {static}
+    + useLastMapper() : BinaryOperator<T> {static}
+    - withOxfordComma(conjunction : String) : Function<List<CharSequence>, String> {static}
+  }
+  interface DuplicateHandler<K, V> {
+    + handle(K, V, V) : V {abstract}
+  }
+  abstract class ModelWalker<DATA> {
+    + ModelWalker<DATA>()
+    # getDefaultData() : DATA {abstract}
+    # visit(IFlagDefinition, DATA) {abstract}
+    # visit(def : IAssemblyDefinition, data : DATA) : boolean
+    # visit(def : IFieldDefinition, data : DATA) : boolean
+    # visit(instance : IAssemblyInstance, data : DATA) : boolean
+    # visit(instance : IChoiceInstance, data : DATA) : boolean
+    # visit(instance : IFieldInstance, data : DATA) : boolean
+    # visit(instance : IFlagInstance, data : DATA) : boolean
+    + walk(assembly : IAssemblyDefinition)
+    + walk(assembly : IAssemblyDefinition, data : DATA)
+    + walk(field : IFieldDefinition)
+    + walk(field : IFieldDefinition, data : DATA)
+    + walk(flag : IFlagDefinition)
+    + walk(flag : IFlagDefinition, data : DATA)
+    + walk(instance : IAssemblyInstance, data : DATA)
+    + walk(instance : IChoiceInstance, data : DATA)
+    + walk(instance : IFieldInstance, data : DATA)
+    + walk(instance : IFlagInstance, data : DATA)
+    + walkDefinition(definition : IDefinition)
+    + walkDefinition(definition : IDefinition, data : DATA)
+    # walkFlagInstances(instances : Collection<? extends IFlagInstance>, data : DATA)
+    # walkModelInstance(instance : IModelInstance, data : DATA)
+    # walkModelInstances(instances : Collection<? extends IModelInstance>, data : DATA)
+  }
+  class ObjectUtils {
+    - ObjectUtils()
+    + filterNull(item : T) : Stream<T> {static}
+    + notNull(obj : T) : T {static}
+    + requireNonNull(obj : T) : T {static}
+    + requireNonNull(obj : T, message : String) : T {static}
+  }
+  class ReplacementScanner {
+    - ReplacementScanner()
+    + replaceTokens(text : CharSequence, pattern : Pattern, replacementFunction : Function<Matcher, CharSequence>) : CharSequence {static}
+  }
+  class XmlEventUtil {
+    - EVENT_NAME_MAP : Map<Integer, String> {static}
+    - WHITESPACE_ONLY : Pattern {static}
+    - XmlEventUtil()
+    + advanceTo(reader : XMLEventReader2, eventType : int) : XMLEvent {static}
+    + assertNext(reader : XMLEventReader2, presumedEventType : int) {static}
+    + assertNext(reader : XMLEventReader2, presumedEventType : int, presumedName : QName) {static}
+    + consumeAndAssert(reader : XMLEventReader2, presumedEventType : int) : XMLEvent {static}
+    + consumeAndAssert(reader : XMLEventReader2, presumedEventType : int, presumedName : QName) : XMLEvent {static}
+    - escape(ch : char) : String {static}
+    - escape(data : String) : Object {static}
+    - generateAssertMessage(retval : XMLEvent, presumedEventType : int, presumedName : QName) : CharSequence {static}
+    + isNextEventEndDocument(reader : XMLEventReader2) : boolean {static}
+    + isNextEventEndElement(reader : XMLEventReader2, expectedLocalName : String, expectedNamespace : String) : boolean {static}
+    + isNextEventEndElement(reader : XMLEventReader2, name : QName) : boolean {static}
+    + isNextEventStartElement(reader : XMLEventReader2, name : QName) : boolean {static}
+    + skipEvents(reader : XMLEventReader2, events : int[]) : XMLEvent {static}
+    + skipProcessingInstructions(reader : XMLEventReader2) : XMLEvent {static}
+    + skipWhitespace(reader : XMLEventReader2) : XMLEvent {static}
+    + toEventName(event : XMLEvent) : String {static}
+    + toEventName(eventType : int) : String {static}
+    + toLocation(event : XMLEvent) : Location {static}
+    + toQName(event : XMLEvent) : QName {static}
+    + toString(location : Location) : CharSequence {static}
+    + toString(reader : XMLStreamReader2) : CharSequence {static}
+    + toString(xmlEvent : XMLEvent) : CharSequence {static}
+  }
+}
+package gov.nist.secauto.metaschema.model.common.datatype.markup {
+  abstract class AbstractMarkupString<TYPE extends AbstractMarkupString> {
+    - DEFAULT_HTML_NS : String {static}
+    - DEFAULT_HTML_PREFIX : String {static}
+    - document : Document
+    + AbstractMarkupString<TYPE extends AbstractMarkupString>(document : Document)
+    + getDocument() : Document
+    + getInserts(filter : Predicate<InsertAnchorNode>) : List<InsertAnchorNode>
+    + getNodesAsStream() : Stream<Node>
+    # toHTML(renderer : HtmlRenderer) : String
+    + toHtml() : String
+    + toHtmlAsStream(os : OutputStream, namespace : String, prefix : String)
+    + toHtmlAsStream(xmlStreamWriter : XMLStreamWriter2, namespace : String)
+    + toMarkdown() : String
+    + toMarkdown(formatter : Formatter) : String
+    + toMarkdownYaml() : String
+    # toMarkdownYaml(formatter : Formatter) : String
+    + toString() : String
+  }
+  abstract class AbstractMarkupXmlWriter<WRITER> {
+    - ENTITY_MAP : Map<String, String> {static}
+    - ENTITY_PATTERN : Pattern {static}
+    - handleBlockElements : boolean
+    - namespace : String
+    + AbstractMarkupXmlWriter<WRITER>(namespace : String, handleBlockElements : boolean)
+    # getNamespace() : String
+    # handleBasicElement(node : Node, writer : WRITER, localName : String)
+    # handleBasicElementEnd(Node, WRITER, QName) {abstract}
+    # handleBasicElementStart(Node, WRITER, QName) {abstract}
+    # handleBlockElements(node : Node, writer : WRITER) : boolean
+    # handleEscapedCharacter(node : EscapedCharacter, writer : WRITER)
+    # handleHeading(node : Heading, writer : WRITER)
+    # handleHtmlBlock(HtmlBlock, WRITER) {abstract}
+    # handleHtmlEntity(entityText : String, writer : WRITER)
+    # handleHtmlInline(HtmlInline, WRITER) {abstract}
+    # handleImage(Image, WRITER, QName, String, String) {abstract}
+    # handleImage(node : Image, writer : WRITER)
+    # handleInlineElements(node : Node, writer : WRITER) : boolean
+    # handleInsertAnchor(InsertAnchorNode, WRITER, QName) {abstract}
+    # handleInsertAnchor(node : InsertAnchorNode, writer : WRITER)
+    # handleLink(node : LinkNode, writer : WRITER)
+    # handleLinkEnd(LinkNode, WRITER, QName) {abstract}
+    # handleLinkStart(LinkNode, WRITER, QName, String) {abstract}
+    # handleSoftLineBreak(node : SoftLineBreak, writer : WRITER)
+    # handleTable(node : TableBlock, writer : WRITER)
+    - handleTableCell(node : TableCell, writer : WRITER)
+    - handleTableRow(node : TableRow, writer : WRITER)
+    # handleTypographicSmarts(node : TypographicQuotes, writer : WRITER)
+    # handleTypographicSmarts(node : TypographicSmarts, writer : WRITER)
+    # isHandleBlockElements() : boolean
+    # visit(node : Node, writer : WRITER)
+    + visitChildren(parentNode : Node, writer : WRITER)
+    # writeHtmlEntity(WRITER, String) {abstract}
+    # writeText(WRITER, String) {abstract}
+  }
+  interface IMarkupText {
+    + getDocument() : Document {abstract}
+    + getInserts() : List<InsertAnchorNode>
+    + getInserts(Predicate<InsertAnchorNode>) : List<InsertAnchorNode> {abstract}
+    + getNodesAsStream() : Stream<Node> {abstract}
+    + toHtml() : String {abstract}
+    + toHtmlAsStream(OutputStream, String, String) {abstract}
+    + toHtmlAsStream(XMLStreamWriter2, String) {abstract}
+    + toMarkdown() : String {abstract}
+    + toMarkdown(Formatter) : String {abstract}
+    + toMarkdownYaml() : String {abstract}
+  }
+  class MarkupLine {
+    - MARKDOWN_PARSER : Parser {static}
+    # MarkupLine(astNode : Document)
+    + copy() : MarkupLine
+    + fromHtml(html : String) : MarkupLine {static}
+    + fromMarkdown(markdown : String) : MarkupLine {static}
+  }
+  class MarkupMultiline {
+    + MarkupMultiline(astNode : Document)
+    + copy() : MarkupMultiline
+    + fromHtml(html : String) : MarkupMultiline {static}
+    + fromMarkdown(markdown : String) : MarkupMultiline {static}
+  }
+  class MarkupParser {
+    - LEADING_WHITESPACE : Pattern {static}
+    - LOGGER : Logger {static}
+    - TRAILING_WHITESPACE : Pattern {static}
+    + MarkupParser()
+    - handleBlockContents(node : Node, reader : XMLEventReader2, start : StartElement)
+    - handleBlockContentsWithAnchors(node : Node, reader : XMLEventReader2, start : StartElement)
+    - handleBlockContentsWithAnchorsAndInserts(blockNode : Node, reader : XMLEventReader2, start : StartElement)
+    - handleInlineAndAnchorsAndInsert(node : Node, reader : XMLEventReader2, firstEvent : boolean)
+    - handleInlineContent(node : Node, reader : XMLEventReader2, start : XMLEvent, firstEvent : boolean)
+    - handleInlineImage(node : Node, reader : XMLEventReader2, start : StartElement)
+    - handleInlineInsert(node : Node, reader : XMLEventReader2, start : StartElement)
+    - handleListContents(list : ListBlock, reader : XMLEventReader2, start : StartElement)
+    - handleListItemContents(listItem : ListItem, reader : XMLEventReader2, start : StartElement)
+    - parseContents(reader : XMLEventReader2, start : StartElement, buffer : StringBuilder)
+    + parseMarkupMultiline(reader : XMLEventReader2) : MarkupMultiline
+    # parseMarkupMultilineAsAST(reader : XMLEventReader2) : MarkupMultiline
+    + parseMarkupline(reader : XMLEventReader2) : MarkupLine
+    - parseStartElement(reader : XMLEventReader2, start : StartElement, buffer : StringBuilder)
+    # parseToString(reader : XMLEventReader2, buffer : StringBuilder)
+    - processBlockH1(reader : XMLEventReader2, start : StartElement) : Heading
+    - processBlockH2(reader : XMLEventReader2, start : StartElement) : Heading
+    - processBlockH3(reader : XMLEventReader2, start : StartElement) : Heading
+    - processBlockH4(reader : XMLEventReader2, start : StartElement) : Heading
+    - processBlockH5(reader : XMLEventReader2, start : StartElement) : Heading
+    - processBlockH6(reader : XMLEventReader2, start : StartElement) : Heading
+    - processBlockHeadings(level : int, reader : XMLEventReader2, start : StartElement) : Heading
+    - processBlockOrderedList(reader : XMLEventReader2, start : StartElement) : OrderedList
+    - processBlockParagraph(reader : XMLEventReader2, start : StartElement) : Paragraph
+    - processBlockPreformattedText(reader : XMLEventReader2, start : StartElement) : Node
+    - processBlockTable(reader : XMLEventReader2, start : StartElement) : Node
+    - processBlockUnorderedList(reader : XMLEventReader2, start : StartElement) : BulletList
+    - processInlineAnchor(node : Node, reader : XMLEventReader2, start : StartElement)
+    - processInlineCharacters(characters : Characters, stripLeadingWhitespace : boolean, stripTrailingWhitespace : boolean) : String
+  }
+  class MarkupXmlEventWriter {
+    # eventFactory : XMLEventFactory2
+    + MarkupXmlEventWriter(namespace : String, handleBlockElements : boolean, eventFactory : XMLEventFactory2)
+    # getEventFactory() : XMLEventFactory2
+    # handleBasicElementEnd(node : Node, writer : XMLEventWriter, name : QName)
+    # handleBasicElementStart(node : Node, writer : XMLEventWriter, name : QName)
+    # handleHtmlBlock(node : HtmlBlock, writer : XMLEventWriter)
+    # handleHtmlInline(node : HtmlInline, writer : XMLEventWriter)
+    # handleImage(node : Image, writer : XMLEventWriter, name : QName, href : String, alt : String)
+    # handleInsertAnchor(node : InsertAnchorNode, writer : XMLEventWriter, name : QName)
+    # handleLinkEnd(node : LinkNode, writer : XMLEventWriter, name : QName)
+    # handleLinkStart(node : LinkNode, writer : XMLEventWriter, name : QName, string : String)
+    # writeHtmlEntity(writer : XMLEventWriter, entityText : String)
+    # writeText(writer : XMLEventWriter, text : String)
+  }
+  -class StreamNodeVisitor {
+    - writer : XMLEventWriter
+    + StreamNodeVisitor(writer : XMLEventWriter)
+    + head(node : Node, depth : int)
+    + tail(node : Node, depth : int)
+  }
+  class MarkupXmlStreamWriter {
+    + MarkupXmlStreamWriter(namespace : String, handleBlockElements : boolean)
+    # handleBasicElementEnd(node : Node, writer : XMLStreamWriter, name : QName)
+    # handleBasicElementStart(node : Node, writer : XMLStreamWriter, name : QName)
+    # handleHtmlBlock(node : HtmlBlock, writer : XMLStreamWriter)
+    # handleHtmlInline(node : HtmlInline, writer : XMLStreamWriter)
+    # handleImage(node : Image, writer : XMLStreamWriter, name : QName, href : String, alt : String)
+    # handleInsertAnchor(node : InsertAnchorNode, writer : XMLStreamWriter, name : QName)
+    # handleLinkEnd(node : LinkNode, writer : XMLStreamWriter, name : QName)
+    # handleLinkStart(node : LinkNode, writer : XMLStreamWriter, name : QName, href : String)
+    # writeHtmlEntity(writer : XMLStreamWriter, entityText : String)
+    # writeText(writer : XMLStreamWriter, text : String)
+  }
+  -class StreamNodeVisitor {
+    - writer : XMLStreamWriter
+    + StreamNodeVisitor(writer : XMLStreamWriter)
+    + head(node : Node, depth : int)
+    + tail(node : Node, depth : int)
+  }
+}
+package gov.nist.secauto.metaschema.model.common.metapath.function.library {
+  class DefaultFunctionLibrary {
+    + DefaultFunctionLibrary()
+  }
+  class FnBaseUri {
+    ~ SIGNATURE_NO_ARG : IFunction {static}
+    ~ SIGNATURE_ONE_ARG : IFunction {static}
+    - FnBaseUri()
+    - executeNoArg(function : IFunction, arguments : List<ISequence<?>>, dynamicContext : DynamicContext, focus : INodeItem) : ISequence<IAnyUriItem> {static}
+    - executeOneArg(function : IFunction, arguments : List<ISequence<?>>, dynamicContext : DynamicContext, focus : INodeItem) : ISequence<IAnyUriItem> {static}
+    + fnBaseUri(nodeItem : INodeItem) : IAnyUriItem {static}
+  }
+  class FnBoolean {
+    ~ SIGNATURE : IFunction {static}
+    - FnBoolean()
+    - execute(function : IFunction, arguments : List<ISequence<?>>, dynamicContext : DynamicContext, focus : INodeItem) : ISequence<IBooleanItem> {static}
+    + fnBoolean(sequence : ISequence<?>) : IBooleanItem {static}
+    + fnBooleanAsPrimitive(item : IItem) : boolean {static}
+    + fnBooleanAsPrimitive(sequence : ISequence<?>) : boolean {static}
+  }
+  class FnCompare {
+    ~ SIGNATURE : IFunction {static}
+    + FnCompare()
+    - execute(function : IFunction, arguments : List<ISequence<?>>, dynamicContext : DynamicContext, focus : INodeItem) : ISequence<IIntegerItem> {static}
+  }
+  class FnData {
+    ~ SIGNATURE_NO_ARG : IFunction {static}
+    ~ SIGNATURE_ONE_ARG : IFunction {static}
+    - FnData()
+    - executeNoArg(function : IFunction, arguments : List<ISequence<?>>, dynamicContext : DynamicContext, focus : INodeItem) : ISequence<IAnyAtomicItem> {static}
+    - executeOneArg(function : IFunction, arguments : List<ISequence<?>>, dynamicContext : DynamicContext, focus : INodeItem) : ISequence<IAnyAtomicItem> {static}
+    + fnData(sequence : ISequence<?>) : ISequence<IAnyAtomicItem> {static}
+    + fnDataItem(item : IItem) : IAnyAtomicItem {static}
+  }
+  class FnDoc {
+    ~ SIGNATURE : IFunction {static}
+    - FnDoc()
+    - execute(function : IFunction, arguments : List<ISequence<?>>, dynamicContext : DynamicContext, focus : INodeItem) : ISequence<IDocumentNodeItem> {static}
+    + fnDoc(uri : IStringItem, context : DynamicContext) : IDocumentNodeItem {static}
+  }
+  class FnDocumentUri {
+    ~ SIGNATURE_NO_ARG : IFunction {static}
+    ~ SIGNATURE_ONE_ARG : IFunction {static}
+    - FnDocumentUri()
+    - executeNoArg(function : IFunction, arguments : List<ISequence<?>>, dynamicContext : DynamicContext, focus : INodeItem) : ISequence<IAnyUriItem> {static}
+    - executeOneArg(function : IFunction, arguments : List<ISequence<?>>, dynamicContext : DynamicContext, focus : INodeItem) : ISequence<IAnyUriItem> {static}
+    + fnDocumentUri(document : IDocumentNodeItem) : IAnyUriItem {static}
+  }
+  class FnExists {
+    ~ SIGNATURE : IFunction {static}
+    - FnExists()
+    - execute(function : IFunction, arguments : List<ISequence<?>>, dynamicContext : DynamicContext, focus : INodeItem) : ISequence<IBooleanItem> {static}
+    + fnExists(sequence : ISequence<?>) : IBooleanItem {static}
+  }
+  class FnNot {
+    ~ SIGNATURE : IFunction {static}
+    - FnNot()
+    - execute(function : IFunction, arguments : List<ISequence<?>>, dynamicContext : DynamicContext, focus : INodeItem) : ISequence<IBooleanItem> {static}
+    + fnNot(item : IItem) : IBooleanItem {static}
+    + fnNot(sequence : ISequence<?>) : IBooleanItem {static}
+  }
+  class FnResolveUri {
+    ~ SIGNATURE_ONE_ARG : IFunction {static}
+    ~ SIGNATURE_TWO_ARG : IFunction {static}
+    - FnResolveUri()
+    - executeOneArg(function : IFunction, arguments : List<ISequence<?>>, dynamicContext : DynamicContext, focus : INodeItem) : ISequence<IAnyUriItem> {static}
+    - executeTwoArg(function : IFunction, arguments : List<ISequence<?>>, dynamicContext : DynamicContext, focus : INodeItem) : ISequence<IAnyUriItem> {static}
+    + fnResolveUri(relative : IAnyUriItem, base : IAnyUriItem) : IAnyUriItem {static}
+    + fnResolveUri(relative : IStringItem, base : IAnyUriItem) : IAnyUriItem {static}
+  }
+  class FnRound {
+    - NAME : String {static}
+    - FnRound()
+    - executeTwoArg(function : IFunction, arguments : List<ISequence<?>>, dynamicContext : DynamicContext, focus : INodeItem) : ISequence<INumericItem> {static}
+    ~ signature() : IFunction {static}
+    ~ signatureWithPrecision() : IFunction {static}
+  }
+  class FnStartsWith {
+    ~ SIGNATURE : IFunction {static}
+    + FnStartsWith()
+    - execute(function : IFunction, arguments : List<ISequence<?>>, dynamicContext : DynamicContext, focus : INodeItem) : ISequence<IBooleanItem> {static}
+    + fnStartsWith(arg1 : IStringItem, arg2 : IStringItem) : IBooleanItem {static}
+  }
+  class FnStaticBaseUri {
+    ~ SIGNATURE : IFunction {static}
+    + FnStaticBaseUri()
+    - execute(function : IFunction, arguments : List<ISequence<?>>, dynamicContext : DynamicContext, focus : INodeItem) : ISequence<IAnyUriItem> {static}
+    + fnStaticBaseUri(context : DynamicContext) : IAnyUriItem {static}
+  }
+  class NumericFunction {
+    - executor : INumericExecutor
+    + NumericFunction(executor : INumericExecutor)
+    + execute(function : IFunction, arguments : List<ISequence<?>>, dynamicContext : DynamicContext, focus : INodeItem) : ISequence<INumericItem>
+    + newFunctionHandler(executor : INumericExecutor) : NumericFunction {static}
+    + signature(name : String, executor : INumericExecutor) : IFunction {static}
+  }
+  interface INumericExecutor {
+    + execute(INumericItem) : INumericItem {abstract}
+  }
+}
+package gov.nist.secauto.metaschema.model.common.metapath.format {
+  interface IPathFormatter {
+    + METAPATH_PATH_FORMATER : IPathFormatter {static}
+    + format(segment : IPathSegment) : String
+    + formatAssembly(IAssemblyNodeItem) : String {abstract}
+    + formatDocument(IDocumentNodeItem) : String {abstract}
+    + formatField(IFieldNodeItem) : String {abstract}
+    + formatFlag(IFlagNodeItem) : String {abstract}
+    + formatRootAssembly(IRootAssemblyNodeItem) : String {abstract}
+  }
+  interface IPathSegment {
+    + format(IPathFormatter) : String {abstract}
+    + getNodeItem() : INodeItem {abstract}
+    + getPath() : List<IPathSegment>
+    + getPathStream() : Stream<? extends IPathSegment> {abstract}
+    + toPath(formatter : IPathFormatter) : String
+  }
+  class MetapathFormatter {
+    + MetapathFormatter()
+    + formatAssembly(assembly : IAssemblyNodeItem) : String
+    + formatDocument(document : IDocumentNodeItem) : String
+    + formatField(field : IFieldNodeItem) : String
+    + formatFlag(flag : IFlagNodeItem) : String
+    # formatModelPathSegment(item : IModelNodeItem) : String
+    + formatRootAssembly(root : IRootAssemblyNodeItem) : String
+    # getEffectiveName(nodeItem : INodeItem) : String
+  }
+}
+package gov.nist.secauto.metaschema.model.common.metapath.evaluate {
+  class AbstractExpressionEvaluationVisitor {
+    + AbstractExpressionEvaluationVisitor()
+    # aggregateResult(result : ISequence<ITEM_TYPE extends IItem>, childResult : ISequence<?>) : ISequence<ITEM_TYPE extends IItem>
+    # defaultResult() : ISequence<ITEM_TYPE extends IItem>
+    # shouldVisitNextChild(expr : IExpression, result : ISequence<ITEM_TYPE extends IItem>, context : INodeContext) : boolean
+    + visit(expr : IExpression, context : INodeContext) : ISequence<T extends IItem>
+    + visitAddition(expr : Addition, context : INodeContext) : ISequence<? extends IAnyAtomicItem>
+    + visitAnd(expr : And, context : INodeContext) : ISequence<? extends IBooleanItem>
+    # visitChildren(expr : IExpression, context : INodeContext) : ISequence<ITEM_TYPE extends IItem>
+    + visitContextItem(expr : ContextItem, context : INodeContext) : ISequence<? extends INodeItem>
+    + visitDecimalLiteral(expr : DecimalLiteral, context : INodeContext) : ISequence<? extends IDecimalItem>
+    + visitDivision(expr : Division, context : INodeContext) : ISequence<? extends IAnyAtomicItem>
+    + visitFlag(expr : Flag, context : INodeContext) : ISequence<? extends IFlagNodeItem>
+    + visitFunctionCall(expr : FunctionCall, context : INodeContext) : ISequence<?>
+    + visitGeneralComparison(expr : GeneralComparison, context : INodeContext) : ISequence<? extends IBooleanItem>
+    + visitIntegerDivision(expr : IntegerDivision, context : INodeContext) : ISequence<? extends IIntegerItem>
+    + visitIntegerLiteral(expr : IntegerLiteral, context : INodeContext) : ISequence<? extends IIntegerItem>
+    + visitMetapath(expr : Metapath, context : INodeContext) : ISequence<?>
+    + visitMod(expr : Mod, context : INodeContext) : ISequence<? extends INumericItem>
+    + visitModelInstance(expr : ModelInstance, context : INodeContext) : ISequence<? extends IModelNodeItem>
+    + visitMultiplication(expr : Multiplication, context : INodeContext) : ISequence<? extends IAnyAtomicItem>
+    + visitNegate(expr : Negate, context : INodeContext) : ISequence<? extends INumericItem>
+    + visitOr(expr : Or, context : INodeContext) : ISequence<? extends IBooleanItem>
+    + visitParenthesizedExpression(expr : ParenthesizedExpression, context : INodeContext) : ISequence<?>
+    + visitRelativeDoubleSlashPath(expr : RelativeDoubleSlashPath, context : INodeContext) : ISequence<?>
+    + visitRelativeSlashPath(expr : RelativeSlashPath, context : INodeContext) : ISequence<?>
+    + visitRootDoubleSlashPath(expr : RootDoubleSlashPath, context : INodeContext) : ISequence<?>
+    + visitRootSlashOnlyPath(expr : RootSlashOnlyPath, context : INodeContext) : ISequence<? extends IDocumentNodeItem>
+    + visitRootSlashPath(expr : RootSlashPath, context : INodeContext) : ISequence<?>
+    + visitStep(expr : Step, context : INodeContext) : ISequence<?>
+    + visitStringConcat(expr : StringConcat, context : INodeContext) : ISequence<? extends IStringItem>
+    + visitStringLiteral(expr : StringLiteral, context : INodeContext) : ISequence<? extends IStringItem>
+    + visitSubtraction(expr : Subtraction, context : INodeContext) : ISequence<? extends IAnyAtomicItem>
+    + visitUnion(expr : Union, context : INodeContext) : ISequence<?>
+    + visitValueComparison(expr : ValueComparison, context : INodeContext) : ISequence<? extends IBooleanItem>
+  }
+  ~class EmptyListImpl<ITEM_TYPE extends IItem> {
+    ~ EmptyListImpl<ITEM_TYPE extends IItem>()
+    + asList() : List<ITEM_TYPE extends IItem>
+    + asStream() : Stream<ITEM_TYPE extends IItem>
+    + equals(other : Object) : boolean
+    + hashCode() : int
+    + isEmpty() : boolean
+    + size() : int
+  }
+  interface IExpressionEvaluationVisitor {
+    + visit(IExpression, INodeContext) : ISequence<T extends IItem> {abstract}
+    + visitAddition(Addition, INodeContext) : ISequence<? extends IAnyAtomicItem> {abstract}
+    + visitAnd(And, INodeContext) : ISequence<? extends IBooleanItem> {abstract}
+    + visitContextItem(ContextItem, INodeContext) : ISequence<? extends INodeItem> {abstract}
+    + visitDecimalLiteral(DecimalLiteral, INodeContext) : ISequence<? extends IDecimalItem> {abstract}
+    + visitDivision(Division, INodeContext) : ISequence<? extends IAnyAtomicItem> {abstract}
+    + visitFlag(Flag, INodeContext) : ISequence<? extends IFlagNodeItem> {abstract}
+    + visitFunctionCall(FunctionCall, INodeContext) : ISequence<?> {abstract}
+    + visitGeneralComparison(GeneralComparison, INodeContext) : ISequence<? extends IBooleanItem> {abstract}
+    + visitIntegerDivision(IntegerDivision, INodeContext) : ISequence<? extends IIntegerItem> {abstract}
+    + visitIntegerLiteral(IntegerLiteral, INodeContext) : ISequence<? extends IIntegerItem> {abstract}
+    + visitMetapath(Metapath, INodeContext) : ISequence<?> {abstract}
+    + visitMod(Mod, INodeContext) : ISequence<? extends INumericItem> {abstract}
+    + visitModelInstance(ModelInstance, INodeContext) : ISequence<? extends IModelNodeItem> {abstract}
+    + visitMultiplication(Multiplication, INodeContext) : ISequence<? extends IAnyAtomicItem> {abstract}
+    + visitNegate(Negate, INodeContext) : ISequence<? extends INumericItem> {abstract}
+    + visitOr(Or, INodeContext) : ISequence<? extends IBooleanItem> {abstract}
+    + visitParenthesizedExpression(ParenthesizedExpression, INodeContext) : ISequence<?> {abstract}
+    + visitRelativeDoubleSlashPath(RelativeDoubleSlashPath, INodeContext) : ISequence<?> {abstract}
+    + visitRelativeSlashPath(RelativeSlashPath, INodeContext) : ISequence<?> {abstract}
+    + visitRootDoubleSlashPath(RootDoubleSlashPath, INodeContext) : ISequence<?> {abstract}
+    + visitRootSlashOnlyPath(RootSlashOnlyPath, INodeContext) : ISequence<? extends IDocumentNodeItem> {abstract}
+    + visitRootSlashPath(RootSlashPath, INodeContext) : ISequence<?> {abstract}
+    + visitStep(Step, INodeContext) : ISequence<?> {abstract}
+    + visitStringConcat(StringConcat, INodeContext) : ISequence<? extends IStringItem> {abstract}
+    + visitStringLiteral(StringLiteral, INodeContext) : ISequence<? extends IStringItem> {abstract}
+    + visitSubtraction(Subtraction, INodeContext) : ISequence<? extends IAnyAtomicItem> {abstract}
+    + visitUnion(Union, INodeContext) : ISequence<?> {abstract}
+    + visitValueComparison(ValueComparison, INodeContext) : ISequence<? extends IBooleanItem> {abstract}
+  }
+  interface ISequence<ITEM_TYPE extends IItem> {
+    + EMPTY : ISequence<ITEM_TYPE extends IItem> {static}
+    + asList() : List<ITEM_TYPE extends IItem> {abstract}
+    + asStream() : Stream<ITEM_TYPE extends IItem> {abstract}
+    + empty() : ISequence<ITEM_TYPE extends IItem> {static}
+    + isEmpty() : boolean {abstract}
+    + of(item : ITEM_TYPE extends IItem) : ISequence<ITEM_TYPE extends IItem> {static}
+    + of(items : List<ITEM_TYPE extends IItem>) : ISequence<ITEM_TYPE extends IItem> {static}
+    + of(items : Stream<ITEM_TYPE extends IItem>) : ISequence<ITEM_TYPE extends IItem> {static}
+    + size() : int {abstract}
+    + toSequence() : Collector<ITEM_TYPE extends IItem, ?, ISequence<ITEM_TYPE extends IItem>> {static}
+  }
+  ~class ListSequenceImpl<ITEM_TYPE extends IItem> {
+    - items : List<ITEM_TYPE extends IItem>
+    + ListSequenceImpl<ITEM_TYPE extends IItem>(items : Collection<ITEM_TYPE extends IItem>)
+    + ListSequenceImpl<ITEM_TYPE extends IItem>(items : List<ITEM_TYPE extends IItem>, copy : boolean)
+    + asList() : List<ITEM_TYPE extends IItem>
+    + asStream() : Stream<ITEM_TYPE extends IItem>
+    + equals(other : Object) : boolean
+    + hashCode() : int
+    + isEmpty() : boolean
+    + size() : int
+    + toString() : String
+  }
+  class MetaschemaPathEvaluationVisitor {
+    - dynamicContext : DynamicContext
+    + MetaschemaPathEvaluationVisitor(context : DynamicContext)
+    # applyGeneralComparisonCast(item : IAnyAtomicItem, other : IAnyAtomicItem) : IAnyAtomicItem
+    # compare(left : IAnyAtomicItem, operator : Operator, right : IAnyAtomicItem) : IBooleanItem
+    # evaluateInNodeContext(contextItems : ISequence<? extends INodeItem>, expr : IExpression) : ISequence<?>
+    # getDynamicContext() : DynamicContext
+    - matchFlags(expr : Flag, context : INodeContext) : Stream<? extends IFlagNodeItem> {static}
+    - matchModelInstance(expr : ModelInstance, context : INodeContext) : Stream<? extends IModelNodeItem> {static}
+    # resultOrEmptySequence(item : ITEM_TYPE extends IItem) : ISequence<ITEM_TYPE extends IItem>
+    # search(expr : IExpression, context : INodeContext) : Stream<? extends INodeItem>
+    # searchExpression(expr : IExpression, context : INodeContext) : Stream<? extends INodeItem>
+    # searchModelInstances(modelInstance : ModelInstance, context : INodeContext) : Stream<? extends IModelNodeItem>
+    + visitAddition(expr : Addition, context : INodeContext) : ISequence<? extends IAnyAtomicItem>
+    + visitAnd(expr : And, context : INodeContext) : ISequence<? extends IBooleanItem>
+    + visitContextItem(expr : ContextItem, context : INodeContext) : ISequence<? extends INodeItem>
+    + visitDecimalLiteral(expr : DecimalLiteral, context : INodeContext) : ISequence<IDecimalItem>
+    + visitDivision(expr : Division, context : INodeContext) : ISequence<? extends IAnyAtomicItem>
+    + visitFlag(expr : Flag, context : INodeContext) : ISequence<? extends IFlagNodeItem>
+    + visitFunctionCall(expr : FunctionCall, context : INodeContext) : ISequence<?>
+    + visitGeneralComparison(expr : GeneralComparison, context : INodeContext) : ISequence<? extends IBooleanItem>
+    + visitIntegerDivision(expr : IntegerDivision, context : INodeContext) : ISequence<? extends IIntegerItem>
+    + visitIntegerLiteral(expr : IntegerLiteral, context : INodeContext) : ISequence<IIntegerItem>
+    + visitMetapath(expr : Metapath, context : INodeContext) : ISequence<?>
+    + visitMod(expr : Mod, context : INodeContext) : ISequence<? extends INumericItem>
+    + visitModelInstance(expr : ModelInstance, context : INodeContext) : ISequence<? extends IModelNodeItem>
+    + visitMultiplication(expr : Multiplication, context : INodeContext) : ISequence<? extends IAnyAtomicItem>
+    + visitNegate(expr : Negate, context : INodeContext) : ISequence<? extends INumericItem>
+    + visitOr(expr : Or, context : INodeContext) : ISequence<? extends IBooleanItem>
+    + visitParenthesizedExpression(expr : ParenthesizedExpression, context : INodeContext) : ISequence<?>
+    + visitRelativeDoubleSlashPath(expr : RelativeDoubleSlashPath, context : INodeContext) : ISequence<? extends INodeItem>
+    + visitRelativeSlashPath(expr : RelativeSlashPath, context : INodeContext) : ISequence<?>
+    + visitRootDoubleSlashPath(expr : RootDoubleSlashPath, context : INodeContext) : ISequence<? extends INodeItem>
+    + visitRootSlashOnlyPath(expr : RootSlashOnlyPath, context : INodeContext) : ISequence<? extends IDocumentNodeItem>
+    + visitRootSlashPath(expr : RootSlashPath, context : INodeContext) : ISequence<?>
+    + visitStep(expr : Step, context : INodeContext) : ISequence<?>
+    + visitStringConcat(expr : StringConcat, context : INodeContext) : ISequence<IStringItem>
+    + visitStringLiteral(expr : StringLiteral, context : INodeContext) : ISequence<IStringItem>
+    + visitSubtraction(expr : Subtraction, context : INodeContext) : ISequence<? extends IAnyAtomicItem>
+    + visitUnion(expr : Union, context : INodeContext) : ISequence<?>
+    + visitValueComparison(expr : ValueComparison, context : INodeContext) : ISequence<? extends IBooleanItem>
+  }
+  ~class SingletonSequenceImpl<ITEM_TYPE extends IItem> {
+    - item : ITEM_TYPE extends IItem
+    + SingletonSequenceImpl<ITEM_TYPE extends IItem>(item : ITEM_TYPE extends IItem)
+    + asList() : List<ITEM_TYPE extends IItem>
+    + asStream() : Stream<ITEM_TYPE extends IItem>
+    + equals(other : Object) : boolean
+    # getItem() : ITEM_TYPE extends IItem
+    + hashCode() : int
+    + isEmpty() : boolean
+    + size() : int
+    + toString() : String
+  }
+  ~class StreamSequenceImpl<ITEM_TYPE extends IItem> {
+    - list : List<ITEM_TYPE extends IItem>
+    - stream : Stream<ITEM_TYPE extends IItem>
+    + StreamSequenceImpl<ITEM_TYPE extends IItem>(stream : Stream<ITEM_TYPE extends IItem>)
+    + asList() : List<ITEM_TYPE extends IItem>
+    + asStream() : Stream<ITEM_TYPE extends IItem>
+    + equals(other : Object) : boolean
+    + hashCode() : int
+    + isEmpty() : boolean
+    + size() : int
+    + toString() : String
+  }
+}
+package gov.nist.secauto.metaschema.model.common {
+  abstract class AbstractAssemblyInstance {
+    - parent : IAssemblyDefinition
+    + AbstractAssemblyInstance(parent : IAssemblyDefinition)
+    + getContainingDefinition() : IAssemblyDefinition
+    + getGroupAsXmlNamespace() : String
+    + getXmlNamespace() : String
+  }
+  abstract class AbstractChoiceInstance {
+    - parent : IAssemblyDefinition
+    + AbstractChoiceInstance(parent : IAssemblyDefinition)
+    + getContainingDefinition() : IAssemblyDefinition
+    + getGroupAsName() : String
+    + getGroupAsXmlNamespace() : String
+    + getJsonGroupAsBehavior() : JsonGroupAsBehavior
+    + getMaxOccurs() : int
+    + getMinOccurs() : int
+    + getXmlGroupAsBehavior() : XmlGroupAsBehavior
+  }
+  abstract class AbstractFieldInstance {
+    - parent : IAssemblyDefinition
+    + AbstractFieldInstance(parent : IAssemblyDefinition)
+    + getContainingDefinition() : IAssemblyDefinition
+  }
+  abstract class AbstractFlagInstance {
+    - parent : INamedModelDefinition
+    + AbstractFlagInstance(parent : INamedModelDefinition)
+    + getContainingDefinition() : INamedModelDefinition
+  }
+  abstract class AbstractMetaschema {
+    - LOGGER : Logger {static}
+    - exportedAssemblyDefinitions : Map<String, IAssemblyDefinition>
+    - exportedFieldDefinitions : Map<String, IFieldDefinition>
+    - exportedFlagDefinitions : Map<String, IFlagDefinition>
+    - importedMetaschemas : List<? extends IMetaschema>
+    + AbstractMetaschema(importedMetaschemas : List<? extends IMetaschema>)
+    + getExportedAssemblyDefinitionByName(name : String) : IAssemblyDefinition
+    # getExportedAssemblyDefinitionMap() : Map<String, ? extends IAssemblyDefinition>
+    + getExportedAssemblyDefinitions() : Collection<? extends IAssemblyDefinition>
+    + getExportedFieldDefinitionByName(name : String) : IFieldDefinition
+    # getExportedFieldDefinitionMap() : Map<String, ? extends IFieldDefinition>
+    + getExportedFieldDefinitions() : Collection<? extends IFieldDefinition>
+    + getExportedFlagDefinitionByName(name : String) : IFlagDefinition
+    # getExportedFlagDefinitionMap() : Map<String, ? extends IFlagDefinition>
+    + getExportedFlagDefinitions() : Collection<? extends IFlagDefinition>
+    + getImportedMetaschemaByShortName(name : String) : IMetaschema
+    # getImportedMetaschemaByShortNames() : Map<String, ? extends IMetaschema>
+    + getImportedMetaschemas() : List<? extends IMetaschema>
+    + getInfoElementsByMetapath(path : String) : Collection<? extends IModelElement>
+    - handleShadowedDefinitions(key : String, oldDef : DEF extends IDefinition, newDef : DEF extends IDefinition) : DEF extends IDefinition {static}
+    # initExports()
+  }
+  abstract class DefinitionCollectingModelWalker {
+    - LOGGER : Logger {static}
+    - definitions : Set<INamedDefinition>
+    - filter : Function<INamedDefinition, Boolean>
+    # DefinitionCollectingModelWalker(filter : Function<INamedDefinition, Boolean>)
+    # getDefaultData()
+    + getDefinitions() : Collection<? extends INamedDefinition>
+    # getFilter() : Function<INamedDefinition, Boolean>
+    # visit(def : IAssemblyDefinition, data : Void) : boolean
+    # visit(def : IFieldDefinition, data : Void) : boolean
+    # visit(def : IFlagDefinition, data : Void)
+  }
+  interface IAssembly {
+    + getModelType() : ModelType
+  }
+  interface IAssemblyDefinition {
+    + evaluateMetapathInstances(metapath : MetapathExpression) : IInstanceSet
+    + getHasCardinalityConstraints() : List<? extends ICardinalityConstraint> {abstract}
+    + getIndexConstraints() : List<? extends IIndexConstraint> {abstract}
+    + getRootJsonName() : String
+    + getRootName() : String {abstract}
+    + getRootXmlQName() : QName
+    + getUniqueConstraints() : List<? extends IUniqueConstraint> {abstract}
+    + isRoot() : boolean {abstract}
+  }
+  interface IAssemblyInstance {
+    + evaluateMetapathInstances(metapath : MetapathExpression) : IInstanceSet
+    + getDefinition() : IAssemblyDefinition {abstract}
+    + getJsonName() : String
+    + getXmlNamespace() : String
+    + getXmlQName() : QName
+  }
+  interface IChoice {
+    + getModelType() : ModelType
+  }
+  interface IChoiceInstance {
+  }
+  interface IDefinition {
+    + DEFAULT_DEFINITION_MODEL_SCOPE : ModuleScopeEnum {static}
+    + getConstraints() : List<? extends IConstraint> {abstract}
+    + getModuleScope() : ModuleScopeEnum {abstract}
+    + toCoordinates() : String
+  }
+  interface IField {
+    + getModelType() : ModelType
+  }
+  interface IFieldDefinition {
+    + evaluateMetapathInstances(metapath : MetapathExpression) : IInstanceSet
+    + getJsonValueKey() : Object
+    + getJsonValueKeyFlagInstance() : IFlagInstance {abstract}
+    + getJsonValueKeyName() : String {abstract}
+    + hasJsonValueKeyFlagInstance() : boolean
+    + isCollapsible() : boolean {abstract}
+  }
+  interface IFieldInstance {
+    + evaluateMetapathInstances(metapath : MetapathExpression) : IInstanceSet
+    + getDefinition() : IFieldDefinition {abstract}
+    + getGroupAsXmlNamespace() : String
+    + getJsonName() : String
+    + getXmlNamespace() : String
+    + getXmlQName() : QName
+    + isInXmlWrapped() : boolean {abstract}
+    + isSimple() : boolean
+  }
+  interface IFlag {
+    + getModelType() : ModelType
+  }
+  interface IFlagDefinition {
+    + evaluateMetapathInstances(metapath : MetapathExpression) : IInstanceSet
+  }
+  interface IFlagInstance {
+    + evaluateMetapathInstances(metapath : MetapathExpression) : IInstanceSet
+    + getContainingDefinition() : INamedModelDefinition {abstract}
+    + getDefinition() : IFlagDefinition {abstract}
+    + getXmlNamespace() : String
+    + getXmlQName() : QName
+    + isJsonKey() : boolean
+    + isJsonValueKey() : boolean
+    + isRequired() : boolean {abstract}
+    + newNodeItem(Object, IModelNodeItem) : INodeItem {abstract}
+  }
+  interface IInlineNamedDefinition<INSTANCE extends INamedInstance> {
+    + getInlineInstance() : INSTANCE extends INamedInstance {abstract}
+    + isInline() : boolean
+  }
+  interface IInstance {
+    + getContainingDefinition() : INamedModelDefinition {abstract}
+    + getContainingMetaschema() : IMetaschema
+    + toCoordinates() : String
+  }
+  interface IMetaschema {
+    + allNonLocalDefinitions() : Predicate<DEF extends IDefinition> {static}
+    + allRootAssemblyDefinitions() : Predicate<DEF extends IDefinition> {static}
+    + getAssemblyAndFieldDefinitions() : List<? extends INamedModelDefinition>
+    + getAssemblyDefinitionByName(String) : IAssemblyDefinition {abstract}
+    + getAssemblyDefinitions() : Collection<? extends IAssemblyDefinition> {abstract}
+    + getExportedAssemblyDefinitionByName(String) : IAssemblyDefinition {abstract}
+    + getExportedAssemblyDefinitions() : Collection<? extends IAssemblyDefinition> {abstract}
+    + getExportedFieldDefinitionByName(String) : IFieldDefinition {abstract}
+    + getExportedFieldDefinitions() : Collection<? extends IFieldDefinition> {abstract}
+    + getExportedFlagDefinitionByName(String) : IFlagDefinition {abstract}
+    + getExportedFlagDefinitions() : Collection<? extends IFlagDefinition> {abstract}
+    + getFieldDefinitionByName(String) : IFieldDefinition {abstract}
+    + getFieldDefinitions() : Collection<? extends IFieldDefinition> {abstract}
+    + getFlagDefinitionByName(String) : IFlagDefinition {abstract}
+    + getFlagDefinitions() : Collection<? extends IFlagDefinition> {abstract}
+    + getImportedMetaschemaByShortName(String) : IMetaschema {abstract}
+    + getImportedMetaschemas() : List<? extends IMetaschema> {abstract}
+    + getInfoElementsByMetapath(String) : Collection<? extends IModelElement> {abstract}
+    + getJsonBaseUri() : URI {abstract}
+    + getLocation() : URI {abstract}
+    + getName() : MarkupLine {abstract}
+    + getRemarks() : MarkupMultiline {abstract}
+    + getRootAssemblyDefinitions() : Collection<? extends IAssemblyDefinition>
+    + getScopedAssemblyDefinitionByName(name : String) : IAssemblyDefinition
+    + getScopedFieldDefinitionByName(name : String) : IFieldDefinition
+    + getScopedFlagDefinitionByName(name : String) : IFlagDefinition
+    + getShortName() : String {abstract}
+    + getVersion() : String {abstract}
+    + getXmlNamespace() : URI {abstract}
+  }
+  interface IModelContainer {
+    + getAssemblyInstanceByName(String) : IAssemblyInstance {abstract}
+    + getAssemblyInstances() : Collection<? extends IAssemblyInstance> {abstract}
+    + getChoiceInstances() : List<? extends IChoiceInstance> {abstract}
+    + getFieldInstanceByName(String) : IFieldInstance {abstract}
+    + getFieldInstances() : Collection<? extends IFieldInstance> {abstract}
+    + getModelInstanceByName(String) : INamedModelInstance {abstract}
+    + getModelInstances() : Collection<? extends IModelInstance> {abstract}
+    + getNamedModelInstances() : Collection<? extends INamedModelInstance> {abstract}
+  }
+  interface IModelElement {
+    + getContainingMetaschema() : IMetaschema {abstract}
+    + getModelType() : ModelType {abstract}
+    + getRemarks() : MarkupMultiline {abstract}
+    + toCoordinates() : String {abstract}
+  }
+  interface IModelInstance {
+    + getContainingDefinition() : IAssemblyDefinition {abstract}
+    + getGroupAsName() : String {abstract}
+    + getGroupAsXmlNamespace() : String {abstract}
+    + getJsonGroupAsBehavior() : JsonGroupAsBehavior {abstract}
+    + getMaxOccurs() : int {abstract}
+    + getMinOccurs() : int {abstract}
+    + getXmlGroupAsBehavior() : XmlGroupAsBehavior {abstract}
+    + getXmlGroupAsQName() : QName
+  }
+  interface INamedDefinition {
+    + getInlineInstance() : INamedInstance {abstract}
+    + isInline() : boolean {abstract}
+  }
+  interface INamedInstance {
+    + getDefinition() : INamedDefinition {abstract}
+    + getDescription() : MarkupLine
+    + getFormalName() : String
+    + getXmlNamespace() : String
+    + getXmlQName() : QName
+    + toCoordinates() : String
+  }
+  interface INamedModelDefinition {
+    + getAllowedValuesContraints() : List<? extends IAllowedValuesConstraint> {abstract}
+    + getExpectConstraints() : List<? extends IExpectConstraint> {abstract}
+    + getFlagInstanceByName(String) : IFlagInstance {abstract}
+    + getFlagInstances() : Collection<? extends IFlagInstance> {abstract}
+    + getIndexHasKeyConstraints() : List<? extends IIndexHasKeyConstraint> {abstract}
+    + getJsonKeyFlagInstance() : IFlagInstance {abstract}
+    + getMatchesConstraints() : List<? extends IMatchesConstraint> {abstract}
+    + hasJsonKey() : boolean {abstract}
+    + isSimple() : boolean
+  }
+  interface INamedModelElement {
+    + evaluateMetapathInstances(MetapathExpression) : IInstanceSet {abstract}
+    + getDescription() : MarkupLine {abstract}
+    + getEffectiveName() : String
+    + getFormalName() : String {abstract}
+    + getJsonName() : String
+    + getName() : String {abstract}
+    + getUseName() : String {abstract}
+  }
+  interface INamedModelInstance {
+    + getDefinition() : INamedModelDefinition {abstract}
+    + getJsonKeyFlagInstance() : IFlagInstance
+    + hasJsonKey() : boolean
+  }
+  interface INamedValuedDefinition {
+  }
+  interface IRootAssemblyDefinition {
+    + getRootJsonName() : String
+    + getRootName() : String {abstract}
+    + getRootXmlQName() : QName
+  }
+  interface IValuedDefinition {
+    + getAllowedValuesContraints() : List<? extends IAllowedValuesConstraint> {abstract}
+    + getExpectConstraints() : List<? extends IExpectConstraint> {abstract}
+    + getIndexHasKeyConstraints() : List<? extends IIndexHasKeyConstraint> {abstract}
+    + getJavaTypeAdapter() : IJavaTypeAdapter<?> {abstract}
+    + getMatchesConstraints() : List<? extends IMatchesConstraint> {abstract}
+  }
+  enum JsonGroupAsBehavior {
+    + KEYED {static}
+    + LIST {static}
+    + NONE {static}
+    + SINGLETON_OR_LIST {static}
+    + valueOf(name : String) : JsonGroupAsBehavior {static}
+    + values() : JsonGroupAsBehavior[] {static}
+  }
+  enum JsonValueKeyTypeEnum {
+    + FLAG {static}
+    + NONE {static}
+    + STATIC_LABEL {static}
+    + valueOf(name : String) : JsonValueKeyTypeEnum {static}
+    + values() : JsonValueKeyTypeEnum[] {static}
+  }
+  class MetaschemaModelConstants {
+    + DEFAULT_FIELD_COLLAPSIBLE : boolean {static}
+    + DEFAULT_FIELD_IN_XML_WRAPPED : boolean {static}
+    + DEFAULT_FLAG_REQUIRED : boolean {static}
+    + DEFAULT_GROUP_AS_MAX_OCCURS : int {static}
+    + DEFAULT_GROUP_AS_MIN_OCCURS : int {static}
+    + DEFAULT_JSON_GROUP_AS_BEHAVIOR : JsonGroupAsBehavior {static}
+    + DEFAULT_XML_GROUP_AS_BEHAVIOR : XmlGroupAsBehavior {static}
+    - MetaschemaModelConstants()
+  }
+  enum ModelType {
+    + ASSEMBLY {static}
+    + CHOICE {static}
+    + FIELD {static}
+    + FLAG {static}
+    + valueOf(name : String) : ModelType {static}
+    + values() : ModelType[] {static}
+  }
+  enum ModuleScopeEnum {
+    + INHERITED {static}
+    + LOCAL {static}
+    + valueOf(name : String) : ModuleScopeEnum {static}
+    + values() : ModuleScopeEnum[] {static}
+  }
+  class RootAssemblyDefinitionInstance {
+    - rootAssemblyDefinition : IAssemblyDefinition
+    + RootAssemblyDefinitionInstance(definition : IAssemblyDefinition)
+    + getContainingDefinition() : IAssemblyDefinition
+    + getContainingMetaschema() : IMetaschema
+    + getDefinition() : IAssemblyDefinition
+    + getGroupAsName() : String
+    + getGroupAsXmlNamespace() : String
+    + getJsonGroupAsBehavior() : JsonGroupAsBehavior
+    + getMaxOccurs() : int
+    + getMinOccurs() : int
+    + getName() : String
+    # getProxy() : IAssemblyDefinition
+    + getRemarks() : MarkupMultiline
+    + getUseName() : String
+    + getXmlGroupAsBehavior() : XmlGroupAsBehavior
+    + getXmlNamespace() : String
+    + getXmlQName() : QName
+    + toCoordinates() : String
+  }
+  class UsedDefinitionModelWalker {
+    - FILTER : Function<INamedDefinition, Boolean> {static}
+    # UsedDefinitionModelWalker()
+    + collectUsedDefinitions(definitions : Collection<? extends IAssemblyDefinition>) : Collection<? extends INamedDefinition> {static}
+    + collectUsedDefinitionsFromMetaschema(metaschema : IMetaschema) : Collection<? extends INamedDefinition> {static}
+    + collectUsedDefinitionsFromMetaschema(metaschemas : Collection<? extends IMetaschema>) : Collection<? extends INamedDefinition> {static}
+  }
+  enum XmlGroupAsBehavior {
+    + GROUPED {static}
+    + UNGROUPED {static}
+    + valueOf(name : String) : XmlGroupAsBehavior {static}
+    + values() : XmlGroupAsBehavior[] {static}
+  }
+}
+package gov.nist.secauto.metaschema.model.common.datatype {
+  class AbstractDataTypeProvider {
+    - library : HashMap<String, IJavaTypeAdapter<?>>
+    + AbstractDataTypeProvider()
+    + getJavaTypeAdapters() : Map<String, ? extends IJavaTypeAdapter<?>>
+    # registerDatatype(adapter : IJavaTypeAdapter<?>)
+    # registerDatatypeByName(name : String, adapter : IJavaTypeAdapter<?>)
+  }
+  abstract class AbstractDatatype<TYPE extends IDatatype<TYPE>, VALUE> {
+    - value : VALUE
+    # AbstractDatatype<TYPE extends IDatatype<TYPE>, VALUE>(value : VALUE)
+    + equals(obj : Object) : boolean
+    + getValue() : VALUE
+    + hashCode() : int
+    + toString() : String
+  }
+  abstract class AbstractDatatypeJavaTypeAdapter<TYPE extends IDatatype<TYPE>, ITEM_TYPE extends IAnyAtomicItem> {
+    + AbstractDatatypeJavaTypeAdapter<TYPE extends IDatatype<TYPE>, ITEM_TYPE extends IAnyAtomicItem>(clazz : Class<TYPE extends IDatatype<TYPE>>)
+    + copy(obj : Object) : TYPE extends IDatatype<TYPE>
+  }
+  abstract class AbstractIntegerAdapter<ITEM_TYPE extends IIntegerItem> {
+    # AbstractIntegerAdapter<ITEM_TYPE extends IIntegerItem>()
+    + copy(obj : Object) : BigInteger
+    + parse(value : String) : BigInteger
+    + writeJsonValue(value : Object, generator : JsonGenerator)
+  }
+  abstract class AbstractJavaTypeAdapter<TYPE, ITEM_TYPE extends IAnyAtomicItem> {
+    + DEFAULT_JSON_FIELD_NAME : String {static}
+    - clazz : Class<TYPE>
+    # AbstractJavaTypeAdapter<TYPE, ITEM_TYPE extends IAnyAtomicItem>(clazz : Class<TYPE>)
+    + asString(value : Object) : String
+    + canHandleQName(nextQName : QName) : boolean
+    + cast(item : IAnyAtomicItem) : ITEM_TYPE extends IAnyAtomicItem
+    # castInternal(item : IAnyAtomicItem) : ITEM_TYPE extends IAnyAtomicItem
+    + getDefaultJsonValueKey() : String
+    + getItemClass() : Class<ITEM_TYPE extends IAnyAtomicItem> {abstract}
+    + getJavaClass() : Class<TYPE>
+    + isParsingStartElement() : boolean
+    + isUnrappedValueAllowedInXml() : boolean
+    + isXmlMixed() : boolean
+    + newItem(Object) : ITEM_TYPE extends IAnyAtomicItem {abstract}
+    + parse(eventReader : XMLEventReader2) : TYPE
+    + parse(parser : JsonParser) : TYPE
+    + toValue(value : Object) : TYPE
+    + writeJsonValue(value : Object, generator : JsonGenerator)
+    + writeXml(value : Object, parent : StartElement, eventFactory : XMLEventFactory2, eventWriter : XMLEventWriter)
+    + writeXmlCharacters(value : Object, parentName : QName, writer : XMLStreamWriter2)
+  }
+  abstract class AbstractStringJavaTypeAdapter<ITEM_TYPE extends IStringItem> {
+    # AbstractStringJavaTypeAdapter<ITEM_TYPE extends IStringItem>()
+    + copy(obj : Object) : String
+    + parse(value : String) : String
+  }
+  class DataTypeService {
+    - instance : DataTypeService {static}
+    - libraryByClass : Map<Class<? extends IJavaTypeAdapter>, IJavaTypeAdapter<?>>
+    - libraryByName : Map<String, IJavaTypeAdapter<?>>
+    + DataTypeService()
+    + getInstance() : DataTypeService {static}
+    + getJavaTypeAdapterByClass(clazz : Class<? extends IJavaTypeAdapter>) : IJavaTypeAdapter<?>
+    + getJavaTypeAdapterByName(name : String) : IJavaTypeAdapter<?>
+    - load()
+  }
+  interface IDataTypeProvider {
+    + getJavaTypeAdapters() : Map<String, ? extends IJavaTypeAdapter<?>> {abstract}
+  }
+  interface IDatatype<TYPE extends IDatatype> {
+    + copy() : TYPE extends IDatatype {abstract}
+  }
+  interface IJavaTypeAdapter<TYPE> {
+    + asString(Object) : String {abstract}
+    + canHandleQName(QName) : boolean {abstract}
+    + cast(IAnyAtomicItem) : IAnyAtomicItem {abstract}
+    + copy(Object) : TYPE {abstract}
+    + getDefaultJsonValueKey() : String {abstract}
+    + getItemClass() : Class<? extends IAnyAtomicItem> {abstract}
+    + getJavaClass() : Class<TYPE> {abstract}
+    + getName() : String {abstract}
+    + isAtomic() : boolean
+    + isParsingStartElement() : boolean {abstract}
+    + isUnrappedValueAllowedInXml() : boolean {abstract}
+    + isXmlMixed() : boolean {abstract}
+    + newItem(Object) : IAnyAtomicItem {abstract}
+    + parse(JsonParser) : TYPE {abstract}
+    + parse(String) : TYPE {abstract}
+    + parse(XMLEventReader2) : TYPE {abstract}
+    + parseAndSupply(eventReader : XMLEventReader2) : Supplier<TYPE>
+    + parseAndSupply(parser : JsonParser) : Supplier<TYPE>
+    + parseAndSupply(value : String) : Supplier<TYPE>
+    + toValue(Object) : TYPE {abstract}
+    + writeJsonValue(Object, JsonGenerator) {abstract}
+    + writeXml(Object, StartElement, XMLEventFactory2, XMLEventWriter) {abstract}
+    + writeXmlCharacters(Object, QName, XMLStreamWriter2) {abstract}
+  }
+}
+package gov.nist.secauto.metaschema.model.common.metapath.item {
+  abstract class AbstractAnyAtomicItem<TYPE> {
+    - value : TYPE
+    + AbstractAnyAtomicItem<TYPE>(value : TYPE)
+    + asString() : String
+    + getJavaTypeAdapter() : IJavaTypeAdapter<TYPE> {abstract}
+    + getValue() : TYPE
+    + toString() : String
+  }
+  abstract class AbstractIntegerItem {
+    # AbstractIntegerItem(value : BigInteger)
+    + abs() : IIntegerItem
+    + asDecimal() : BigDecimal
+    + asInteger() : BigInteger
+    + toEffectiveBoolean() : boolean
+  }
+  abstract class AbstractNodeItemVisitor<RESULT, CONTEXT> {
+    + AbstractNodeItemVisitor<RESULT, CONTEXT>()
+    # aggregateResult(result : RESULT, childResult : RESULT) : RESULT
+    # defaultResult() : RESULT {abstract}
+    # shouldVisitNextChild(item : IFlagNodeItem, result : RESULT, context : CONTEXT) : boolean
+    # shouldVisitNextChild(item : IModelNodeItem, result : RESULT, context : CONTEXT) : boolean
+    + visit(item : INodeItem, context : CONTEXT) : RESULT
+    + visitAssembly(item : IAssemblyNodeItem, context : CONTEXT) : RESULT
+    + visitDocument(item : IDocumentNodeItem, context : CONTEXT) : RESULT
+    + visitField(item : IFieldNodeItem, context : CONTEXT) : RESULT
+    + visitFlag(item : IFlagNodeItem, context : CONTEXT) : RESULT
+    # visitFlags(item : IModelNodeItem, context : CONTEXT) : RESULT
+    # visitModelChildren(item : IAssemblyNodeItem, context : CONTEXT) : RESULT
+  }
+  abstract class AbstractNumericItem<TYPE> {
+    + AbstractNumericItem<TYPE>(value : TYPE)
+  }
+  abstract class AbstractStringItem {
+    + AbstractStringItem(value : String)
+    + asString() : String
+  }
+  ~class AnyUriItemImpl {
+    + AnyUriItemImpl(value : URI)
+    + getJavaTypeAdapter() : UriAdapter
+  }
+  ~class Base64BinaryItemImpl {
+    + Base64BinaryItemImpl(value : ByteBuffer)
+    + getJavaTypeAdapter() : Base64Adapter
+  }
+  ~class BooleanItemImpl {
+    - FALSE_STRING : String {static}
+    - FALSE_STRING_ITEM : IStringItem {static}
+    - TRUE_STRING : String {static}
+    - TRUE_STRING_ITEM : IStringItem {static}
+    - booleanValue : boolean
+    ~ BooleanItemImpl(booleanValue : boolean)
+    + asString() : String
+    + getJavaTypeAdapter() : IJavaTypeAdapter<?>
+    + getValue() : Boolean
+    + newStringItem() : IStringItem
+    + toBoolean() : boolean
+  }
+  ~class DateTimeWithTimeZoneItemImpl {
+    + DateTimeWithTimeZoneItemImpl(value : ZonedDateTime)
+    + asZonedDateTime() : ZonedDateTime
+    + getJavaTypeAdapter() : DateTimeWithTZAdapter
+  }
+  ~class DateTimeWithoutTimeZoneItemImpl {
+    + DateTimeWithoutTimeZoneItemImpl(value : DateTime)
+    + asZonedDateTime() : ZonedDateTime
+    + getJavaTypeAdapter() : DateTimeAdapter
+  }
+  ~class DateWithTimeZoneItemImpl {
+    + DateWithTimeZoneItemImpl(value : ZonedDateTime)
+    + asZonedDateTime() : ZonedDateTime
+    + getJavaTypeAdapter() : DateWithTZAdapter
+  }
+  ~class DateWithoutTimeZoneItemImpl {
+    + DateWithoutTimeZoneItemImpl(value : Date)
+    + asZonedDateTime() : ZonedDateTime
+    + getJavaTypeAdapter() : DateAdapter
+  }
+  ~class DayTimeDurationItemImpl {
+    + DayTimeDurationItemImpl(value : Duration)
+    + getJavaTypeAdapter() : DayTimeAdapter
+  }
+  ~class DecimalItemImpl {
+    + DecimalItemImpl(value : BigDecimal)
+    + abs() : INumericItem
+    + asDecimal() : BigDecimal
+    + asInteger() : BigInteger
+    + asString() : String
+    + ceiling() : IIntegerItem
+    + equals(obj : Object) : boolean
+    + floor() : IIntegerItem
+    + getJavaTypeAdapter() : DecimalAdapter
+    + hashCode() : int
+    + toEffectiveBoolean() : boolean
+  }
+  ~class EmailAddressItemImpl {
+    + EmailAddressItemImpl(value : String)
+    + equals(obj : Object) : boolean
+    + getJavaTypeAdapter() : EmailAddressAdapter
+    + hashCode() : int
+  }
+  ~class HostnameItemImpl {
+    + HostnameItemImpl(value : String)
+    + equals(obj : Object) : boolean
+    + getJavaTypeAdapter() : HostnameAdapter
+    + hashCode() : int
+  }
+  interface IAnyAtomicItem {
+    + asString() : String
+    + getJavaTypeAdapter() : IJavaTypeAdapter<?> {abstract}
+    + newStringItem() : IStringItem
+    + toAtomicItem() : IAnyAtomicItem
+  }
+  interface IAnyUriItem {
+    + cast(item : IAnyAtomicItem) : IAnyUriItem {static}
+    + getValue() : URI {abstract}
+    + valueOf(value : URI) : IAnyUriItem {static}
+  }
+  interface IAssemblyNodeItem {
+    + accept(visitor : INodeItemVisitor<RESULT, CONTEXT>, context : CONTEXT) : RESULT
+    + format(formatter : IPathFormatter) : String
+    + getContextNodeItem() : IAssemblyNodeItem
+    + getDefinition() : IAssemblyDefinition {abstract}
+    + getInstance() : IAssemblyInstance {abstract}
+    + getNodeItem() : IAssemblyNodeItem
+    + getNodeItemType() : NodeItemType
+  }
+  interface IAtomicValuedItem {
+    + toAtomicItem() : IAnyAtomicItem {abstract}
+  }
+  interface IAtomicValuedNodeItem {
+  }
+  interface IBase64BinaryItem {
+    + cast(item : IAnyAtomicItem) : IBase64BinaryItem {static}
+    + getValue() : ByteBuffer {abstract}
+    + valueOf(value : ByteBuffer) : IBase64BinaryItem {static}
+  }
+  interface IBooleanItem {
+    + FALSE : IBooleanItem {static}
+    + TRUE : IBooleanItem {static}
+    + cast(item : IAnyAtomicItem) : IBooleanItem {static}
+    + negate() : IBooleanItem
+    + toBoolean() : boolean {abstract}
+    + valueOf(value : Boolean) : IBooleanItem {static}
+    + valueOf(value : String) : IBooleanItem {static}
+    + valueOf(value : boolean) : IBooleanItem {static}
+  }
+  interface IDateItem {
+    + asZonedDateTime() : ZonedDateTime {abstract}
+    + cast(item : IAnyAtomicItem) : IDateItem {static}
+    + valueOf(value : Date) : IDateItem {static}
+    + valueOf(value : String) : IDateItem {static}
+    + valueOf(value : ZonedDateTime) : IDateItem {static}
+  }
+  interface IDateTimeItem {
+    + asZonedDateTime() : ZonedDateTime {abstract}
+    + cast(item : IAnyAtomicItem) : IDateTimeItem {static}
+    + valueOf(value : DateTime) : IDateTimeItem {static}
+    + valueOf(value : String) : IDateTimeItem {static}
+    + valueOf(value : ZonedDateTime) : IDateTimeItem {static}
+  }
+  interface IDayTimeDurationItem {
+    + cast(item : IAnyAtomicItem) : IDayTimeDurationItem {static}
+    + getValue() : Duration {abstract}
+    + valueOf(value : Duration) : IDayTimeDurationItem {static}
+    + valueOf(value : String) : IDayTimeDurationItem {static}
+  }
+  interface IDecimalItem {
+    + ZERO : IDecimalItem {static}
+    + cast(item : IAnyAtomicItem) : IDecimalItem {static}
+    + valueOf(value : BigDecimal) : IDecimalItem {static}
+    + valueOf(value : String) : IDecimalItem {static}
+    + valueOf(value : double) : IDecimalItem {static}
+    + valueOf(value : long) : IDecimalItem {static}
+  }
+  interface IDocumentNodeItem {
+    + accept(visitor : INodeItemVisitor<RESULT, CONTEXT>, context : CONTEXT) : RESULT
+    + flags() : Stream<? extends IFlagNodeItem>
+    + format(formatter : IPathFormatter) : String
+    + getBaseUri() : URI
+    + getDefinition() : IRootAssemblyDefinition
+    + getDocumentUri() : URI {abstract}
+    + getFlagByName(name : String) : IFlagNodeItem
+    + getFlags() : Collection<? extends IFlagNodeItem>
+    + getInstance() : INamedInstance
+    + getNodeItem() : IDocumentNodeItem
+    + getNodeItemType() : NodeItemType
+    + getParentContentNodeItem() : IModelNodeItem
+    + getParentNodeItem() : INodeItem
+    + getPathStream() : Stream<? extends IDocumentNodeItem>
+    + getRootAssemblyNodeItem() : IRootAssemblyNodeItem {abstract}
+    + toBoundObject() : CLASS
+  }
+  interface IDurationItem {
+    + cast(item : IAnyAtomicItem) : IDurationItem {static}
+    + getValue() : TemporalAmount {abstract}
+  }
+  interface IEmailAddressItem {
+    + cast(item : IAnyAtomicItem) : IEmailAddressItem {static}
+    + newStringItem() : IEmailAddressItem
+    + valueOf(value : String) : IEmailAddressItem {static}
+  }
+  interface IFieldNodeItem {
+    + accept(visitor : INodeItemVisitor<RESULT, CONTEXT>, context : CONTEXT) : RESULT
+    + format(formatter : IPathFormatter) : String
+    + getContextNodeItem() : IFieldNodeItem
+    + getDefinition() : IFieldDefinition {abstract}
+    + getInstance() : IFieldInstance {abstract}
+    + getModelItems() : Collection<? extends List<? extends IModelNodeItem>>
+    + getModelItemsByName(name : String) : List<? extends IModelNodeItem>
+    + getNodeItem() : IFieldNodeItem
+    + getNodeItemType() : NodeItemType
+    + getParentNodeItem() : IAssemblyNodeItem {abstract}
+    + modelItems() : Stream<? extends IModelNodeItem>
+  }
+  interface IFlagNodeItem {
+    + accept(visitor : INodeItemVisitor<RESULT, CONTEXT>, context : CONTEXT) : RESULT
+    + flags() : Stream<? extends IFlagNodeItem>
+    + format(formatter : IPathFormatter) : String
+    + getContextNodeItem() : IFlagNodeItem
+    + getDefinition() : IFlagDefinition {abstract}
+    + getFlagByName(name : String) : IFlagNodeItem
+    + getFlags() : Collection<? extends IFlagNodeItem>
+    + getInstance() : IFlagInstance {abstract}
+    + getModelItems() : Collection<? extends List<? extends IModelNodeItem>>
+    + getModelItemsByName(name : String) : List<? extends IModelNodeItem>
+    + getNodeItem() : IFlagNodeItem
+    + getNodeItemType() : NodeItemType
+    + getParentContentNodeItem() : IModelNodeItem {abstract}
+    + getParentNodeItem() : IModelNodeItem {abstract}
+    + modelItems() : Stream<? extends IModelNodeItem>
+  }
+  interface IHostnameItem {
+    + cast(item : IAnyAtomicItem) : IHostnameItem {static}
+    + newStringItem() : IHostnameItem
+    + valueOf(value : String) : IHostnameItem {static}
+  }
+  interface IIPAddressItem {
+  }
+  interface IIPv4AddressItem {
+    + cast(item : IAnyAtomicItem) : IIPv4AddressItem {static}
+    + valueOf(value : IPv4Address) : IIPv4AddressItem {static}
+  }
+  interface IIPv6AddressItem {
+    + cast(item : IAnyAtomicItem) : IIPv6AddressItem {static}
+    + valueOf(value : IPv6Address) : IIPv6AddressItem {static}
+  }
+  interface IIntegerItem {
+    + NEGATIVE_ONE : IIntegerItem {static}
+    + ONE : IIntegerItem {static}
+    + ZERO : IIntegerItem {static}
+    + abs() : IIntegerItem {abstract}
+    + cast(item : IAnyAtomicItem) : IIntegerItem {static}
+    + ceiling() : IIntegerItem
+    + floor() : IIntegerItem
+    + valueOf(value : BigInteger) : IIntegerItem {static}
+    + valueOf(value : String) : IIntegerItem {static}
+    + valueOf(value : long) : IIntegerItem {static}
+  }
+  interface IItem {
+    + getItemName() : String
+  }
+  interface IMarkupItem {
+    + cast(item : IAnyAtomicItem) : IMarkupItem {static}
+    + valueOf(value : MarkupLine) : IMarkupItem {static}
+    + valueOf(value : MarkupMultiline) : IMarkupItem {static}
+  }
+  interface IModelNodeItem {
+    + getDefinition() : INamedModelDefinition {abstract}
+    + getParentContentNodeItem() : IAssemblyNodeItem {abstract}
+    + getParentNodeItem() : INodeItem {abstract}
+    + getPosition() : int {abstract}
+  }
+  interface INcNameItem {
+    + cast(item : IAnyAtomicItem) : INcNameItem {static}
+    + newStringItem() : INcNameItem
+    + valueOf(value : String) : INcNameItem {static}
+  }
+  interface INodeItem {
+    + accept(INodeItemVisitor<RESULT, CONTEXT>, CONTEXT) : RESULT {abstract}
+    + evaluateMetapath(metapath : MetapathExpression) : ISequence<? extends ITEM_TYPE>
+    + evaluateMetapath(metapath : MetapathExpression, context : DynamicContext) : ISequence<?>
+    + getBaseUri() : URI {abstract}
+    + getMetapath() : String
+    + getNodeItemType() : NodeItemType {abstract}
+    + getParentContentNodeItem() : IModelNodeItem {abstract}
+    + getParentNodeItem() : INodeItem {abstract}
+    + getPathStream() : Stream<? extends INodeItem> {abstract}
+    + toBoundObject() : CLASS {abstract}
+    + validate(validator : IConstraintValidator)
+  }
+  interface INodeItemVisitor<RESULT, CONTEXT> {
+    + visitAssembly(IAssemblyNodeItem, CONTEXT) : RESULT {abstract}
+    + visitDocument(IDocumentNodeItem, CONTEXT) : RESULT {abstract}
+    + visitField(IFieldNodeItem, CONTEXT) : RESULT {abstract}
+    + visitFlag(IFlagNodeItem, CONTEXT) : RESULT {abstract}
+  }
+  interface INonNegativeIntegerItem {
+    + ONE : INonNegativeIntegerItem {static}
+    + ZERO : INonNegativeIntegerItem {static}
+    + cast(item : IAnyAtomicItem) : INonNegativeIntegerItem {static}
+    + valueOf(value : BigInteger) : INonNegativeIntegerItem {static}
+    + valueOf(value : IIntegerItem) : INonNegativeIntegerItem {static}
+    + valueOf(value : String) : INonNegativeIntegerItem {static}
+    + valueOf(value : long) : INonNegativeIntegerItem {static}
+  }
+  interface INumericItem {
+    + abs() : INumericItem {abstract}
+    + asDecimal() : BigDecimal {abstract}
+    + asInteger() : BigInteger {abstract}
+    + cast(item : IAnyAtomicItem) : INumericItem {static}
+    + ceiling() : IIntegerItem {abstract}
+    + floor() : IIntegerItem {abstract}
+    + round() : INumericItem
+    + round(precisionItem : IIntegerItem) : INumericItem
+    + toEffectiveBoolean() : boolean {abstract}
+  }
+  interface IPathItem {
+    + getDefinition() : INamedDefinition {abstract}
+    + getInstance() : INamedInstance {abstract}
+  }
+  interface IPositiveIntegerItem {
+    + ONE : IPositiveIntegerItem {static}
+    + cast(item : IAnyAtomicItem) : IPositiveIntegerItem {static}
+    + valueOf(value : BigInteger) : IPositiveIntegerItem {static}
+    + valueOf(value : IIntegerItem) : IPositiveIntegerItem {static}
+    + valueOf(value : String) : IPositiveIntegerItem {static}
+    + valueOf(value : long) : IPositiveIntegerItem {static}
+  }
+  ~class IPv4AddressItemImpl {
+    + IPv4AddressItemImpl(value : IPv4Address)
+    + getJavaTypeAdapter() : IPv4AddressAdapter
+  }
+  ~class IPv6AddressItemImpl {
+    + IPv6AddressItemImpl(value : IPv6Address)
+    + getJavaTypeAdapter() : IPv6AddressAdapter
+  }
+  interface IRootAssemblyNodeItem {
+    + format(formatter : IPathFormatter) : String
+    + getContextNodeItem() : IRootAssemblyNodeItem
+    + getDefinition() : IRootAssemblyDefinition {abstract}
+    + getDocumentNodeItem() : IDocumentNodeItem {abstract}
+    + getPathStream() : Stream<? extends INodeItem>
+  }
+  interface IStringItem {
+    + cast(item : IAnyAtomicItem) : IStringItem {static}
+    + compare(other : IStringItem) : IIntegerItem
+    + newStringItem() : IStringItem
+    + valueOf(value : String) : IStringItem {static}
+  }
+  interface ITokenItem {
+    + cast(item : IAnyAtomicItem) : ITokenItem {static}
+    + newStringItem() : ITokenItem
+    + valueOf(string : String) : ITokenItem {static}
+  }
+  interface IUntypedAtomicItem {
+  }
+  interface IUriReferenceItem {
+    + cast(item : IAnyAtomicItem) : IUriReferenceItem {static}
+    + valueOf(value : URI) : IUriReferenceItem {static}
+  }
+  interface IUuidItem {
+    + cast(item : IAnyAtomicItem) : IUuidItem {static}
+    + getValue() : UUID {abstract}
+    + valueOf(value : UUID) : IUuidItem {static}
+  }
+  interface IValuedItem {
+    + getValue() : Object {abstract}
+  }
+  interface IValuedNodeItem {
+    + getBaseUri() : URI
+    + toBoundObject() : CLASS
+  }
+  interface IYearMonthDurationItem {
+    + cast(item : IAnyAtomicItem) : IYearMonthDurationItem {static}
+    + getValue() : Period {abstract}
+    + valueOf(value : Period) : IYearMonthDurationItem {static}
+    + valueOf(value : String) : IYearMonthDurationItem {static}
+    + valueOf(years : int, months : int, days : int) : IYearMonthDurationItem {static}
+  }
+  ~class IntegerItemImpl {
+    # IntegerItemImpl(value : BigInteger)
+    + equals(obj : Object) : boolean
+    + getJavaTypeAdapter() : IntegerAdapter
+    + hashCode() : int
+  }
+  ~class MarkupLineItemImpl {
+    + MarkupLineItemImpl(value : MarkupLine)
+    + getJavaTypeAdapter() : MarkupLineAdapter
+  }
+  ~class MarkupMultiLineItemImpl {
+    + MarkupMultiLineItemImpl(value : MarkupMultiline)
+    + getJavaTypeAdapter() : MarkupMultilineAdapter
+  }
+  ~class NcNameItemImpl {
+    + NcNameItemImpl(value : String)
+    + equals(obj : Object) : boolean
+    + getJavaTypeAdapter() : NcNameAdapter
+    + hashCode() : int
+  }
+  enum NodeItemType {
+    + ASSEMBLY {static}
+    + DOCUMENT {static}
+    + FIELD {static}
+    + FLAG {static}
+    + valueOf(name : String) : NodeItemType {static}
+    + values() : NodeItemType[] {static}
+  }
+  ~class NonNegativeIntegerItemImpl {
+    # NonNegativeIntegerItemImpl(value : BigInteger)
+    + equals(obj : Object) : boolean
+    + getJavaTypeAdapter() : NonNegativeIntegerAdapter
+    + hashCode() : int
+  }
+  ~class PositiveIntegerItemImpl {
+    # PositiveIntegerItemImpl(value : BigInteger)
+    + equals(obj : Object) : boolean
+    + getJavaTypeAdapter() : PositiveIntegerAdapter
+    + hashCode() : int
+  }
+  ~class StringItemImpl {
+    + StringItemImpl(value : String)
+    + equals(obj : Object) : boolean
+    + getJavaTypeAdapter() : StringAdapter
+    + hashCode() : int
+  }
+  ~class TokenItemImpl {
+    + TokenItemImpl(value : String)
+    + equals(obj : Object) : boolean
+    + getJavaTypeAdapter() : TokenAdapter
+    + hashCode() : int
+  }
+  ~class UriReferenceItemImpl {
+    + UriReferenceItemImpl(value : URI)
+    + equals(obj : Object) : boolean
+    + getJavaTypeAdapter() : UriReferenceAdapter
+    + hashCode() : int
+  }
+  ~class UuidItemImpl {
+    + UuidItemImpl(value : UUID)
+    + getJavaTypeAdapter() : UuidAdapter
+  }
+  ~class YearMonthDurationItemImpl {
+    + YearMonthDurationItemImpl(value : Period)
+    + getJavaTypeAdapter() : YearMonthAdapter
+  }
+}
+package gov.nist.secauto.metaschema.model.common.constraint {
+  abstract class AbstractConstraint {
+    - id : String
+    - level : Level
+    - remarks : MarkupMultiline
+    - target : MetapathExpression
+    + AbstractConstraint(id : String, level : Level, target : MetapathExpression, remarks : MarkupMultiline)
+    + getId() : String
+    + getLevel() : Level
+    + getRemarks() : MarkupMultiline
+    + getTarget() : MetapathExpression
+  }
+  abstract class AbstractConstraintValidationHandler {
+    + AbstractConstraintValidationHandler()
+    + getPathFormatter() : IPathFormatter {abstract}
+    # newCardinalityMaximumViolationMessage(constraint : ICardinalityConstraint, node : INodeItem, targets : ISequence<? extends INodeItem>) : String
+    # newCardinalityMinimumViolationMessage(constraint : ICardinalityConstraint, node : INodeItem, targets : ISequence<? extends INodeItem>) : String
+    # newExpectViolationMessage(constraint : IExpectConstraint, node : INodeItem, target : INodeItem, dynamicContext : DynamicContext) : CharSequence
+    # newIndexDuplicateKeyViolationMessage(constraint : IIndexConstraint, node : INodeItem, oldItem : INodeItem, target : INodeItem) : String
+    # newMatchDatatypeViolationMessage(constraint : IMatchesConstraint, node : INodeItem, target : INodeItem, value : String) : String
+    # newMatchPatternViolationMessage(constraint : IMatchesConstraint, node : INodeItem, target : INodeItem, value : String) : String
+    # newUniqueKeyViolationMessage(constraint : IUniqueConstraint, node : INodeItem, oldItem : INodeItem, target : INodeItem) : String
+    # toPath(nodeItem : INodeItem) : String
+  }
+  abstract class AbstractFindingCollectingConstraintValidationHandler {
+    - pathFormatter : IPathFormatter
+    + AbstractFindingCollectingConstraintValidationHandler()
+    + getPathFormatter() : IPathFormatter
+    + handleCardinalityMaximumViolation(constraint : ICardinalityConstraint, node : INodeItem, targets : ISequence<? extends INodeItem>)
+    + handleCardinalityMinimumViolation(constraint : ICardinalityConstraint, node : INodeItem, targets : ISequence<? extends INodeItem>)
+    + handleExpectViolation(constraint : IExpectConstraint, node : INodeItem, target : INodeItem, dynamicContext : DynamicContext)
+    + handleIndexDuplicateKeyViolation(constraint : IIndexConstraint, node : INodeItem, oldItem : INodeItem, target : INodeItem)
+    + handleKeyMatchError(constraint : IKeyConstraint, node : INodeItem, target : INodeItem, cause : MetapathException)
+    + handleMatchDatatypeViolation(constraint : IMatchesConstraint, node : INodeItem, target : INodeItem, value : String, cause : IllegalArgumentException)
+    + handleMatchPatternViolation(constraint : IMatchesConstraint, node : INodeItem, target : INodeItem, value : String)
+    + handleUniqueKeyViolation(constraint : IUniqueConstraint, node : INodeItem, oldItem : INodeItem, target : INodeItem)
+    # newFinding(IConstraint, INodeItem, List<? extends INodeItem>, CharSequence, Throwable) {abstract}
+    + setPathFormatter(pathFormatter : IPathFormatter)
+  }
+  abstract class AbstractKeyConstraint {
+    - keyFields : List<DefaultKeyField>
+    + AbstractKeyConstraint(id : String, level : Level, target : MetapathExpression, keyFields : List<DefaultKeyField>, remarks : MarkupMultiline)
+    + getKeyFields() : List<DefaultKeyField>
+  }
+  class DefaultAllowedValue {
+    - description : MarkupLine
+    - value : String
+    + DefaultAllowedValue(value : String, description : MarkupLine)
+    + getDescription() : MarkupLine
+    + getValue() : String
+  }
+  class DefaultAllowedValuesConstraint {
+    - allowedOther : boolean
+    - allowedValues : Map<String, DefaultAllowedValue>
+    + DefaultAllowedValuesConstraint(id : String, level : Level, target : MetapathExpression, allowedValues : Map<String, DefaultAllowedValue>, allowedOther : boolean, remarks : MarkupMultiline)
+    + getAllowedValues() : Map<String, DefaultAllowedValue>
+    + isAllowedOther() : boolean
+  }
+  class DefaultCardinalityConstraint {
+    - maxOccurs : Integer
+    - minOccurs : Integer
+    + DefaultCardinalityConstraint(id : String, level : Level, target : MetapathExpression, minOccurs : Integer, maxOccurs : Integer, remarks : MarkupMultiline)
+    + getMaxOccurs() : Integer
+    + getMinOccurs() : Integer
+  }
+  class DefaultConstraintValidator {
+    - LOGGER : Logger {static}
+    - handler : IConstraintValidationHandler
+    - indexToKeyRefToItemMap : Map<String, Map<String, List<INodeItem>>>
+    - indexToKeyToItemMap : Map<String, Map<String, INodeItem>>
+    - metapathContext : DynamicContext
+    - valueMap : Map<INodeItem, ValueStatus>
+    + DefaultConstraintValidator(metapathContext : DynamicContext)
+    # buildKey(keyFields : List<? extends IKeyField>, item : INodeItem) : String
+    + finalizeValidation()
+    + getConstraintValidationHandler() : IConstraintValidationHandler
+    # getMetapathContext() : DynamicContext
+    + setConstraintValidationHandler(handler : IConstraintValidationHandler)
+    # updateValueStatus(item : IAtomicValuedNodeItem, newStatus : boolean)
+    + validate(item : IAssemblyNodeItem)
+    + validate(item : IFieldNodeItem)
+    + validate(item : IFlagNodeItem)
+    # validateAllowedValues(constraint : IAllowedValuesConstraint, targets : ISequence<? extends INodeItem>)
+    # validateAllowedValues(constraints : List<? extends IAllowedValuesConstraint>, item : INodeItem)
+    # validateExpect(constraint : IExpectConstraint, node : INodeItem, targets : ISequence<?>)
+    # validateExpect(constraints : List<? extends IExpectConstraint>, item : INodeItem)
+    # validateHasCardinality(constraint : ICardinalityConstraint, node : IAssemblyNodeItem, targets : ISequence<? extends INodeItem>)
+    # validateHasCardinality(constraints : List<? extends ICardinalityConstraint>, item : IAssemblyNodeItem)
+    # validateHasCardinality(constraints : List<? extends ICardinalityConstraint>, items : List<? extends IAssemblyNodeItem>)
+    # validateIndex(constraint : IIndexConstraint, node : IAssemblyNodeItem, targets : ISequence<? extends INodeItem>)
+    # validateIndex(constraints : List<? extends IIndexConstraint>, item : IAssemblyNodeItem)
+    # validateIndex(constraints : List<? extends IIndexConstraint>, items : List<? extends IAssemblyNodeItem>)
+    # validateIndexHasKey(constraint : IIndexHasKeyConstraint, targets : ISequence<?>)
+    # validateIndexHasKey(constraints : List<? extends IIndexHasKeyConstraint>, item : INodeItem)
+    # validateMatches(constraint : IMatchesConstraint, node : INodeItem, targets : ISequence<? extends INodeItem>)
+    # validateMatches(constraints : List<? extends IMatchesConstraint>, item : INodeItem)
+    # validateUnique(constraint : IUniqueConstraint, node : IAssemblyNodeItem, targets : ISequence<? extends INodeItem>)
+    # validateUnique(constraints : List<? extends IUniqueConstraint>, item : IAssemblyNodeItem)
+    # validateUnique(constraints : List<? extends IUniqueConstraint>, items : List<? extends IAssemblyNodeItem>)
+  }
+  -class ValueStatus {
+    - item : IAtomicValuedNodeItem
+    - valid : boolean
+    + ValueStatus(item : IAtomicValuedNodeItem, initialStatus : boolean)
+    + getItem() : INodeItem
+    + getValue() : Object
+    + isValid() : boolean
+    - updateStatus(newStatus : boolean)
+  }
+  class DefaultExpectConstraint {
+    - METAPATH_VALUE_TEMPLATE_PATTERN : Pattern {static}
+    - message : String
+    - test : MetapathExpression
+    + DefaultExpectConstraint(id : String, level : Level, message : String, target : MetapathExpression, test : MetapathExpression, remarks : MarkupMultiline)
+    + generateMessage(item : INodeItem, context : DynamicContext) : CharSequence
+    + getMessage() : String
+    + getTest() : MetapathExpression
+  }
+  class DefaultIndexConstraint {
+    - name : String
+    + DefaultIndexConstraint(id : String, level : Level, target : MetapathExpression, name : String, keyFields : List<DefaultKeyField>, remarks : MarkupMultiline)
+    + getName() : String
+  }
+  class DefaultIndexHasKeyConstraint {
+    - indexName : String
+    + DefaultIndexHasKeyConstraint(id : String, level : Level, target : MetapathExpression, indexName : String, keyFields : List<DefaultKeyField>, remarks : MarkupMultiline)
+    + getIndexName() : String
+  }
+  class DefaultKeyField {
+    - pattern : Pattern
+    - remarks : MarkupMultiline
+    - target : MetapathExpression
+    + DefaultKeyField(target : MetapathExpression, pattern : Pattern, remarks : MarkupMultiline)
+    + getPattern() : Pattern
+    + getRemarks() : MarkupMultiline
+    + getTarget() : MetapathExpression
+  }
+  class DefaultMatchesConstraint {
+    - dataType : IJavaTypeAdapter<?>
+    - pattern : Pattern
+    + DefaultMatchesConstraint(id : String, level : Level, target : MetapathExpression, pattern : Pattern, dataType : IJavaTypeAdapter<?>, remarks : MarkupMultiline)
+    + getDataType() : IJavaTypeAdapter<?>
+    + getPattern() : Pattern
+  }
+  class DefaultUniqueConstraint {
+    + DefaultUniqueConstraint(id : String, level : Level, target : MetapathExpression, keyFields : List<DefaultKeyField>, remarks : MarkupMultiline)
+  }
+  class FindingCollectingConstraintValidationHandler {
+    - findings : List<Finding>
+    - highestLevel : Level
+    + FindingCollectingConstraintValidationHandler()
+    + getFindings() : List<Finding>
+    + getHighestLevel() : Level
+    # newFinding(constraint : IConstraint, node : INodeItem, targets : List<? extends INodeItem>, message : CharSequence, cause : Throwable)
+  }
+  class Finding {
+    - cause : Throwable
+    - constraint : IConstraint
+    - message : CharSequence
+    - node : INodeItem
+    - targets : List<? extends INodeItem>
+    + Finding(constraint : IConstraint, message : CharSequence, cause : Throwable, node : INodeItem, targets : List<? extends INodeItem>)
+    + getCause() : Throwable
+    + getConstraint() : IConstraint
+    + getMessage() : CharSequence
+    + getNode() : INodeItem
+    + getTargets() : List<? extends INodeItem>
+  }
+  interface IAllowedValue {
+    + getDescription() : MarkupLine {abstract}
+    + getValue() : String {abstract}
+  }
+  interface IAllowedValuesConstraint {
+    + DEFAULT_ALLOW_OTHER : boolean {static}
+    + getAllowedValue(name : String) : IAllowedValue
+    + getAllowedValues() : Map<String, ? extends IAllowedValue> {abstract}
+    + isAllowedOther() : boolean {abstract}
+  }
+  interface IAssemblyConstraintSupport {
+    + NULL_CONSTRAINT : IAssemblyConstraintSupport {static}
+    + getHasCardinalityConstraints() : List<? extends ICardinalityConstraint> {abstract}
+    + getIndexContraints() : List<? extends IIndexConstraint> {abstract}
+    + getUniqueConstraints() : List<? extends IUniqueConstraint> {abstract}
+  }
+  interface ICardinalityConstraint {
+    + getMaxOccurs() : Integer {abstract}
+    + getMinOccurs() : Integer {abstract}
+  }
+  interface IConstraint {
+    + DEFAULT_LEVEL : Level {static}
+    + DEFAULT_TARGET : MetapathExpression {static}
+    + DEFAULT_TARGET_METAPATH : String {static}
+    + getId() : String {abstract}
+    + getLevel() : Level {abstract}
+    + getRemarks() : MarkupMultiline {abstract}
+    + getTarget() : MetapathExpression {abstract}
+  }
+  enum Level {
+    + CRITICAL {static}
+    + ERROR {static}
+    + INFORMATIONAL {static}
+    + WARNING {static}
+    + valueOf(name : String) : Level {static}
+    + values() : Level[] {static}
+  }
+  interface IConstraintSupport {
+    + getConstraints() : List<? extends IConstraint> {abstract}
+  }
+  interface IConstraintValidationHandler {
+    + handleCardinalityMaximumViolation(ICardinalityConstraint, INodeItem, ISequence<? extends INodeItem>) {abstract}
+    + handleCardinalityMinimumViolation(ICardinalityConstraint, INodeItem, ISequence<? extends INodeItem>) {abstract}
+    + handleExpectViolation(IExpectConstraint, INodeItem, INodeItem, DynamicContext) {abstract}
+    + handleIndexDuplicateKeyViolation(IIndexConstraint, INodeItem, INodeItem, INodeItem) {abstract}
+    + handleKeyMatchError(IKeyConstraint, INodeItem, INodeItem, MetapathException) {abstract}
+    + handleMatchDatatypeViolation(IMatchesConstraint, INodeItem, INodeItem, String, IllegalArgumentException) {abstract}
+    + handleMatchPatternViolation(IMatchesConstraint, INodeItem, INodeItem, String) {abstract}
+    + handleUniqueKeyViolation(IUniqueConstraint, INodeItem, INodeItem, INodeItem) {abstract}
+  }
+  interface IConstraintValidator {
+    + finalizeValidation() {abstract}
+    + validate(IAssemblyNodeItem) {abstract}
+    + validate(IFieldNodeItem) {abstract}
+    + validate(IFlagNodeItem) {abstract}
+  }
+  interface IExpectConstraint {
+    + generateMessage(INodeItem, DynamicContext) : CharSequence {abstract}
+    + getMessage() : String {abstract}
+    + getTest() : MetapathExpression {abstract}
+  }
+  interface IIndexConstraint {
+    + getName() : String {abstract}
+  }
+  interface IIndexHasKeyConstraint {
+    + getIndexName() : String {abstract}
+  }
+  interface IKeyConstraint {
+    + getKeyFields() : List<? extends IKeyField> {abstract}
+  }
+  interface IKeyField {
+    + getPattern() : Pattern {abstract}
+    + getRemarks() : MarkupMultiline {abstract}
+    + getTarget() : MetapathExpression {abstract}
+  }
+  interface IMatchesConstraint {
+    + getDataType() : IJavaTypeAdapter<?> {abstract}
+    + getPattern() : Pattern {abstract}
+  }
+  interface IUniqueConstraint {
+  }
+  interface IValueConstraintSupport {
+    + NULL_CONSTRAINT : IValueConstraintSupport {static}
+    + getAllowedValuesContraints() : List<? extends IAllowedValuesConstraint> {abstract}
+    + getExpectConstraints() : List<? extends IExpectConstraint> {abstract}
+    + getIndexHasKeyConstraints() : List<? extends IIndexHasKeyConstraint> {abstract}
+    + getMatchesConstraints() : List<? extends IMatchesConstraint> {abstract}
+  }
+  class LoggingConstraintValidationHandler {
+    - LOGGER : Logger {static}
+    - pathFormatter : IPathFormatter
+    + LoggingConstraintValidationHandler()
+    # getLogBuilder(constraint : IConstraint) : LogBuilder
+    + getPathFormatter() : IPathFormatter
+    + handleCardinalityMaximumViolation(constraint : ICardinalityConstraint, node : INodeItem, targets : ISequence<? extends INodeItem>)
+    + handleCardinalityMinimumViolation(constraint : ICardinalityConstraint, node : INodeItem, targets : ISequence<? extends INodeItem>)
+    + handleExpectViolation(constraint : IExpectConstraint, node : INodeItem, target : INodeItem, dynamicContext : DynamicContext)
+    + handleIndexDuplicateKeyViolation(constraint : IIndexConstraint, node : INodeItem, oldItem : INodeItem, target : INodeItem)
+    + handleKeyMatchError(constraint : IKeyConstraint, node : INodeItem, target : INodeItem, cause : MetapathException)
+    + handleMatchDatatypeViolation(constraint : IMatchesConstraint, node : INodeItem, target : INodeItem, value : String, cause : IllegalArgumentException)
+    + handleMatchPatternViolation(constraint : IMatchesConstraint, node : INodeItem, target : INodeItem, value : String)
+    + handleUniqueKeyViolation(constraint : IUniqueConstraint, node : INodeItem, oldItem : INodeItem, target : INodeItem)
+    # isLogged(constraint : IConstraint) : boolean
+    # logConstraint(constraint : IConstraint, node : INodeItem, message : CharSequence)
+    # logConstraint(constraint : IConstraint, node : INodeItem, message : CharSequence, cause : Throwable)
+    + setPathFormatter(pathFormatter : IPathFormatter)
+    # toPath(nodeItem : INodeItem) : String
+  }
+}
+MetaschemaDataTypeProvider -->  "-BASE64" Base64Adapter
+DefaultKeyField -->  "-target" MetapathExpression
+LoggingConstraintValidationHandler -->  "-pathFormatter" IPathFormatter
+DefaultMetaschemaContext -->  "-instanceSet" IInstanceSet
+Operator ..+ IComparison
+Builder ..+ Parser
+DynamicContext -->  "-staticContext" StaticContext
+DynamicContext -->  "-documentLoader" CachingLoader
+CachingLoader --+ DynamicContext
+AbstractAssemblyInstance -->  "-parent" IAssemblyDefinition
+AbstractNamedInstanceExpression -->  "-WILDCARD" WildcardMatcher
+WildcardMatcher ..+ AbstractNamedInstanceExpression
+ResultType ..+ MetapathExpression
+Builder ..+ IPv4AddressStringParameters
+InsertAnchorNodeRenderer -->  "-options" InsertAnchorOptions
+MetaschemaDataTypeProvider -->  "-MARKUP_LINE" MarkupLineAdapter
+DefaultFunction -->  "-properties" FunctionProperty
+ExprsingleContext ..+ metapath10Parser
+MetaschemaDataTypeProvider -->  "-DECIMAL" DecimalAdapter
+FnData -->  "-SIGNATURE_NO_ARG" IFunction
+FnStaticBaseUri -->  "-SIGNATURE" IFunction
+ValueStatus ..+ DefaultConstraintValidator
+Closer ..+ AutoCloser
+AutoCloser -->  "-lambda" Closer
+MetaschemaPathEvaluationVisitor -->  "-dynamicContext" DynamicContext
+IValueConstraintSupport -->  "-NULL_CONSTRAINT" IValueConstraintSupport
+MetaschemaDataTypeProvider -->  "-EMAIL_ADDRESS" EmailAddressAdapter
+AbstractFindingCollectingConstraintValidationHandler -->  "-pathFormatter" IPathFormatter
+MetaschemaDataTypeProvider -->  "-MARKUP_MULTILINE" MarkupMultilineAdapter
+IAssemblyConstraintSupport -->  "-NULL_CONSTRAINT" IAssemblyConstraintSupport
+Factory ..+ QTagDoubleQuoteNodePostProcessor
+CastFunction -->  "-castExecutor" ICastExecutor
+ICastExecutor ..+ CastFunction
+MetapathExpression -->  "-CONTEXT_NODE" MetapathExpression
+MetaschemaDataTypeProvider -->  "-IP_V6_ADDRESS" IPv6AddressAdapter
+AbstractRootPathExpression -->  "-node" IExpression
+NameMatcher ..+ AbstractNamedInstanceExpression
+MetaschemaDataTypeProvider -->  "-INTEGER" IntegerAdapter
+CachingLoader -->  "-proxy" IDocumentLoader
+JsonValidationResult -->  "-findings" JsonValidationFinding
+ArgumentContext ..+ metapath10Parser
+WildcardContext ..+ metapath10Parser
+FnBoolean -->  "-SIGNATURE" IFunction
+NumericliteralContext ..+ metapath10Parser
+CustomNodeRenderer ..+ NodeRenderingHandler
+AbstractRelativePathExpression -->  "-left" IExpression
+MetaschemaDataTypeProvider -->  "-URI" UriAdapter
+AbstractConstraint -->  "-remarks" MarkupMultiline
+ParenthesizedexprContext ..+ metapath10Parser
+FunctionCall -->  "-function" IFunction
+MetaschemaDataTypeProvider -->  "-DAY_TIME_DURATION" DayTimeAdapter
+IntersectexceptexprContext ..+ metapath10Parser
+MetaschemaDataTypeProvider -->  "-BOOLEAN" BooleanAdapter
+CustomNodeFormatter ..+ NodeFormattingHandler
+Builder ..+ IPv6AddressStringParameters
+IInstanceSet -->  "-EMPTY_INSTANCE_SET" IInstanceSet
+IPositiveIntegerItem -->  "-ONE" IPositiveIntegerItem
+XmlValidationErrorHandler -->  "-findings" XmlValidationFinding
+DefaultConstraintValidator -->  "-handler" IConstraintValidationHandler
+FnBaseUri -->  "-SIGNATURE_NO_ARG" IFunction
+NametestContext ..+ metapath10Parser
+MetapathContext ..+ metapath10Parser
+MetaschemaDataTypeProvider -->  "-IP_V4_ADDRESS" IPv4AddressAdapter
+DuplicateHandler ..+ CustomCollectors
+DefaultConstraintValidator -->  "-metapathContext" DynamicContext
+Factory ..+ InsertAnchorNodeRenderer
+MetaschemaDataTypeProvider -->  "-UUID" UuidAdapter
+AbstractConstraint -->  "-target" MetapathExpression
+MetaschemaDataTypeProvider -->  "-URI_REFERENCE" UriReferenceAdapter
+FindingCollectingConstraintValidationHandler -->  "-findings" Finding
+Finding ..+ FindingCollectingConstraintValidationHandler
+AbstractNamedInstanceExpression -->  "-node" IExpression
+LiteralContext ..+ metapath10Parser
+CallingContext -->  "-contextNodeItem" INodeItem
+InsertAnchorFormatter -->  "-options" InsertAnchorOptions
+InsertAnchorHtmlNodeRenderer -->  "-options" InsertAnchorOptions
+IDefinition -->  "-DEFAULT_DEFINITION_MODEL_SCOPE" ModuleScopeEnum
+IConstraint -->  "-DEFAULT_LEVEL" Level
+Level ..+ IConstraint
+StringconcatexprContext ..+ metapath10Parser
+DefaultAllowedValue -->  "-description" MarkupLine
+DataTypeService -->  "-instance" DataTypeService
+XmlValidationFinding ..+ XmlSchemaContentValidator
+HtmlConverterExtension ..+ FlexmarkHtmlConverter
+IConstraint -->  "-DEFAULT_TARGET" MetapathExpression
+XmlValidationFinding -->  "-severity" Level
+Builder ..+ IPAddressStringParameters
+XmlValidationErrorHandler ..+ XmlSchemaContentValidator
+Builder -->  "-functionHandler" IFunctionExecutor
+Builder ..+ IFunction
+MetaschemaDataTypeProvider -->  "-NCNAME" NcNameAdapter
+AxisstepContext ..+ metapath10Parser
+FnCompare -->  "-SIGNATURE" IFunction
+ArgumentImpl -->  "-sequenceType" ISequenceType
+ContextitemexprContext ..+ metapath10Parser
+FnStartsWith -->  "-SIGNATURE" IFunction
+AbstractKeyConstraint -->  "-keyFields" DefaultKeyField
+FormatterExtension ..+ Formatter
+FnDocumentUri -->  "-SIGNATURE_NO_ARG" IFunction
+RootAssemblyDefinitionInstance -->  "-rootAssemblyDefinition" IAssemblyDefinition
+MetaschemaDataTypeProvider -->  "-DATE_WITH_TZ" DateWithTZAdapter
+SingletonSequenceImpl -->  "-item" IItem
+Builder ..+ IArgument
+Builder -->  "-arguments" IArgument
+FlexmarkFactory -->  "-INSTANCE" FlexmarkFactory
+MultiplicativeexprContext ..+ metapath10Parser
+ISequence -->  "-EMPTY" ISequence
+ParserExtension ..+ Parser
+IValidationResult -->  "-PASSING_RESULT" IValidationResult
+MetaschemaDataTypeProvider -->  "-STRING" StringAdapter
+Factory ..+ InsertAnchorFormatter
+PathexprContext ..+ metapath10Parser
+FunctionService -->  "-functionService" FunctionService
+NamedFunctionSet ..+ AbstractFunctionLibrary
+ExprContext ..+ metapath10Parser
+MetaschemaDataTypeProvider -->  "-YEAR_MONTH_DURATION" YearMonthAdapter
+CallingContext --+ DefaultFunction
+ValueStatus -->  "-item" IAtomicValuedNodeItem
+AbstractMarkupAdapter -->  "-MARKUP_PARSER" MarkupParser
+Builder ..+ Formatter
+UnionexprContext ..+ metapath10Parser
+DefaultMatchesConstraint -->  "-dataType" IJavaTypeAdapter
+INonNegativeIntegerItem -->  "-ONE" INonNegativeIntegerItem
+StepexprContext ..+ metapath10Parser
+ArgumentlistContext ..+ metapath10Parser
+ArrowfunctionspecifierContext ..+ metapath10Parser
+AbstractFlagInstance -->  "-parent" INamedModelDefinition
+SequenceTypeImpl -->  "-occurrence" Occurrence
+ValuecompContext ..+ metapath10Parser
+ISequenceType -->  "-EMPTY" ISequenceType
+MetaschemaDataTypeProvider -->  "-DATE" DateAdapter
+Builder ..+ FlexmarkHtmlConverter
+AbstractFunction -->  "-arguments" IArgument
+Finding -->  "-node" INodeItem
+AbstractChoiceInstance -->  "-parent" IAssemblyDefinition
+StreamNodeVisitor --+ MarkupXmlEventWriter
+MetaschemaDataTypeProvider -->  "-NON_NEGATIVE_INTEGER" NonNegativeIntegerAdapter
+DefaultKeyField -->  "-remarks" MarkupMultiline
+FunctionProperty ..+ IFunction
+AbstractConstraint -->  "-level" Level
+InlineHtmlXmlStreamException ..+ MarkupXmlEventWriter
+FunctionCall -->  "-arguments" IExpression
+Factory ..+ InsertAnchorInlineParser
+ComparisonexprContext ..+ metapath10Parser
+PrimaryexprContext ..+ metapath10Parser
+JsonValidationFinding ..+ JsonSchemaContentValidator
+FunctioncallContext ..+ metapath10Parser
+MetaschemaModelConstants -->  "-DEFAULT_JSON_GROUP_AS_BEHAVIOR" JsonGroupAsBehavior
+FnResolveUri -->  "-SIGNATURE_ONE_ARG" IFunction
+AdditiveexprContext ..+ metapath10Parser
+XmlValidationErrorHandler -->  "-highestSeverity" Level
+IBooleanItem -->  "-TRUE" IBooleanItem
+HtmlRendererExtension ..+ HtmlRenderer
+DefaultExpectConstraint -->  "-test" MetapathExpression
+AndexprContext ..+ metapath10Parser
+PredicateContext ..+ metapath10Parser
+FnExists -->  "-SIGNATURE" IFunction
+BooleanItemImpl -->  "-TRUE_STRING_ITEM" IStringItem
+Builder ..+ HtmlRenderer
+DefaultFunction -->  "-result" ISequenceType
+Builder -->  "-properties" FunctionProperty
+DefaultFunction -->  "-handler" IFunctionExecutor
+MetapathExpression -->  "-node" IExpression
+GeneralcompContext ..+ metapath10Parser
+RelativepathexprContext ..+ metapath10Parser
+FnDoc -->  "-SIGNATURE" IFunction
+Finding -->  "-constraint" IConstraint
+ForwardstepContext ..+ metapath10Parser
+AbstractComparison -->  "-operator" Operator
+Factory ..+ QTagNodeRenderer
+MetaschemaModelConstants -->  "-DEFAULT_XML_GROUP_AS_BEHAVIOR" XmlGroupAsBehavior
+ArrowexprContext ..+ metapath10Parser
+IPathFormatter -->  "-METAPATH_PATH_FORMATER" IPathFormatter
+IDecimalItem -->  "-ZERO" IDecimalItem
+MetaschemaDataTypeProvider -->  "-POSITIVE_INTEGER" PositiveIntegerAdapter
+INumericExecutor ..+ NumericFunction
+NumericFunction -->  "-executor" INumericExecutor
+PredicatelistContext ..+ metapath10Parser
+ValueexprContext ..+ metapath10Parser
+MetaschemaDataTypeProvider -->  "-HOSTNAME" HostnameAdapter
+Factory ..+ QTagHtmlNodeRenderer
+FindingCollectingConstraintValidationHandler -->  "-highestLevel" Level
+AbstractBinaryExpression -->  "-left" IExpression
+AbstractNAryExpression -->  "-children" IExpression
+JsonValidationResult ..+ JsonSchemaContentValidator
+OrexprContext ..+ metapath10Parser
+MetaschemaDataTypeProvider -->  "-DATE_TIME" DateTimeAdapter
+EqnameContext ..+ metapath10Parser
+AbstractUnaryExpression -->  "-expr" IExpression
+InlineHtmlXmlStreamException ..+ MarkupXmlStreamWriter
+DefinitionCollectingModelWalker -->  "-definitions" INamedDefinition
+MetaschemaDataTypeProvider -->  "-DATE_TIME_WITH_TZ" DateTimeWithTZAdapter
+FunctionService -->  "-library" LoadedFunctionsLibrary
+MetaschemaDataTypeProvider -->  "-TOKEN" TokenAdapter
+Factory ..+ InsertAnchorHtmlNodeRenderer
+PostfixexprContext ..+ metapath10Parser
+StreamNodeVisitor --+ MarkupXmlStreamWriter
+UnaryexprContext ..+ metapath10Parser
+FnNot -->  "-SIGNATURE" IFunction
+AbstractFieldInstance -->  "-parent" IAssemblyDefinition
+IIntegerItem -->  "-ONE" IIntegerItem
+IIntegerItem -->  "-NEGATIVE_ONE" IIntegerItem
+Step -->  "-step" IExpression
+Step -->  "-predicates" IExpression
+Builder -->  "-occurrence" Occurrence
+Builder -->  "-returnOccurrence" Occurrence
+AbstractAssemblyInstance ..|> IAssemblyInstance 
+AbstractChoiceInstance ..|> IChoiceInstance 
+AbstractFieldInstance ..|> IFieldInstance 
+AbstractFlagInstance ..|> IFlagInstance 
+AbstractMetaschema ..|> IMetaschema 
+DefinitionCollectingModelWalker --|> ModelWalker 
+IAssembly --|> INamedModelElement 
+IAssemblyDefinition --|> INamedModelDefinition 
+IAssemblyDefinition --|> IModelContainer 
+IAssemblyDefinition --|> IAssembly 
+IAssemblyInstance --|> INamedModelInstance 
+IAssemblyInstance --|> IAssembly 
+IChoice --|> IModelElement 
+IChoiceInstance --|> IModelInstance 
+IChoiceInstance --|> IModelContainer 
+IChoiceInstance --|> IChoice 
+IDefinition --|> INamedModelElement 
+IField --|> INamedModelElement 
+IFieldDefinition --|> INamedValuedDefinition 
+IFieldDefinition --|> INamedModelDefinition 
+IFieldDefinition --|> IField 
+IFieldInstance --|> INamedModelInstance 
+IFieldInstance --|> IField 
+IFlag --|> INamedModelElement 
+IFlagDefinition --|> INamedValuedDefinition 
+IFlagDefinition --|> IFlag 
+IFlagInstance --|> INamedInstance 
+IFlagInstance --|> IFlag 
+IInlineNamedDefinition --|> INamedDefinition 
+IInstance --|> IModelElement 
+IModelInstance --|> IInstance 
+INamedDefinition --|> IDefinition 
+INamedInstance --|> IInstance 
+INamedInstance --|> INamedModelElement 
+INamedModelDefinition --|> INamedDefinition 
+INamedModelElement --|> IModelElement 
+INamedModelInstance --|> INamedInstance 
+INamedModelInstance --|> IModelInstance 
+INamedValuedDefinition --|> IValuedDefinition 
+INamedValuedDefinition --|> INamedDefinition 
+IRootAssemblyDefinition --|> IAssemblyDefinition 
+IValuedDefinition --|> IDefinition 
+RootAssemblyDefinitionInstance ..|> IAssemblyInstance 
+UsedDefinitionModelWalker --|> DefinitionCollectingModelWalker 
+AbstractConstraint ..|> IConstraint 
+AbstractConstraintValidationHandler ..|> IConstraintValidationHandler 
+AbstractFindingCollectingConstraintValidationHandler --|> AbstractConstraintValidationHandler 
+AbstractKeyConstraint ..|> IKeyConstraint 
+AbstractKeyConstraint --|> AbstractConstraint 
+DefaultAllowedValue ..|> IAllowedValue 
+DefaultAllowedValuesConstraint ..|> IAllowedValuesConstraint 
+DefaultAllowedValuesConstraint --|> AbstractConstraint 
+DefaultCardinalityConstraint ..|> ICardinalityConstraint 
+DefaultCardinalityConstraint --|> AbstractConstraint 
+DefaultConstraintValidator ..|> IConstraintValidator 
+DefaultExpectConstraint ..|> IExpectConstraint 
+DefaultExpectConstraint --|> AbstractConstraint 
+DefaultIndexConstraint ..|> IIndexConstraint 
+DefaultIndexConstraint --|> AbstractKeyConstraint 
+DefaultIndexHasKeyConstraint ..|> IIndexHasKeyConstraint 
+DefaultIndexHasKeyConstraint --|> AbstractKeyConstraint 
+DefaultKeyField ..|> IKeyField 
+DefaultMatchesConstraint ..|> IMatchesConstraint 
+DefaultMatchesConstraint --|> AbstractConstraint 
+DefaultUniqueConstraint ..|> IUniqueConstraint 
+DefaultUniqueConstraint --|> AbstractKeyConstraint 
+FindingCollectingConstraintValidationHandler --|> AbstractFindingCollectingConstraintValidationHandler 
+IAllowedValuesConstraint --|> IConstraint 
+IAssemblyConstraintSupport --|> IValueConstraintSupport 
+ICardinalityConstraint --|> IConstraint 
+IExpectConstraint --|> IConstraint 
+IIndexConstraint --|> IKeyConstraint 
+IIndexHasKeyConstraint --|> IKeyConstraint 
+IKeyConstraint --|> IConstraint 
+IMatchesConstraint --|> IConstraint 
+IUniqueConstraint --|> IKeyConstraint 
+IValueConstraintSupport --|> IConstraintSupport 
+LoggingConstraintValidationHandler --|> AbstractConstraintValidationHandler 
+AbstractDataTypeProvider ..|> IDataTypeProvider 
+AbstractDatatype ..|> IDatatype 
+AbstractDatatypeJavaTypeAdapter --|> AbstractJavaTypeAdapter 
+AbstractIntegerAdapter --|> AbstractJavaTypeAdapter 
+AbstractJavaTypeAdapter ..|> IJavaTypeAdapter 
+AbstractStringJavaTypeAdapter --|> AbstractJavaTypeAdapter 
+AbstractMarkupAdapter --|> AbstractDatatypeJavaTypeAdapter 
+Base64Adapter --|> AbstractJavaTypeAdapter 
+BooleanAdapter --|> AbstractJavaTypeAdapter 
+DateAdapter --|> AbstractDatatypeJavaTypeAdapter 
+DateTimeAdapter --|> AbstractDatatypeJavaTypeAdapter 
+DateTimeWithTZAdapter --|> AbstractJavaTypeAdapter 
+DateWithTZAdapter --|> AbstractJavaTypeAdapter 
+DayTimeAdapter --|> AbstractJavaTypeAdapter 
+DecimalAdapter --|> AbstractJavaTypeAdapter 
+EmailAddressAdapter --|> AbstractStringJavaTypeAdapter 
+HostnameAdapter --|> AbstractStringJavaTypeAdapter 
+IPv4AddressAdapter --|> AbstractJavaTypeAdapter 
+IPv6AddressAdapter --|> AbstractJavaTypeAdapter 
+IntegerAdapter --|> AbstractIntegerAdapter 
+MarkupLineAdapter --|> AbstractMarkupAdapter 
+MarkupMultilineAdapter --|> AbstractMarkupAdapter 
+MetaschemaDataTypeProvider --|> AbstractDataTypeProvider 
+NcNameAdapter --|> AbstractStringJavaTypeAdapter 
+NonNegativeIntegerAdapter --|> AbstractIntegerAdapter 
+PositiveIntegerAdapter --|> AbstractIntegerAdapter 
+StringAdapter --|> AbstractStringJavaTypeAdapter 
+TokenAdapter --|> AbstractStringJavaTypeAdapter 
+UriAdapter --|> AbstractJavaTypeAdapter 
+UriReferenceAdapter --|> AbstractJavaTypeAdapter 
+UuidAdapter --|> AbstractJavaTypeAdapter 
+YearMonthAdapter --|> AbstractJavaTypeAdapter 
+AbstractMarkupString ..|> IMarkupText 
+AbstractMarkupString ..|> IDatatype 
+MarkupLine --|> AbstractMarkupString 
+MarkupMultiline --|> AbstractMarkupString 
+MarkupXmlEventWriter --|> AbstractMarkupXmlWriter 
+MarkupXmlStreamWriter --|> AbstractMarkupXmlWriter 
+AbstractAmbiguousDateTime --|> AbstractDatatype 
+Date --|> AbstractAmbiguousDateTime 
+DateTime --|> AbstractAmbiguousDateTime 
+ConstraintVisitingModelWalker --|> ModelWalker 
+CachingLoader ..|> IDocumentLoader 
+metapath10BaseVisitor ..|> metapath10Visitor 
+ASTPrinter --|> AbstractExpressionVisitor 
+AbstractArithmeticExpression ..|> IArithmeticExpression 
+AbstractArithmeticExpression --|> AbstractBinaryExpression 
+AbstractBinaryExpression ..|> IExpression 
+AbstractComparison ..|> IComparison 
+AbstractComparison --|> AbstractBinaryExpression 
+AbstractLiteralExpression ..|> ILiteralExpression 
+AbstractNAryExpression ..|> IExpression 
+AbstractNamedInstanceExpression --|> AbstractPathExpression 
+AbstractPathExpression ..|> IPathExpression 
+AbstractRelativePathExpression --|> AbstractPathExpression 
+AbstractRootPathExpression --|> AbstractPathExpression 
+AbstractUnaryExpression ..|> IExpression 
+Addition --|> AbstractArithmeticExpression 
+And ..|> IBooleanLogicExpression 
+And --|> AbstractNAryExpression 
+BuildAstVisitor --|> metapath10BaseVisitor 
+ContextItem --|> AbstractPathExpression 
+DecimalLiteral --|> AbstractLiteralExpression 
+Division --|> AbstractArithmeticExpression 
+Flag --|> AbstractNamedInstanceExpression 
+FunctionCall ..|> IExpression 
+GeneralComparison --|> AbstractComparison 
+IArithmeticExpression --|> IExpression 
+IBooleanLogicExpression --|> IExpression 
+IComparison --|> IBooleanLogicExpression 
+ILiteralExpression --|> IExpression 
+IPathExpression --|> IExpression 
+IntegerDivision --|> AbstractArithmeticExpression 
+IntegerLiteral --|> AbstractLiteralExpression 
+Metapath --|> AbstractNAryExpression 
+Mod --|> AbstractArithmeticExpression 
+ModelInstance --|> AbstractNamedInstanceExpression 
+Multiplication --|> AbstractArithmeticExpression 
+Name --|> AbstractLiteralExpression 
+Negate ..|> IArithmeticExpression 
+Negate --|> AbstractUnaryExpression 
+Or ..|> IBooleanLogicExpression 
+Or --|> AbstractNAryExpression 
+ParenthesizedExpression --|> AbstractUnaryExpression 
+RelativeDoubleSlashPath --|> AbstractRelativePathExpression 
+RelativeSlashPath --|> AbstractRelativePathExpression 
+RootDoubleSlashPath --|> AbstractRootPathExpression 
+RootSlashOnlyPath --|> AbstractPathExpression 
+RootSlashPath --|> AbstractRootPathExpression 
+Step ..|> IExpression 
+StringConcat --|> AbstractNAryExpression 
+StringLiteral --|> AbstractLiteralExpression 
+Subtraction --|> AbstractArithmeticExpression 
+Union --|> AbstractNAryExpression 
+ValueComparison --|> AbstractComparison 
+Wildcard ..|> IExpression 
+AbstractExpressionEvaluationVisitor ..|> IExpressionEvaluationVisitor 
+EmptyListImpl ..|> ISequence 
+ListSequenceImpl ..|> ISequence 
+MetaschemaPathEvaluationVisitor --|> AbstractExpressionEvaluationVisitor 
+SingletonSequenceImpl ..|> ISequence 
+StreamSequenceImpl ..|> ISequence 
+AbstractExpressionVisitor ..|> IExpressionVisitor 
+DefaultInstanceSet ..|> IInstanceSet 
+DefaultMetaschemaContext ..|> IMetaschemaContext 
+MetaschemaInstanceEvaluationVisitor --|> AbstractExpressionVisitor 
+MetapathFormatter ..|> IPathFormatter 
+AbstractFunction ..|> IFunction 
+AbstractFunctionLibrary ..|> IFunctionLibrary 
+ArgumentImpl ..|> IArgument 
+CastFunction ..|> IFunctionExecutor 
+DefaultFunction --|> AbstractFunction 
+LoadedFunctionsLibrary --|> AbstractFunctionLibrary 
+SequenceTypeImpl ..|> ISequenceType 
+DefaultFunctionLibrary --|> AbstractFunctionLibrary 
+NumericFunction ..|> IFunctionExecutor 
+AbstractAnyAtomicItem ..|> IAnyAtomicItem 
+AbstractIntegerItem ..|> IIntegerItem 
+AbstractIntegerItem --|> AbstractNumericItem 
+AbstractNodeItemVisitor ..|> INodeItemVisitor 
+AbstractNumericItem ..|> INumericItem 
+AbstractNumericItem --|> AbstractAnyAtomicItem 
+AbstractStringItem ..|> IStringItem 
+AbstractStringItem --|> AbstractAnyAtomicItem 
+AnyUriItemImpl ..|> IAnyUriItem 
+AnyUriItemImpl --|> AbstractAnyAtomicItem 
+Base64BinaryItemImpl ..|> IBase64BinaryItem 
+Base64BinaryItemImpl --|> AbstractAnyAtomicItem 
+BooleanItemImpl ..|> IBooleanItem 
+DateTimeWithTimeZoneItemImpl ..|> IDateTimeItem 
+DateTimeWithTimeZoneItemImpl --|> AbstractAnyAtomicItem 
+DateTimeWithoutTimeZoneItemImpl ..|> IDateTimeItem 
+DateTimeWithoutTimeZoneItemImpl --|> AbstractAnyAtomicItem 
+DateWithTimeZoneItemImpl ..|> IDateItem 
+DateWithTimeZoneItemImpl --|> AbstractAnyAtomicItem 
+DateWithoutTimeZoneItemImpl ..|> IDateItem 
+DateWithoutTimeZoneItemImpl --|> AbstractAnyAtomicItem 
+DayTimeDurationItemImpl ..|> IDayTimeDurationItem 
+DayTimeDurationItemImpl --|> AbstractAnyAtomicItem 
+DecimalItemImpl ..|> IDecimalItem 
+DecimalItemImpl --|> AbstractNumericItem 
+EmailAddressItemImpl ..|> IEmailAddressItem 
+EmailAddressItemImpl --|> AbstractStringItem 
+HostnameItemImpl ..|> IHostnameItem 
+HostnameItemImpl --|> AbstractStringItem 
+IAnyAtomicItem --|> IAtomicValuedItem 
+IAnyUriItem --|> IAnyAtomicItem 
+IAssemblyNodeItem --|> IModelNodeItem 
+IAtomicValuedItem --|> IValuedItem 
+IAtomicValuedNodeItem --|> IValuedNodeItem 
+IAtomicValuedNodeItem --|> IAtomicValuedItem 
+IBase64BinaryItem --|> IAnyAtomicItem 
+IBooleanItem --|> IAnyAtomicItem 
+IDateItem --|> IAnyAtomicItem 
+IDateTimeItem --|> IAnyAtomicItem 
+IDayTimeDurationItem --|> IDurationItem 
+IDecimalItem --|> INumericItem 
+IDocumentNodeItem --|> INodeItem 
+IDurationItem --|> IAnyAtomicItem 
+IEmailAddressItem --|> IStringItem 
+IFieldNodeItem --|> IModelNodeItem 
+IFieldNodeItem --|> IAtomicValuedNodeItem 
+IFlagNodeItem --|> IAtomicValuedNodeItem 
+IHostnameItem --|> IStringItem 
+IIPAddressItem --|> IUntypedAtomicItem 
+IIPv4AddressItem --|> IIPAddressItem 
+IIPv6AddressItem --|> IIPAddressItem 
+IIntegerItem --|> IDecimalItem 
+IMarkupItem --|> IUntypedAtomicItem 
+IModelNodeItem --|> IValuedNodeItem 
+INcNameItem --|> IStringItem 
+INodeItem --|> IPathItem 
+INodeItem --|> INodeContext 
+INodeItem --|> IPathSegment 
+INonNegativeIntegerItem --|> IIntegerItem 
+INumericItem --|> IAnyAtomicItem 
+IPathItem --|> IItem 
+IPositiveIntegerItem --|> IIntegerItem 
+IPv4AddressItemImpl ..|> IIPv4AddressItem 
+IPv4AddressItemImpl --|> AbstractAnyAtomicItem 
+IPv6AddressItemImpl ..|> IIPv6AddressItem 
+IPv6AddressItemImpl --|> AbstractAnyAtomicItem 
+IRootAssemblyNodeItem --|> IAssemblyNodeItem 
+IStringItem --|> IAnyAtomicItem 
+ITokenItem --|> IStringItem 
+IUntypedAtomicItem --|> IAnyAtomicItem 
+IUriReferenceItem --|> IAnyUriItem 
+IUuidItem --|> IAnyAtomicItem 
+IValuedItem --|> IItem 
+IValuedNodeItem --|> INodeItem 
+IValuedNodeItem --|> IValuedItem 
+IYearMonthDurationItem --|> IDurationItem 
+IntegerItemImpl --|> AbstractIntegerItem 
+MarkupLineItemImpl ..|> IMarkupItem 
+MarkupLineItemImpl --|> AbstractAnyAtomicItem 
+MarkupMultiLineItemImpl ..|> IMarkupItem 
+MarkupMultiLineItemImpl --|> AbstractAnyAtomicItem 
+NcNameItemImpl ..|> INcNameItem 
+NcNameItemImpl --|> AbstractStringItem 
+NonNegativeIntegerItemImpl ..|> INonNegativeIntegerItem 
+NonNegativeIntegerItemImpl --|> AbstractIntegerItem 
+PositiveIntegerItemImpl ..|> IPositiveIntegerItem 
+PositiveIntegerItemImpl --|> AbstractIntegerItem 
+StringItemImpl --|> AbstractStringItem 
+TokenItemImpl ..|> ITokenItem 
+TokenItemImpl --|> AbstractStringItem 
+UriReferenceItemImpl ..|> IUriReferenceItem 
+UriReferenceItemImpl --|> AbstractAnyAtomicItem 
+UuidItemImpl ..|> IUuidItem 
+UuidItemImpl --|> AbstractAnyAtomicItem 
+YearMonthDurationItemImpl ..|> IYearMonthDurationItem 
+YearMonthDurationItemImpl --|> AbstractAnyAtomicItem 
+AbstractContentValidator ..|> IContentValidator 
+JsonSchemaContentValidator --|> AbstractContentValidator 
+JsonValidationFinding ..|> IValidationFinding 
+JsonValidationResult ..|> IValidationResult 
+ValidatingNodeItemVisitor --|> AbstractNodeItemVisitor 
+XmlSchemaContentValidator --|> AbstractContentValidator 
+XmlValidationErrorHandler ..|> IValidationResult 
+XmlValidationFinding ..|> IValidationFinding 
+@enduml

@@ -51,6 +51,18 @@ graph TD
 
 #### Metaschema Object Model
 
+The Metaschema Object Model (MOM) is designed around a minimalist abstract base class and a series of interfaces. The abstract base class implements the default required implementation of key components. The interfaces provide a mechanism for pluggable implementations, so long as they implement required functionalities itemized by the interface contract.
+
+##### Abstract Base Class
+
+The current abstract base class and its relationships to relevant [interfaces](#core-model-interfaces) is based upon the reference [`metaschema-java` implementation](https://github.com/usnistgov/metaschema-java/), [mapped in this PlantUML diagram](./diagrams/metaschema-java_metaschema-model-common.urm.puml)
+
+#### Core Model Interfaces
+
+Interfaces will define key functions and properties that must be implemented by any class that supports Metaschema processing with the recommended architecture of this library. The interfaces will specify required functions to represent different Metaschema model objects, as well as utility objects and functions to simplify their usage.
+
+The current interfaces and their relationships are designed off of the reference [`metaschema-java` implementation](https://github.com/usnistgov/metaschema-java/), [mapped in this PlantUML diagram](./diagrams/metaschema-java_metaschema-model-common.urm.puml).
+
 #### Metaschema XML Parser
 
 #### Metaschema C# Binding
@@ -73,7 +85,7 @@ graph TD
 
 - In `metaschema-java`, the Java binding and code generator were written in the same package simultaneously, and were split out later.
 - The Java implementation heavily utilizes annotations to allow making Java classes the primary definition of Metaschema in classes (without XML definitions).
-  - The downside of consuming this (not implementing) for the `metaschema-java` implementation is that these class-based implementations can be less featureful than the official Metaschema XML language (some things like `flag`s are implemented out in the `metaschema-java` implementation). 
+  - The downside of consuming this (not implementing) for the `metaschema-java` implementation is that these class-based implementations can have less features than the official Metaschema XML language (some things like `flag`s are implemented out in the `metaschema-java` implementation). 
   - The other downside of this approach (in the current `metaschema-java` implementation) ignores the top-level metadata (`remarks` in the top-level; `metaschema-version`, et cetera).
 - Make heavy use of lazy evaluation, such as:
   -  When definitions are detected, models are not instantiated until they are used upon use
